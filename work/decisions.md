@@ -152,3 +152,16 @@
 ## 화면 단계 추가 결정 — 참조 디자인
 
 - 사용자 지시(2026-09-05): 같은 Figma 파일의 노드 `15:2020`을 화면 생성 시 참조 디자인으로 삼는다. 레이아웃·블록 구성·밀도만 참조하고, 색·폰트·radius·그림자는 design.md 본문과 Foundations 토큰을 유지한다. 참조 노드는 읽기 전용. 화면마다 무엇을 가져왔는지 `work/figma-log.md`에 기록.
+
+## 화면 단계 추가 결정 — 세션 분담
+
+- 2026-09-05 사람 결정: 같은 레포·같은 Figma 파일에서 두 세션이 병렬로 화면을 만든다. 세션 89 = `calendar-overview`(+--empty) 생성·리뷰. 세션 main = core 4개(`meeting-create`, `meeting-dates`, `meeting-detail`, `guest-response`). later 4개는 core 완료 후 재결정.
+- 충돌 방지 규칙: 각 세션은 자기 화면 이름으로 시작하는 노드만 생성·삭제. `work/figma-log.md`는 자기 `## {screen-id}` 섹션만 append. `work/wireframes/_index.md`는 자기 행 상태 열만 수정. Foundations 페이지·컴포넌트는 양쪽 모두 수정 금지.
+
+## 2-6. 화면 생성 분담 및 참조 디자인 (2026-09-05)
+
+- 두 세션 분담(사람 결정): 다른 세션 = `calendar-overview`(+`--empty`), 이 세션 = `meeting-create` → `meeting-dates` → `meeting-detail` → `guest-response`. figma-log는 각자 섹션만 append, _index는 자기 행만.
+- 참조 디자인 `15:2020`(다른 세션 제안): **이 세션은 미적용** — 사람 선택 "스펙 그대로 진행". 4개 화면은 와이어프레임 + design.md만 기준.
+- 세션 main 사용자 결정: core 4개 화면은 `15:2020` 참조를 적용하지 않고 와이어프레임 스펙 + design.md 그대로 생성. 참조 반영은 `calendar-overview`(세션 89)에만 적용됨 — 화면 간 레이아웃 문법 차이 가능. core 완료 후 일관성 점검 필요.
+- 상태바·홈 인디케이터(다른 세션 제안): **적용** — 사람 결정 (2026-09-05, "meeting-create--separate-warning / header에도 status bar 적용 필요"). design.md 부록 A-1에 `{component.status-bar}`, `{component.home-indicator}` 추가. 이 세션 4개 화면의 모든 프레임(상태 프레임 포함)에 적용.
+- 2026-09-05 세션 89 사용자 결정: `calendar-overview` PASS 후 later 4개(`home-meetings` → `contacts-list` → `contact-edit` → `meeting-confirm`)를 세션 89가 순차 생성·리뷰. `15:2020` 참조 반영은 calendar-overview와 동일하게 적용. 충돌 방지 규칙 동일.

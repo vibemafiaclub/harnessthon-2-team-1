@@ -328,13 +328,15 @@ The structural breakpoints that matter for agents: 1440px (content lock), 1068px
 
 ### A-1. 프레임
 
-| 항목                  | 값                  | 근거                                                                   |
-| --------------------- | ------------------- | ---------------------------------------------------------------------- |
-| `{frame.width}`       | 390px               | Phone(420–640) 하한 근처 대표 기기                                     |
-| `{frame.height}`      | 844px               | 위와 동일 기기 세로. 콘텐츠가 길면 프레임을 세로로 늘린다(스크롤 화면) |
-| `{frame.safe-top}`    | 47px                | 상태바 영역. 헤더 배경색으로 채움                                      |
-| `{frame.safe-bottom}` | 34px                | 홈 인디케이터. 탭바/스티키바 배경색으로 채움                           |
-| `{frame.side-margin}` | `{spacing.lg}` 24px | Whitespace Philosophy — "product pedestal"                             |
+| 항목                         | 값                  | 근거                                                                                                                                                                                                                                           |
+| ---------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{frame.width}`              | 390px               | Phone(420–640) 하한 근처 대표 기기                                                                                                                                                                                                             |
+| `{frame.height}`             | 844px               | 위와 동일 기기 세로. 콘텐츠가 길면 프레임을 세로로 늘린다(스크롤 화면)                                                                                                                                                                         |
+| `{frame.safe-top}`           | 47px                | 상태바 영역. 헤더 배경색으로 채움                                                                                                                                                                                                              |
+| `{frame.safe-bottom}`        | 34px                | 홈 인디케이터. 탭바/스티키바 배경색으로 채움                                                                                                                                                                                                   |
+| `{frame.side-margin}`        | `{spacing.lg}` 24px | Whitespace Philosophy — "product pedestal"                                                                                                                                                                                                     |
+| `{component.status-bar}`     | safe-top 47px 안    | iOS 상태바 콘텐츠: 좌 "9:41", 우 셀룰러·Wi-Fi·배터리 단색 벡터. 색 `{colors.ink}`(밝은 헤더) / `{colors.on-dark}`(어두운 헤더). 화면별 블록 `{screen-id} / status-bar`, Foundations 컴포넌트 수정 없음 — 사람 결정 2026-09-05 (세션 간 일관성) |
+| `{component.home-indicator}` | safe-bottom 34px 안 | 134×5 바, `{rounded.pill}`. 탭바 위 `{colors.on-dark}`, 스티키/흰 배경 위 `{colors.ink}`. 레이어 `{screen-id} / home-indicator`                                                                                                                |
 
 ### A-2. 타이포 다운스케일 (Collapsing Strategy §Hero typography 준용)
 
