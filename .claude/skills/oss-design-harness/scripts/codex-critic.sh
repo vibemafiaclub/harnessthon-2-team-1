@@ -40,7 +40,16 @@ if [[ ${#NEW_IMAGES[@]} -eq 0 || ${#SRC_IMAGES[@]} -eq 0 ]]; then
   exit 2
 fi
 
-PATTERN_SPEC=$(awk '/^## F\. 패턴 스펙/,/^## [A-Z0-9]\. /' "$BRIEF" | sed '$d')
+# 실측 버그(2026-09-05): awk의 /start/,/end/ range 패턴은 시작 라인이 종료 패턴에도 매치되면
+# (예: "## F. 패턴 스펙" 자체가 "## [A-Z0-9]\. " 종료 패턴에도 걸림) 그 한 줄만 출력하고 끝나버려
+# 표 전체가 통째로 누락된다. C단계 2회 연속 FAIL 중 "패턴 스펙이 brief에서 확인되지 않는다"는
+# Codex 지적이 실은 이 파싱 버그 때문이었다 — 진짜 콘텐츠 문제로 오인해 B단계로 잘못 라우팅할 뻔했다.
+# 해법: 시작 헤더 다음 줄부터, 그다음 "## " 헤더 라인(자기 자신 제외) 직전까지를 뽑는다.
+PATTERN_SPEC=$(awk '
+  /^## F\. 패턴 스펙/ { found=1; next }
+  found && /^## / { exit }
+  found { print }
+' "$BRIEF")
 if [[ -z "$PATTERN_SPEC" ]]; then
   PATTERN_SPEC="(brief.md에서 '## F. 패턴 스펙' 섹션을 찾지 못함 — brief.md 전체를 참고하라)"
 fi

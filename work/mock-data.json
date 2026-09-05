@@ -1,0 +1,2054 @@
+{
+  "wedding": {
+    "date": "2026-12-12",
+    "dateLabel": "12월 12일 (토)",
+    "bride": "한지수",
+    "groom": "김도현",
+    "coupleLabel": "지수·도현"
+  },
+  "people": [
+    {
+      "id": "p01",
+      "name": "김서연",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 동기",
+      "contact": "010-2841-7731",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "name": "이하은",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 동기 · 같은 과",
+      "contact": "010-9127-3308",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "name": "박민아",
+      "side": "bride",
+      "groups": ["g01", "g02"],
+      "relation": "대학 동기 · 현재 같은 회사",
+      "contact": "010-4460-1192",
+      "separateOnly": false,
+      "note": "대학 동기이면서 지금 같은 팀 동료. 어느 모임에 넣을지 애매"
+    },
+    {
+      "id": "p04",
+      "name": "최유진",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 동기",
+      "contact": "010-5573-8820",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "name": "정수빈",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 동기 · 동아리",
+      "contact": "010-3319-6674",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "name": "강지원",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 동기",
+      "contact": "010-7708-2215",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p07",
+      "name": "윤채원",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 동기 · 기숙사 룸메",
+      "contact": "010-6642-9903",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p08",
+      "name": "한소희",
+      "side": "bride",
+      "groups": ["g02"],
+      "relation": "같은 팀 · 사수",
+      "contact": "010-3345-1120",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p09",
+      "name": "임지호",
+      "side": "bride",
+      "groups": ["g02"],
+      "relation": "같은 팀",
+      "contact": "010-9981-4402",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p10",
+      "name": "송예린",
+      "side": "bride",
+      "groups": ["g02"],
+      "relation": "같은 팀 · 입사 동기",
+      "contact": "010-4419-8873",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p11",
+      "name": "오준호",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 동기 · 복학 동기",
+      "contact": "010-8830-4417",
+      "separateOnly": false,
+      "note": "회신이 늘 늦는 편"
+    },
+    {
+      "id": "p12",
+      "name": "배현우",
+      "side": "bride",
+      "groups": ["g02"],
+      "relation": "옆 팀",
+      "contact": "010-2207-5561",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p13",
+      "name": "신다은",
+      "side": "bride",
+      "groups": ["g02"],
+      "relation": "옆 팀",
+      "contact": "010-8814-3390",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p14",
+      "name": "조은비",
+      "side": "bride",
+      "groups": ["g02"],
+      "relation": "부서 팀장",
+      "contact": "010-5502-7719",
+      "separateOnly": true,
+      "note": "팀장님 — 따로 찾아뵙기"
+    },
+    {
+      "id": "p15",
+      "name": "김나래",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 친구 · 초등 동창",
+      "contact": "010-7731-2048",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p16",
+      "name": "이도윤",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 친구",
+      "contact": "010-3308-9127",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p17",
+      "name": "박하늘",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 친구 · 중학교 동창",
+      "contact": "010-1192-4460",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p18",
+      "name": "장서윤",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 친구",
+      "contact": "010-8820-5573",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p19",
+      "name": "문가영",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 친구 · 헬스장",
+      "contact": "010-6674-3319",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p20",
+      "name": "마리아 페르난데스 데 라 크루스",
+      "side": "bride",
+      "groups": ["g01"],
+      "relation": "대학 교환학생 동기 · 지금은 부산에서 근무 중이라 주말만 가능",
+      "contact": "010-2290-7788",
+      "separateOnly": false,
+      "note": "스페인에서 온 교환학생 동기. 한국어 가능하지만 링크 문구는 짧게 보내 달라고 부탁받음"
+    },
+    {
+      "id": "p21",
+      "name": "홍예지",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 언니",
+      "contact": "010-2215-7708",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p22",
+      "name": "한정우",
+      "side": "bride",
+      "groups": ["g04"],
+      "relation": "아버지",
+      "contact": "010-1120-3345",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p23",
+      "name": "이미경",
+      "side": "bride",
+      "groups": ["g04"],
+      "relation": "어머니",
+      "contact": "010-4402-9981",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p24",
+      "name": "류지민",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 언니",
+      "contact": "010-9903-6642",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p25",
+      "name": "서아린",
+      "side": "bride",
+      "groups": ["g03"],
+      "relation": "동네 언니 · 윗집",
+      "contact": "010-4417-8830",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p26",
+      "name": "한지훈",
+      "side": "bride",
+      "groups": ["g04"],
+      "relation": "남동생",
+      "contact": "010-8873-4419",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p27",
+      "name": "한수민",
+      "side": "bride",
+      "groups": ["g04"],
+      "relation": "사촌 언니",
+      "contact": "010-5561-2207",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p28",
+      "name": "이서진",
+      "side": "bride",
+      "groups": ["g04"],
+      "relation": "사촌 동생",
+      "contact": "010-3390-8814",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p29",
+      "name": "김태양",
+      "side": "groom",
+      "groups": ["g05"],
+      "relation": "대학 후배 · 학회",
+      "contact": "010-7719-5502",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p30",
+      "name": "이준서",
+      "side": "groom",
+      "groups": ["g05"],
+      "relation": "대학 후배 · 학회",
+      "contact": "010-2048-7731",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p31",
+      "name": "강민석",
+      "side": "groom",
+      "groups": ["g07"],
+      "relation": "팀장",
+      "contact": "010-3345-1120",
+      "separateOnly": true,
+      "note": "팀장님 — 1:1로 따로 뵙기"
+    },
+    {
+      "id": "p32",
+      "name": "박시우",
+      "side": "groom",
+      "groups": ["g05"],
+      "relation": "대학 후배",
+      "contact": "010-9127-3308",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p33",
+      "name": "최민재",
+      "side": "groom",
+      "groups": ["g05"],
+      "relation": "대학 후배 · 동아리",
+      "contact": "010-4460-1192",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p34",
+      "name": "정하린",
+      "side": "groom",
+      "groups": ["g05"],
+      "relation": "대학 후배",
+      "contact": "010-5573-8820",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p35",
+      "name": "노유나",
+      "side": "groom",
+      "groups": ["g05"],
+      "relation": "대학 후배 · 학회",
+      "contact": "010-3319-6674",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p36",
+      "name": "강도훈",
+      "side": "groom",
+      "groups": ["g06"],
+      "relation": "러닝 크루",
+      "contact": "010-7708-2215",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p37",
+      "name": "윤성민",
+      "side": "groom",
+      "groups": ["g06"],
+      "relation": "러닝 크루 · 크루장",
+      "contact": "010-6642-9903",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p38",
+      "name": "김채영",
+      "side": "groom",
+      "groups": ["g06"],
+      "relation": "러닝 크루",
+      "contact": "010-8830-4417",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p39",
+      "name": "이슬아",
+      "side": "groom",
+      "groups": ["g06"],
+      "relation": "러닝 크루",
+      "contact": "010-2290-7788",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p40",
+      "name": "김영호",
+      "side": "groom",
+      "groups": ["g08"],
+      "relation": "아버지",
+      "contact": "010-3308-9127",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p41",
+      "name": "박순자",
+      "side": "groom",
+      "groups": ["g08"],
+      "relation": "어머니",
+      "contact": "010-1192-4460",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p42",
+      "name": "조성훈",
+      "side": "groom",
+      "groups": ["g07"],
+      "relation": "입사 동기",
+      "contact": "010-9981-4402",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p43",
+      "name": "양하율",
+      "side": "groom",
+      "groups": ["g07"],
+      "relation": "입사 동기",
+      "contact": "010-4419-8873",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p44",
+      "name": "백지안",
+      "side": "groom",
+      "groups": ["g07"],
+      "relation": "입사 동기",
+      "contact": "010-2207-5561",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p45",
+      "name": "손예준",
+      "side": "groom",
+      "groups": ["g07"],
+      "relation": "같은 팀",
+      "contact": "010-8814-3390",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p46",
+      "name": "권다현",
+      "side": "groom",
+      "groups": ["g07"],
+      "relation": "같은 팀",
+      "contact": "010-5502-7719",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p47",
+      "name": "남기석",
+      "side": "groom",
+      "groups": ["g07"],
+      "relation": "같은 팀 · 선배",
+      "contact": "010-7731-2048",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p48",
+      "name": "김도윤",
+      "side": "groom",
+      "groups": ["g08"],
+      "relation": "형",
+      "contact": "010-8820-5573",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p49",
+      "name": "김하영",
+      "side": "groom",
+      "groups": ["g08"],
+      "relation": "누나",
+      "contact": "010-6674-3319",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p50",
+      "name": "최재원",
+      "side": "groom",
+      "groups": ["g08"],
+      "relation": "삼촌",
+      "contact": "010-2215-7708",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p51",
+      "name": "김은주",
+      "side": "groom",
+      "groups": ["g08"],
+      "relation": "이모",
+      "contact": "010-9903-6642",
+      "separateOnly": false,
+      "note": ""
+    },
+    {
+      "id": "p52",
+      "name": "정민규",
+      "side": "both",
+      "groups": ["g01", "g07"],
+      "relation": "둘을 소개해 준 친구 · 지수 대학 동기이자 도현 회사 동료",
+      "contact": "010-4417-8830",
+      "separateOnly": false,
+      "note": ""
+    }
+  ],
+  "groups": [
+    {
+      "id": "g01",
+      "name": "대학 동기",
+      "side": "bride",
+      "labelWithSide": "대학 동기(신부)"
+    },
+    {
+      "id": "g02",
+      "name": "직장 동료",
+      "side": "bride",
+      "labelWithSide": "직장 동료(신부)"
+    },
+    {
+      "id": "g03",
+      "name": "동네 친구",
+      "side": "bride",
+      "labelWithSide": "동네 친구(신부)"
+    },
+    {
+      "id": "g04",
+      "name": "가족",
+      "side": "bride",
+      "labelWithSide": "가족(신부)"
+    },
+    {
+      "id": "g05",
+      "name": "대학 후배",
+      "side": "groom",
+      "labelWithSide": "대학 후배(신랑)"
+    },
+    {
+      "id": "g06",
+      "name": "러닝 크루",
+      "side": "groom",
+      "labelWithSide": "러닝 크루(신랑)"
+    },
+    {
+      "id": "g07",
+      "name": "직장 동료",
+      "side": "groom",
+      "labelWithSide": "직장 동료(신랑)"
+    },
+    {
+      "id": "g08",
+      "name": "가족",
+      "side": "groom",
+      "labelWithSide": "가족(신랑)"
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m01",
+      "title": "대학 동기",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p01", "p02", "p04", "p05", "p06", "p07", "p11"],
+      "status": "ready",
+      "statusLabel": "확정 대기",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-21",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 21일 (토) 저녁",
+          "okCount": 3,
+          "noCount": 3,
+          "overlapWarning": "이 날 저녁에 '입사 동기(신랑)' 후보 있음"
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-28",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 28일 (토) 점심",
+          "okCount": 3,
+          "noCount": 3,
+          "overlapWarning": null
+        },
+        {
+          "id": "c3",
+          "date": "2026-11-29",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 29일 (일) 저녁",
+          "okCount": 6,
+          "noCount": 0,
+          "overlapWarning": "이 날 저녁에 '형·누나(신랑)' 확정 있음"
+        }
+      ],
+      "deadline": "2026-11-18T23:59",
+      "replies": {
+        "p01": {
+          "answers": {
+            "c1": true,
+            "c2": false,
+            "c3": true
+          }
+        },
+        "p02": {
+          "answers": {
+            "c1": false,
+            "c2": true,
+            "c3": true
+          }
+        },
+        "p04": {
+          "answers": {
+            "c1": true,
+            "c2": true,
+            "c3": true
+          }
+        },
+        "p05": {
+          "answers": {
+            "c1": false,
+            "c2": false,
+            "c3": true
+          },
+          "memo": "토요일은 근무라 일요일만 가능해요"
+        },
+        "p06": {
+          "answers": {
+            "c1": true,
+            "c2": false,
+            "c3": true
+          }
+        },
+        "p07": {
+          "answers": {
+            "c1": false,
+            "c2": true,
+            "c3": true
+          }
+        }
+      },
+      "confirmedCandidateId": null,
+      "confirmedDate": null,
+      "confirmedSlot": null,
+      "time": null,
+      "place": "",
+      "note": "민아는 직장 팀 모임에 넣기로 함",
+      "createdAt": "2026-11-12T09:30",
+      "draft": {
+        "candidateId": "c3",
+        "time": "18:30",
+        "place": "신촌 연남서식당"
+      },
+      "memberCount": 7,
+      "replyCount": 6,
+      "rightText": "확정 대기 · 마감 지남 · 6/7",
+      "rightTextShort": "마감 지남 · 6/7",
+      "deadlineText": "마감 지남",
+      "deadlineLabel": "11월 18일 (수) 23:59",
+      "unrepliedIds": ["p11"],
+      "sameDayText": null,
+      "replyMarks": {
+        "p01": "○ ✕ ○",
+        "p02": "✕ ○ ○",
+        "p04": "○ ○ ○",
+        "p05": "✕ ✕ ○",
+        "p06": "○ ✕ ○",
+        "p07": "✕ ○ ○",
+        "p11": "· · ·"
+      }
+    },
+    {
+      "id": "m02",
+      "title": "직장 팀",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p03", "p08", "p09", "p10", "p12"],
+      "status": "awaiting",
+      "statusLabel": "회신 대기",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-22",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 22일 (일) 점심",
+          "okCount": 1,
+          "noCount": 1,
+          "overlapWarning": "이 날 점심에 '상견례(공동)' 확정 있음"
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-28",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 28일 (토) 저녁",
+          "okCount": 2,
+          "noCount": 0,
+          "overlapWarning": "이 날 저녁에 '동네 친구(신부)' 확정 있음"
+        },
+        {
+          "id": "c3",
+          "date": "2026-11-29",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 29일 (일) 점심",
+          "okCount": 2,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-21T23:59",
+      "replies": {
+        "p03": {
+          "answers": {
+            "c1": true,
+            "c2": true,
+            "c3": true
+          }
+        },
+        "p08": {
+          "answers": {
+            "c1": false,
+            "c2": true,
+            "c3": true
+          },
+          "memo": "22일은 아이 발표회예요"
+        }
+      },
+      "confirmedCandidateId": null,
+      "confirmedDate": null,
+      "confirmedSlot": null,
+      "time": null,
+      "place": "",
+      "note": "",
+      "createdAt": "2026-11-18T18:10",
+      "memberCount": 5,
+      "replyCount": 2,
+      "rightText": "회신 대기 · 마감 D-2 · 2/5",
+      "rightTextShort": "마감 D-2 · 2/5",
+      "deadlineText": "마감 D-2",
+      "deadlineLabel": "11월 21일 (토) 23:59",
+      "unrepliedIds": ["p09", "p10", "p12"],
+      "sameDayText": null,
+      "replyMarks": {
+        "p03": "○ ○ ○",
+        "p08": "✕ ○ ○",
+        "p09": "· · ·",
+        "p10": "· · ·",
+        "p12": "· · ·"
+      }
+    },
+    {
+      "id": "m03",
+      "title": "회사 선배들",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p08", "p12", "p13"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-07",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 7일 (토) 저녁",
+          "okCount": 3,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-03T23:59",
+      "replies": {
+        "p08": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p12": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p13": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-07",
+      "confirmedSlot": "evening",
+      "time": "19:00",
+      "place": "을지로 산수갑산",
+      "note": "",
+      "createdAt": "2026-10-28T12:00",
+      "confirmedLabel": "11월 7일 (토) 19:00",
+      "memberCount": 3,
+      "replyCount": 3,
+      "rightText": "완료 · 11월 7일 (토) 저녁",
+      "rightTextShort": "11월 7일 (토) 저녁",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p08": "○",
+        "p12": "○",
+        "p13": "○"
+      }
+    },
+    {
+      "id": "m04",
+      "title": "동네 친구",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p15", "p16", "p17", "p18", "p19"],
+      "status": "confirmed",
+      "statusLabel": "확정",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-28",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 28일 (토) 저녁",
+          "okCount": 4,
+          "noCount": 1,
+          "overlapWarning": "이 날 저녁에 '직장 팀(신부)' 후보 있음"
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-29",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 29일 (일) 점심",
+          "okCount": 3,
+          "noCount": 2,
+          "overlapWarning": "이 날 점심에 '직장 팀(신부)' 후보 있음"
+        }
+      ],
+      "deadline": "2026-11-14T23:59",
+      "replies": {
+        "p15": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        },
+        "p16": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        },
+        "p17": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        },
+        "p18": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        },
+        "p19": {
+          "answers": {
+            "c1": false,
+            "c2": true
+          },
+          "memo": "28일은 늦게라도 갈게요"
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-28",
+      "confirmedSlot": "evening",
+      "time": "19:00",
+      "place": "연남동 소이연남",
+      "note": "",
+      "createdAt": "2026-11-08T21:00",
+      "confirmedLabel": "11월 28일 (토) 19:00",
+      "memberCount": 5,
+      "replyCount": 5,
+      "rightText": "확정 · 11월 28일 (토) 저녁",
+      "rightTextShort": "11월 28일 (토) 저녁",
+      "unrepliedIds": [],
+      "sameDayText": "같은 저녁 1건",
+      "replyMarks": {
+        "p15": "○ ○",
+        "p16": "○ ✕",
+        "p17": "○ ○",
+        "p18": "○ ✕",
+        "p19": "✕ ○"
+      }
+    },
+    {
+      "id": "m05",
+      "title": "대학 후배",
+      "side": "groom",
+      "sideLabel": "신랑",
+      "memberIds": ["p29", "p30", "p32", "p33"],
+      "status": "confirmed",
+      "statusLabel": "확정",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-28",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 28일 (토) 저녁",
+          "okCount": 4,
+          "noCount": 0,
+          "overlapWarning": "이 날 저녁에 '직장 팀(신부)' 후보 있음"
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-22",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 22일 (일) 저녁",
+          "okCount": 2,
+          "noCount": 2,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-15T23:59",
+      "replies": {
+        "p29": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        },
+        "p30": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        },
+        "p32": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        },
+        "p33": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-28",
+      "confirmedSlot": "evening",
+      "time": "18:30",
+      "place": "신촌 미분당",
+      "note": "",
+      "createdAt": "2026-11-09T11:20",
+      "confirmedLabel": "11월 28일 (토) 18:30",
+      "memberCount": 4,
+      "replyCount": 4,
+      "rightText": "확정 · 11월 28일 (토) 저녁",
+      "rightTextShort": "11월 28일 (토) 저녁",
+      "unrepliedIds": [],
+      "sameDayText": "같은 저녁 1건",
+      "replyMarks": {
+        "p29": "○ ✕",
+        "p30": "○ ○",
+        "p32": "○ ✕",
+        "p33": "○ ○"
+      }
+    },
+    {
+      "id": "m06",
+      "title": "가족 식사",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p22", "p23", "p26", "p27"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-10-24",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "10월 24일 (토) 점심",
+          "okCount": 4,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-10-20T23:59",
+      "replies": {
+        "p22": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p23": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p26": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p27": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-10-24",
+      "confirmedSlot": "lunch",
+      "time": "12:30",
+      "place": "분당 본가",
+      "note": "",
+      "createdAt": "2026-10-12T20:00",
+      "confirmedLabel": "10월 24일 (토) 12:30",
+      "memberCount": 4,
+      "replyCount": 4,
+      "rightText": "완료 · 10월 24일 (토) 점심",
+      "rightTextShort": "10월 24일 (토) 점심",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p22": "○",
+        "p23": "○",
+        "p26": "○",
+        "p27": "○"
+      }
+    },
+    {
+      "id": "m07",
+      "title": "팀장님",
+      "side": "groom",
+      "sideLabel": "신랑",
+      "memberIds": ["p31"],
+      "status": "awaiting",
+      "statusLabel": "회신 대기",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-24",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 24일 (화) 점심",
+          "okCount": 0,
+          "noCount": 0,
+          "overlapWarning": null
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-26",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 26일 (목) 점심",
+          "okCount": 0,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-20T18:00",
+      "replies": {},
+      "confirmedCandidateId": null,
+      "confirmedDate": null,
+      "confirmedSlot": null,
+      "time": null,
+      "place": "",
+      "note": "1:1. 회사 근처 점심",
+      "createdAt": "2026-11-19T09:00",
+      "memberCount": 1,
+      "replyCount": 0,
+      "rightText": "회신 대기 · 마감 28시간 · 0/1",
+      "rightTextShort": "마감 28시간 · 0/1",
+      "deadlineText": "마감 28시간",
+      "deadlineLabel": "11월 20일 (금) 18:00",
+      "unrepliedIds": ["p31"],
+      "sameDayText": null,
+      "replyMarks": {
+        "p31": "· ·"
+      }
+    },
+    {
+      "id": "m08",
+      "title": "팀 회식",
+      "side": "groom",
+      "sideLabel": "신랑",
+      "memberIds": ["p45", "p46", "p47", "p42", "p43", "p52"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-14",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 14일 (토) 저녁",
+          "okCount": 6,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-10T23:59",
+      "replies": {
+        "p45": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p46": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p47": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p42": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p43": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p52": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-14",
+      "confirmedSlot": "evening",
+      "time": "18:30",
+      "place": "판교 역전회관",
+      "note": "",
+      "createdAt": "2026-11-03T10:00",
+      "confirmedLabel": "11월 14일 (토) 18:30",
+      "memberCount": 6,
+      "replyCount": 6,
+      "rightText": "완료 · 11월 14일 (토) 저녁",
+      "rightTextShort": "11월 14일 (토) 저녁",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p45": "○",
+        "p46": "○",
+        "p47": "○",
+        "p42": "○",
+        "p43": "○",
+        "p52": "○"
+      }
+    },
+    {
+      "id": "m09",
+      "title": "상견례",
+      "side": "both",
+      "sideLabel": "공동",
+      "memberIds": ["p22", "p23", "p40", "p41"],
+      "status": "confirmed",
+      "statusLabel": "확정",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-22",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 22일 (일) 점심",
+          "okCount": 4,
+          "noCount": 0,
+          "overlapWarning": "이 날 점심에 '직장 팀(신부)' 후보 있음"
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-21",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 21일 (토) 점심",
+          "okCount": 2,
+          "noCount": 2,
+          "overlapWarning": "이 날 점심에 '동네 언니들(신부)' 확정 있음"
+        }
+      ],
+      "deadline": "2026-11-12T23:59",
+      "replies": {
+        "p22": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        },
+        "p23": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        },
+        "p40": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        },
+        "p41": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-22",
+      "confirmedSlot": "lunch",
+      "time": "12:00",
+      "place": "광화문 한정식 두레유",
+      "note": "양가 부모님 넷. 지수·도현 동석",
+      "createdAt": "2026-11-05T14:00",
+      "confirmedLabel": "11월 22일 (일) 12:00",
+      "memberCount": 4,
+      "replyCount": 4,
+      "rightText": "확정 · 11월 22일 (일) 점심",
+      "rightTextShort": "11월 22일 (일) 점심",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p22": "○ ○",
+        "p23": "○ ○",
+        "p40": "○ ✕",
+        "p41": "○ ✕"
+      }
+    },
+    {
+      "id": "m10",
+      "title": "옆 팀 동료",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p12", "p13"],
+      "status": "preparing",
+      "statusLabel": "준비 중",
+      "candidates": [],
+      "deadline": null,
+      "replies": {},
+      "confirmedCandidateId": null,
+      "confirmedDate": null,
+      "confirmedSlot": null,
+      "time": null,
+      "place": "",
+      "note": "",
+      "createdAt": "2026-11-18T22:40",
+      "memberCount": 2,
+      "replyCount": 0,
+      "rightText": "준비 중 · 후보 없음",
+      "rightTextShort": "후보 없음",
+      "unrepliedIds": ["p12", "p13"],
+      "sameDayText": null,
+      "replyMarks": {
+        "p12": "",
+        "p13": ""
+      }
+    },
+    {
+      "id": "m11",
+      "title": "사촌들",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p27", "p28", "p26"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-10-25",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "10월 25일 (일) 저녁",
+          "okCount": 3,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-10-21T23:59",
+      "replies": {
+        "p27": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p28": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p26": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-10-25",
+      "confirmedSlot": "evening",
+      "time": "18:00",
+      "place": "잠실 롯데월드몰",
+      "note": "",
+      "createdAt": "2026-10-14T09:00",
+      "confirmedLabel": "10월 25일 (일) 18:00",
+      "memberCount": 3,
+      "replyCount": 3,
+      "rightText": "완료 · 10월 25일 (일) 저녁",
+      "rightTextShort": "10월 25일 (일) 저녁",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p27": "○",
+        "p28": "○",
+        "p26": "○"
+      }
+    },
+    {
+      "id": "m12",
+      "title": "입사 동기",
+      "side": "groom",
+      "sideLabel": "신랑",
+      "memberIds": ["p42", "p43", "p44"],
+      "status": "awaiting",
+      "statusLabel": "회신 대기",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-21",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 21일 (토) 저녁",
+          "okCount": 2,
+          "noCount": 0,
+          "overlapWarning": "이 날 저녁에 '대학 동기(신부)' 후보 있음"
+        }
+      ],
+      "deadline": "2026-11-20T12:00",
+      "replies": {
+        "p42": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p43": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": null,
+      "confirmedDate": null,
+      "confirmedSlot": null,
+      "time": null,
+      "place": "",
+      "note": "결혼식 3주 전에 급하게. 토요일 저녁 한 번만",
+      "createdAt": "2026-11-19T12:00",
+      "memberCount": 3,
+      "replyCount": 2,
+      "rightText": "회신 대기 · 마감 22시간 · 2/3",
+      "rightTextShort": "마감 22시간 · 2/3",
+      "deadlineText": "마감 22시간",
+      "deadlineLabel": "11월 20일 (금) 12:00",
+      "unrepliedIds": ["p44"],
+      "sameDayText": null,
+      "replyMarks": {
+        "p42": "○",
+        "p43": "○",
+        "p44": "·"
+      }
+    },
+    {
+      "id": "m13",
+      "title": "학회 후배",
+      "side": "groom",
+      "sideLabel": "신랑",
+      "memberIds": ["p34", "p35", "p29"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-08",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 8일 (일) 점심",
+          "okCount": 3,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-04T23:59",
+      "replies": {
+        "p34": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p35": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p29": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-08",
+      "confirmedSlot": "lunch",
+      "time": "12:00",
+      "place": "안암 개성집",
+      "note": "",
+      "createdAt": "2026-10-29T15:00",
+      "confirmedLabel": "11월 8일 (일) 12:00",
+      "memberCount": 3,
+      "replyCount": 3,
+      "rightText": "완료 · 11월 8일 (일) 점심",
+      "rightTextShort": "11월 8일 (일) 점심",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p34": "○",
+        "p35": "○",
+        "p29": "○"
+      }
+    },
+    {
+      "id": "m14",
+      "title": "이모·삼촌",
+      "side": "groom",
+      "sideLabel": "신랑",
+      "memberIds": ["p50", "p51", "p48", "p49"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-10-17",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "10월 17일 (토) 점심",
+          "okCount": 4,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-10-13T23:59",
+      "replies": {
+        "p50": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p51": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p48": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p49": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-10-17",
+      "confirmedSlot": "lunch",
+      "time": "12:00",
+      "place": "수원 본가",
+      "note": "",
+      "createdAt": "2026-10-05T19:00",
+      "confirmedLabel": "10월 17일 (토) 12:00",
+      "memberCount": 4,
+      "replyCount": 4,
+      "rightText": "완료 · 10월 17일 (토) 점심",
+      "rightTextShort": "10월 17일 (토) 점심",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p50": "○",
+        "p51": "○",
+        "p48": "○",
+        "p49": "○"
+      }
+    },
+    {
+      "id": "m15",
+      "title": "윗집 언니들",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p21", "p24", "p25"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-10-18",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "10월 18일 (일) 저녁",
+          "okCount": 3,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-10-14T23:59",
+      "replies": {
+        "p21": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p24": {
+          "answers": {
+            "c1": true
+          }
+        },
+        "p25": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-10-18",
+      "confirmedSlot": "evening",
+      "time": "19:00",
+      "place": "망원동 우리집",
+      "note": "",
+      "createdAt": "2026-10-06T21:00",
+      "confirmedLabel": "10월 18일 (일) 19:00",
+      "memberCount": 3,
+      "replyCount": 3,
+      "rightText": "완료 · 10월 18일 (일) 저녁",
+      "rightTextShort": "10월 18일 (일) 저녁",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p21": "○",
+        "p24": "○",
+        "p25": "○"
+      }
+    },
+    {
+      "id": "m16",
+      "title": "부서 팀장님",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p14"],
+      "status": "done",
+      "statusLabel": "완료",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-09-26",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "9월 26일 (토) 점심",
+          "okCount": 1,
+          "noCount": 0,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-09-22T23:59",
+      "replies": {
+        "p14": {
+          "answers": {
+            "c1": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-09-26",
+      "confirmedSlot": "lunch",
+      "time": "12:00",
+      "place": "회사 앞 한식당",
+      "note": "1:1",
+      "createdAt": "2026-09-15T09:00",
+      "confirmedLabel": "9월 26일 (토) 12:00",
+      "memberCount": 1,
+      "replyCount": 1,
+      "rightText": "완료 · 9월 26일 (토) 점심",
+      "rightTextShort": "9월 26일 (토) 점심",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p14": "○"
+      }
+    },
+    {
+      "id": "m17",
+      "title": "형·누나",
+      "side": "groom",
+      "sideLabel": "신랑",
+      "memberIds": ["p48", "p49"],
+      "status": "confirmed",
+      "statusLabel": "확정",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-29",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 29일 (일) 저녁",
+          "okCount": 2,
+          "noCount": 0,
+          "overlapWarning": "이 날 저녁에 '대학 동기(신부)' 후보 있음"
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-22",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 22일 (일) 저녁",
+          "okCount": 1,
+          "noCount": 1,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-16T23:59",
+      "replies": {
+        "p48": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        },
+        "p49": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-29",
+      "confirmedSlot": "evening",
+      "time": "18:00",
+      "place": "성수동 소문난성수감자탕",
+      "note": "",
+      "createdAt": "2026-11-10T09:00",
+      "confirmedLabel": "11월 29일 (일) 18:00",
+      "memberCount": 2,
+      "replyCount": 2,
+      "rightText": "확정 · 11월 29일 (일) 저녁",
+      "rightTextShort": "11월 29일 (일) 저녁",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p48": "○ ✕",
+        "p49": "○ ○"
+      }
+    },
+    {
+      "id": "m18",
+      "title": "동네 언니들",
+      "side": "bride",
+      "sideLabel": "신부",
+      "memberIds": ["p21", "p24", "p25"],
+      "status": "confirmed",
+      "statusLabel": "확정",
+      "candidates": [
+        {
+          "id": "c1",
+          "date": "2026-11-21",
+          "slot": "lunch",
+          "slotLabel": "점심",
+          "label": "11월 21일 (토) 점심",
+          "okCount": 3,
+          "noCount": 0,
+          "overlapWarning": null
+        },
+        {
+          "id": "c2",
+          "date": "2026-11-22",
+          "slot": "evening",
+          "slotLabel": "저녁",
+          "label": "11월 22일 (일) 저녁",
+          "okCount": 2,
+          "noCount": 1,
+          "overlapWarning": null
+        }
+      ],
+      "deadline": "2026-11-16T23:59",
+      "replies": {
+        "p21": {
+          "answers": {
+            "c1": true,
+            "c2": false
+          }
+        },
+        "p24": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        },
+        "p25": {
+          "answers": {
+            "c1": true,
+            "c2": true
+          }
+        }
+      },
+      "confirmedCandidateId": "c1",
+      "confirmedDate": "2026-11-21",
+      "confirmedSlot": "lunch",
+      "time": "12:00",
+      "place": "망원동 카페 산책",
+      "note": "",
+      "createdAt": "2026-11-10T09:00",
+      "confirmedLabel": "11월 21일 (토) 12:00",
+      "memberCount": 3,
+      "replyCount": 3,
+      "rightText": "확정 · 11월 21일 (토) 점심",
+      "rightTextShort": "11월 21일 (토) 점심",
+      "unrepliedIds": [],
+      "sameDayText": null,
+      "replyMarks": {
+        "p21": "○ ✕",
+        "p24": "○ ○",
+        "p25": "○ ○"
+      }
+    }
+  ],
+  "derived": {
+    "today": "2026-11-19",
+    "now": "2026-11-19T14:00",
+    "todayLabel": "11월 19일 (목)",
+    "daysToWedding": 23,
+    "statusCounts": {
+      "preparing": 1,
+      "awaiting": 3,
+      "ready": 1,
+      "confirmed": 5,
+      "done": 8
+    },
+    "statusLabels": {
+      "preparing": "준비 중",
+      "awaiting": "회신 대기",
+      "ready": "확정 대기",
+      "confirmed": "확정",
+      "done": "완료"
+    },
+    "sideLabels": {
+      "bride": "신부",
+      "groom": "신랑",
+      "both": "공동"
+    },
+    "slotLabels": {
+      "lunch": "점심",
+      "evening": "저녁",
+      "custom": "직접 입력"
+    },
+    "undatedMeetingIds": ["m01", "m02", "m07", "m10", "m12"],
+    "homeSummaryText": "날짜 미정 모임 5건 · 마감 임박 입사 동기 22시간",
+    "calendarMonth": "2026-11",
+    "calendar": {
+      "2026-09-26": {
+        "meetingIds": ["m16"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-10-17": {
+        "meetingIds": ["m14"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-10-18": {
+        "meetingIds": ["m15"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-10-24": {
+        "meetingIds": ["m06"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-10-25": {
+        "meetingIds": ["m11"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-11-07": {
+        "meetingIds": ["m03"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-11-08": {
+        "meetingIds": ["m13"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-11-14": {
+        "meetingIds": ["m08"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-11-21": {
+        "meetingIds": ["m18"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-11-22": {
+        "meetingIds": ["m09"],
+        "overlap": false,
+        "cellText": "1건"
+      },
+      "2026-11-28": {
+        "meetingIds": ["m04", "m05"],
+        "overlap": true,
+        "cellText": "2건 · 겹침"
+      },
+      "2026-11-29": {
+        "meetingIds": ["m17"],
+        "overlap": false,
+        "cellText": "1건"
+      }
+    },
+    "overlapDates": ["2026-11-28"],
+    "meetingsOrder": {
+      "home-meetings": {
+        "ready": ["m01"],
+        "awaiting": ["m12", "m07", "m02"],
+        "preparing": ["m10"],
+        "confirmed": ["m18", "m09", "m04", "m05", "m17"],
+        "done": ["m08", "m13", "m03", "m11", "m06", "m15", "m14", "m16"]
+      }
+    },
+    "groupCounts": {
+      "g01": 10,
+      "g02": 7,
+      "g03": 8,
+      "g04": 5,
+      "g05": 6,
+      "g06": 4,
+      "g07": 8,
+      "g08": 6
+    },
+    "groupMeetingCounts": {
+      "g01": 1,
+      "g02": 4,
+      "g03": 3,
+      "g04": 2,
+      "g05": 2,
+      "g06": 0,
+      "g07": 3,
+      "g08": 2
+    },
+    "assignedMeetingByPerson": {
+      "p01": {
+        "meetingId": "m01",
+        "text": "'대학 동기' 모임에 편성됨"
+      },
+      "p02": {
+        "meetingId": "m01",
+        "text": "'대학 동기' 모임에 편성됨"
+      },
+      "p03": {
+        "meetingId": "m02",
+        "text": "'직장 팀' 모임에 편성됨"
+      },
+      "p04": {
+        "meetingId": "m01",
+        "text": "'대학 동기' 모임에 편성됨"
+      },
+      "p05": {
+        "meetingId": "m01",
+        "text": "'대학 동기' 모임에 편성됨"
+      },
+      "p06": {
+        "meetingId": "m01",
+        "text": "'대학 동기' 모임에 편성됨"
+      },
+      "p07": {
+        "meetingId": "m01",
+        "text": "'대학 동기' 모임에 편성됨"
+      },
+      "p08": {
+        "meetingId": "m02",
+        "text": "'직장 팀' 모임에 편성됨"
+      },
+      "p09": {
+        "meetingId": "m02",
+        "text": "'직장 팀' 모임에 편성됨"
+      },
+      "p10": {
+        "meetingId": "m02",
+        "text": "'직장 팀' 모임에 편성됨"
+      },
+      "p11": {
+        "meetingId": "m01",
+        "text": "'대학 동기' 모임에 편성됨"
+      },
+      "p12": {
+        "meetingId": "m02",
+        "text": "'직장 팀' 모임에 편성됨"
+      },
+      "p13": {
+        "meetingId": "m10",
+        "text": "'옆 팀 동료' 모임에 편성됨"
+      },
+      "p15": {
+        "meetingId": "m04",
+        "text": "'동네 친구' 모임에 편성됨"
+      },
+      "p16": {
+        "meetingId": "m04",
+        "text": "'동네 친구' 모임에 편성됨"
+      },
+      "p17": {
+        "meetingId": "m04",
+        "text": "'동네 친구' 모임에 편성됨"
+      },
+      "p18": {
+        "meetingId": "m04",
+        "text": "'동네 친구' 모임에 편성됨"
+      },
+      "p19": {
+        "meetingId": "m04",
+        "text": "'동네 친구' 모임에 편성됨"
+      },
+      "p21": {
+        "meetingId": "m18",
+        "text": "'동네 언니들' 모임에 편성됨"
+      },
+      "p22": {
+        "meetingId": "m09",
+        "text": "'상견례' 모임에 편성됨"
+      },
+      "p23": {
+        "meetingId": "m09",
+        "text": "'상견례' 모임에 편성됨"
+      },
+      "p24": {
+        "meetingId": "m18",
+        "text": "'동네 언니들' 모임에 편성됨"
+      },
+      "p25": {
+        "meetingId": "m18",
+        "text": "'동네 언니들' 모임에 편성됨"
+      },
+      "p29": {
+        "meetingId": "m05",
+        "text": "'대학 후배' 모임에 편성됨"
+      },
+      "p30": {
+        "meetingId": "m05",
+        "text": "'대학 후배' 모임에 편성됨"
+      },
+      "p31": {
+        "meetingId": "m07",
+        "text": "'팀장님' 모임에 편성됨"
+      },
+      "p32": {
+        "meetingId": "m05",
+        "text": "'대학 후배' 모임에 편성됨"
+      },
+      "p33": {
+        "meetingId": "m05",
+        "text": "'대학 후배' 모임에 편성됨"
+      },
+      "p40": {
+        "meetingId": "m09",
+        "text": "'상견례' 모임에 편성됨"
+      },
+      "p41": {
+        "meetingId": "m09",
+        "text": "'상견례' 모임에 편성됨"
+      },
+      "p42": {
+        "meetingId": "m12",
+        "text": "'입사 동기' 모임에 편성됨"
+      },
+      "p43": {
+        "meetingId": "m12",
+        "text": "'입사 동기' 모임에 편성됨"
+      },
+      "p44": {
+        "meetingId": "m12",
+        "text": "'입사 동기' 모임에 편성됨"
+      },
+      "p48": {
+        "meetingId": "m17",
+        "text": "'형·누나' 모임에 편성됨"
+      },
+      "p49": {
+        "meetingId": "m17",
+        "text": "'형·누나' 모임에 편성됨"
+      }
+    }
+  },
+  "edgeCases": {
+    "multiGroupPerson": "p03",
+    "lateReplier": "p11",
+    "lateReplierMeeting": "m01",
+    "overlappingMeetings": ["m04", "m05"],
+    "overlapDate": "2026-11-28",
+    "oneOnOne": "m07",
+    "bothSides": "m09",
+    "urgent": "m12",
+    "emptyGroup": "g06",
+    "longText": "p20",
+    "preparingMeeting": "m10",
+    "bothSidePerson": "p52"
+  }
+}

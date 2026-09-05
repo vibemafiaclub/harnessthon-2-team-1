@@ -328,13 +328,22 @@ The structural breakpoints that matter for agents: 1440px (content lock), 1068px
 
 ### A-1. 프레임
 
-| 항목                  | 값                  | 근거                                                                   |
-| --------------------- | ------------------- | ---------------------------------------------------------------------- |
-| `{frame.width}`       | 390px               | Phone(420–640) 하한 근처 대표 기기                                     |
-| `{frame.height}`      | 844px               | 위와 동일 기기 세로. 콘텐츠가 길면 프레임을 세로로 늘린다(스크롤 화면) |
-| `{frame.safe-top}`    | 47px                | 상태바 영역. 헤더 배경색으로 채움                                      |
-| `{frame.safe-bottom}` | 34px                | 홈 인디케이터. 탭바/스티키바 배경색으로 채움                           |
-| `{frame.side-margin}` | `{spacing.lg}` 24px | Whitespace Philosophy — "product pedestal"                             |
+| 항목                         | 값                  | 근거                                                                                                                                                                                                                                           |
+| ---------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{frame.width}`              | 390px               | Phone(420–640) 하한 근처 대표 기기                                                                                                                                                                                                             |
+| `{frame.height}`             | 844px               | 위와 동일 기기 세로. 콘텐츠가 길면 프레임을 세로로 늘린다(스크롤 화면)                                                                                                                                                                         |
+| `{frame.safe-top}`           | 47px                | 상태바 영역. 헤더 배경색으로 채움                                                                                                                                                                                                              |
+| `{frame.safe-bottom}`        | 34px                | 홈 인디케이터. 탭바/스티키바 배경색으로 채움                                                                                                                                                                                                   |
+| `{frame.side-margin}`        | `{spacing.lg}` 24px | Whitespace Philosophy — "product pedestal"                                                                                                                                                                                                     |
+| `{component.status-bar}`     | safe-top 47px 안    | **Foundations 컴포넌트. 모든 화면 프레임에 필수(예외 없음).** Apple iOS 표준 상태바 — 스펙은 A-4. 인스턴스 레이어명 `{screen-id} / status-bar`, 프레임 최상단 `x 0 / y 0`, 390×47. 밝은 헤더 위 `theme=light`(`{colors.ink}`), 어두운 헤더 위 `theme=dark`(`{colors.on-dark}`). 자체 프레임으로 다시 그리지 않는다 — 사람 결정 2026-09-05 (Foundations 컴포넌트화. 같은 날의 "화면별 블록" 결정을 대체)                        |
+| `{component.home-indicator}` | safe-bottom 34px 안 | 134×5 바, `{rounded.pill}`. 탭바 위 `{colors.on-dark}`, 스티키/흰 배경 위 `{colors.ink}`. 레이어 `{screen-id} / home-indicator`                                                                                                                |
+
+#### A-1-1. 상태바 필수 규칙 (사람 결정 2026-09-05)
+
+- 390×844 모바일 화면 프레임은 **예외 없이** `{component.status-bar}` 인스턴스를 첫 자식으로 갖는다. default 프레임뿐 아니라 `--empty` · `--error` · `--selected` 등 **모든 상태 프레임**, 전체화면 모달·바텀시트도 포함한다.
+- 상태바는 Foundations 컴포넌트의 **인스턴스**로만 놓는다. 화면 안에서 텍스트·벡터를 직접 그려 상태바를 만들지 않는다 (재발 결함: 화면마다 `paddingTop 14` 등 토큰 밖 값이 들어갔음).
+- 03-figma-builder는 프레임 생성 직후 상태바를 놓고, 자체 검증에서 존재를 확인한다. 04-reviewer는 A11로 검사하며 누락·자체 드로잉은 `FIX-LOCAL`이다.
+- 상태바가 없어도 되는 화면은 존재하지 않는다. 필요하다고 판단되면 에이전트가 결정하지 않고 사람에게 보고한다.
 
 ### A-2. 타이포 다운스케일 (Collapsing Strategy §Hero typography 준용)
 
@@ -365,6 +374,7 @@ The structural breakpoints that matter for agents: 1440px (content lock), 1068px
 
 | 키                              | 유도 원본                   | 스펙                                                                                                                                                                                                                                          |
 | ------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{component.status-bar}`        | Apple HIG iOS 상태바 (본문 외 유일한 외부 기준 — 사람 결정 2026-09-05) | 390×47 FIXED, 가로 auto-layout `SPACE_BETWEEN`, 세로 `CENTER`, 패딩 상하 0 · 좌우 `{spacing.lg}` 24px. 배경 없음(투명 — 헤더 배경이 safe-top을 채움). 좌: 시간 "9:41" `{typography.body-strong}`(SF Pro Semibold 17, Apple 기본). 우: 셀룰러 4칸 · Wi-Fi · 배터리(27×13, 캡 포함) 단색 벡터, 아이콘 간격 `{spacing.xs}` 8px(Apple 7pt의 토큰 근사). variant `theme=light`(글자·아이콘 `{colors.ink}`) / `theme=dark`(`{colors.on-dark}`). 아이콘은 SF Symbols `cellularbars` · `wifi` · `battery.100` 형태를 따른 플레이스홀더 벡터, 교체 목록에 기록 |
 | `{component.mobile-header}`     | `sub-nav-frosted`           | 높이 52px + safe-top. 배경 `{colors.canvas-parchment}` 80% + blur. 좌: 화면 제목 `{typography.tagline}` 또는 뒤로가기 `{component.button-icon-circular}`(32px 축소 허용). 우: `{component.button-primary}`(compact: 8px×15px) 또는 아이콘 1개 |
 | `{component.mobile-tab-bar}`    | `global-nav` 모바일 축약    | 높이 49px + safe-bottom. 배경 `{colors.surface-black}`. 탭 3~5개, 아이콘 24px + `{typography.nav-link}`. 활성 탭 `{colors.on-dark}`, 비활성 `{colors.ink-muted-48}`                                                                           |
 | `{component.mobile-sticky-cta}` | `floating-sticky-bar`       | 높이 64px + safe-bottom. 배경 parchment 80% blur. 좌: 요약 텍스트 `{typography.body}`, 우: `{component.button-primary}`                                                                                                                       |
