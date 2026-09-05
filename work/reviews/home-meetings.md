@@ -1,0 +1,48 @@
+# Review — home-meetings (#1회차)
+
+판정: FIX-LOCAL
+프레임: `52:1966` (default, 390×2061) · `52:2498` (`--empty`) · 홀더 `52:1564` (`home-meetings / meeting-row` `52:1566`) / 스크린샷: `work/screenshots/home-meetings.review-1.png`, `work/screenshots/home-meetings--empty.review-1.png` (리뷰 시점 재촬영)
+
+이전 리뷰 없음 → FIX-LOCAL 1회차. 기준: `.claude/agents/04-reviewer.md` A1~A11 / C1~C6 (A11은 design.md 부록 A-1-1·A-4 `{component.status-bar}` 스펙), 기준값 `design.md` + `work/brief.md` §4. 참조 `15:2020` 카드 문법(제목 → 칩+메타 → 우측 텍스트+chevron)은 calendar-overview와 같은 기준으로 실패 사유로 삼지 않았다.
+
+## A 결과 (default / empty / 홀더)
+
+| #   | 측정값                                                                                                                                                                                                                                                                                                                                                                                                       | 합격 |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---- |
+| A1  | fill 미바인딩 0/0/0 · stroke 미바인딩 0/0/0 (meeting-row 하단 hairline `18:125` 바인딩, 홈 인디케이터 `on-dark` `18:120`)                                                                                                                                                                                                                                                                                       | ✅   |
+| A2  | 텍스트 스타일 미적용 0/0/0. 28px 이상(hero/display-lg/lead) 사용 0                                                                                                                                                                                                                                                                                                                                             | ✅   |
+| A3  | Medium 0/0/0                                                                                                                                                                                                                                                                                                                                                                                                 | ✅   |
+| A4  | 자체 프레임 토큰 외 gap/padding 0/0/0. body pl/pr 24 · pt 12 · pb 32, 섹션 pt 32 · gap 12, 행 pt/pb 12 · gap 17. (인스턴스 내부 버튼 패딩 15·11·22는 design.md §Layout 명시값)                                                                                                                                                                                                                                | ✅   |
+| A5  | 인스턴스 47 ÷ (47 + 직접 그린 자체 프레임 0) = **1.0** (자체 프레임 17개는 전부 fill/stroke 없는 auto-layout 래퍼: body·filters·section×5·head×5·rows×5). empty 13 ÷ 13 = 1.0. `meeting-row` 마스터 `52:1566`이 `📱 Screens > home-meetings / _components` 아래 실재, 인스턴스 18개 고아 0                                                                                                                       | ✅   |
+| A6  | 자동 이름 0/0/0. `home-meetings / status-bar`, `home-meetings / home-indicator` A-1 규칙 준수                                                                                                                                                                                                                                                                                                                 | ✅   |
+| A7  | 와이어 `## 상태` 4개 중 default ✅ · empty ✅ · **filtered-empty ❌** (caption "공동 모임이 없어요" 문구가 확정된 빈 상태 — calendar-overview `no-meeting-day`와 같은 기준으로 필수) · from-summary는 스크롤 위치 변형이라 판정 보류                                                                                                                                                                              | ❌   |
+| A8  | meeting-row 18행 모두 81, status-chip 32, 헤더 compact CTA 36(Foundations 사안, calendar-overview 1회차 참고 항목과 동일 — 화면 책임 아님)                                                                                                                                                                                                                                                                       | ✅   |
+| A9  | `mobile-header` BACKGROUND_BLUR만. 그림자 0 (meeting-row effects 0)                                                                                                                                                                                                                                                                                                                                            | ✅   |
+| A10 | 와이어 7행 → filters / section-ready(2·3) / section-awaiting(4) / section-preparing(5) / section-confirmed(6) / section-done(7). 누락 0. 행 순서·문구 18행 전부 와이어와 일치(m07 "1명 · 강민석", m04·m05 "같은 저녁 1건", m09 [공동], 완료 8행 제목 `ink-muted-48`)                                                                                                                                             | ✅   |
+| A11 | 인스턴스: default `58:2179` / empty `58:2195` 각 1 (`status-bar` `theme=light`, x0 y0 390×47, ABSOLUTE, 프레임 직속). 헤더 parchment → light ✅. 자체 드로잉 0 ✅. **그러나 렌더되지 않는다**: 인스턴스가 `children[0]`(z-order 최하단)이고 그 위의 `mobile-header` 인스턴스가 `canvas-parchment` **opacity 1** 솔리드 fill 99px로 덮음. 스크린샷 2장 모두 "9:41"·아이콘 없음(같은 파일의 calendar-overview 3회차 촬영본과 대조). | ❌   |
+
+A11 진단: design.md A-1-1 "첫 자식"을 Plugin API `children[0]`(= 레이어 패널 **최하단**)으로 구현한 결과. 규칙의 의도(상태바가 보인다)는 레이어 패널 최상단 = `children[last]`다. 규칙 문구 해석은 사람 확인 사항이나, 어느 해석이든 "보이지 않는 상태바"는 통과가 아니다.
+
+## C 결과
+
+| #   | 관찰                                                                                                                                                                                                                                                                                                       | 기준                                   | 판정                            |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------------------- |
+| C1  | 표면 white(본문·행) / parchment(헤더·empty-state) / black(탭바). dark 섹션 0. 다른 톤 없음                                                                                                                                                                                                                  | §Colors / A-4                          | ✅                              |
+| C2  | 파란 pill CTA 1개("새 모임"). display-md 0, tagline 6개(헤더 제목 + 섹션 헤드 5) — A-2 "섹션 헤드 = tagline" 스펙대로. 첫 스크롤에 "확정 대기 / 대학 동기 · 마감 지남 · 6/7"이 가장 먼저 읽힘 = brief 판단기준 1·3에 부합                                                                                    | SKILL C2 / A-2 / brief §3              | ✅                              |
+| C3  | 섹션 간 32 균등, 행 81 균등, 헤드↔첫 행 12. 24px 마진 침범 없음. 상단(필터→첫 섹션 32)과 하단 밀도 동일                                                                                                                                                                                                    | SKILL C3 / A-3                         | ✅                              |
+| C4  | 행 = 제목 + 메타 1줄(칩 + caption) 2줄 ✅. 행당 chip 1 ✅. 숫자: 섹션 카운트 5개(1·3·1·5·8) — "숫자 요약 4개 이하"를 문자 그대로 적용하면 초과. 다만 게이트 2 승인 와이어가 명시한 섹션 인덱스이고 독립 통계 타일이 아니라 판정 보류. 18행 전부 펼친 구조("다 보여주기")는 와이어 결정 사항                     | SKILL C4                               | 관찰만, 판정 보류 (오케스트레이터 참고) |
+| C5  | 색 구분 chip 없음(소유자 텍스트), 행 그림자 없음(hairline만), 그라디언트·이모지·보라·카드 안 카드·일러스트 없음. chevron 단색 muted                                                                                                                                                                       | §Don't                                 | ✅                              |
+| C6  | `--empty` 헤더·필터·탭바·홈 인디케이터 default와 동일(상태바는 두 프레임 모두 A11로 비가시). 문구 "아직 모임이 없어요 / 지인을 골라 첫 모임을 만들고 날짜 후보를 보내 보세요. / 새 모임 만들기" 도메인 맥락 ✅. 긴 우측 텍스트 "10월 25일 (일) 저녁"(116px)·메타 "5명 · 같은 저녁 1건" 잘림·겹침 없음. 한글 전부 렌더됨 | SKILL C6                               | ✅                              |
+
+## 수정 목록 (FIX-LOCAL, 3항목)
+
+- [ ] `58:2179` (`52:1966`) `home-meetings / status-bar` 인스턴스를 z-order 최상단으로: `root.appendChild(node)` → `children[last]` (레이어 패널 최상단). 위치 x0 y0·ABSOLUTE 유지. 적용 후 스크린샷에서 "9:41"이 보여야 함 (근거 design.md A-1-1 "상태바 필수" — 존재가 아니라 가시성이 목적; A11)
+- [ ] `58:2195` (`52:2498`) 동일 처리
+- [ ] `home-meetings--filtered-empty` 프레임 추가 (`52:2498` 오른쪽): default 복제 → 필터 "공동" selected(나머지 default), 블록 2~7 제거 → caption `ink-muted-48` "공동 모임이 없어요" 1줄 (와이어 `## 상태` filtered-empty). 상태바는 위와 같이 최상단 (근거 SKILL A7, calendar-overview no-meeting-day와 동일 기준)
+
+보류(수정 불요): from-summary 상태, 섹션 카운트 5개(C4), Foundations compact CTA 36, status-bar·chevron·탭바 아이콘 플레이스홀더.
+
+## 오케스트레이터 참고 (판정 무관)
+
+- **A-1-1 "첫 자식" 문구 해석**: Plugin API `children[0]`는 레이어 패널 최하단이라 opaque 헤더에 가려진다. 규칙 문구를 "레이어 패널 최상단(`children[last]`, 절대 위치)"로 고치거나, 헤더 컴포넌트의 safe-top 영역을 투명으로 바꾸는 두 선택지 중 사람이 결정. 전자가 Foundations 무수정이라 권장. 같은 방식으로 인스턴스를 교체한 다른 화면(calendar-overview 3프레임 확인됨, meeting-*·guest-response는 미확인)도 같은 결함일 가능성이 높다.
+- C4 섹션 카운트 5개 — 기준 문구 "숫자 요약 4개 이하"의 적용 범위(독립 통계 vs 섹션 인덱스)를 SKILL.md에서 명확히 하면 다음 화면부터 판정 가능.

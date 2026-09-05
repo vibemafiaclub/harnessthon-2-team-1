@@ -132,3 +132,27 @@
 - Foundations `button-primary` compact 36px 터치 타깃 — 게이트 3 자산, 사람 결정 대기(1회차 참고 항목).
 - 상태바 signal/wifi/battery, month-nav next chevron, 탭바 아이콘은 플레이스홀더 — figma-log에 교체 필요로 기록됨.
 - filtered 상태 프레임은 만들지 않음(데이터 변형, SKILL A7 필수 아님).
+
+---
+
+## A11 재검 (4회차 아님 — 규칙 변경 추가 검사, 2026-09-05)
+
+design.md 부록 A-1-1·A-4 `{component.status-bar}` 신설에 따른 A11 단독 재검. 대상 `41:652` · `42:615` · `45:1258`. 스크린샷: `work/screenshots/calendar-overview.a11-recheck.png`, `calendar-overview--empty.a11-recheck.png`, `calendar-overview--no-meeting-day.a11-recheck.png` (재검 시점 재촬영)
+
+| 프레임    | 인스턴스                                            | 위치·크기                 | theme            | 자체 드로잉 | 렌더 가시성                                         | 판정 |
+| --------- | --------------------------------------------------- | ------------------------- | ---------------- | ----------- | --------------------------------------------------- | ---- |
+| `41:652`  | `58:2131` `status-bar` 1개, 프레임 직속, `children[0]` | x0 y0 390×47, ABSOLUTE | light (헤더 parchment) ✅ | 0           | **없음** — 3회차 촬영본에는 있던 "9:41"·아이콘이 사라짐 | ❌   |
+| `42:615`  | `58:2147` 동일                                        | 동일                      | light ✅         | 0           | 없음                                                | ❌   |
+| `45:1258` | `58:2163` 동일                                        | 동일                      | light ✅         | 0           | 없음                                                | ❌   |
+
+원인(노드 속성으로 확정): 인스턴스가 `children[0]` = z-order 최하단이고, `children[1]` `mobile-header` 인스턴스가 `canvas-parchment` opacity 1 솔리드 fill 99px로 safe-top을 덮는다. 인스턴스 자체는 visible/opacity 1, 내부 미바인딩 0 — 결함은 배치 순서 하나. 3회차 PASS 시점의 raw 상태바는 `children[3]`(헤더 위)이었다.
+
+**판정 갱신: PASS → FIX-LOCAL (A11 한정).** 원래 화면 결함이 아니라 규칙 변경 후 인스턴스 교체 작업에서 생긴 회귀이므로 FIX-LOCAL 3회 상한 계산에 넣지 않기를 권고(최종은 오케스트레이터).
+
+### 수정 목록 (A11, 3항목)
+
+- [ ] `58:2131` → `41:652`의 `children[last]`로 이동 (`root.appendChild`), x0 y0 ABSOLUTE 유지
+- [ ] `58:2147` → `42:615` 동일
+- [ ] `58:2163` → `45:1258` 동일
+
+A-1-1 "첫 자식" 문구 해석 문제는 `work/reviews/home-meetings.md` 참고 항목과 동일 — 사람 결정 요망.

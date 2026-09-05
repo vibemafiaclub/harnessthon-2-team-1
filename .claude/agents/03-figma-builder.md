@@ -48,7 +48,7 @@ model: inherit
 
 1. **기존 노드 확인**: `📱 Screens` 페이지에 이름 `{screen-id}`인 프레임이 있고 리뷰 판정이 `FIX-LOCAL`이면 그 노드를 **국소 수정**만 한다(리뷰 파일의 수정 목록 항목만). 그 외(첫 생성 / REDIRECT-B / 실패 잔해)는 같은 이름 노드를 삭제하고 새로 만든다.
 2. **프레임 생성**: 이름 `{screen-id}`, 390×844(스크롤 화면은 세로 HUG), auto-layout 세로, 배경 `colors/canvas` 또는 와이어 지정값 바인딩. 페이지에서 기존 프레임 오른쪽에 `x = 최우측 + 80`으로 배치.
-2-1. **상태바 (필수, 생략 불가 — design.md A-1-1)**: 프레임을 만든 직후, 다른 블록보다 먼저 Foundations `status-bar` 인스턴스를 첫 자식으로 놓는다. `layoutPositioning: ABSOLUTE`, `x 0 / y 0`, 390×47, 헤더 배경이 밝으면 `theme=light`, 어두우면 `theme=dark`. 레이어명 `{screen-id} / status-bar`. 와이어프레임에 상태바가 적혀 있지 않아도 넣는다. 텍스트·벡터로 직접 그리지 않는다.
+   2-1. **상태바 (필수, 생략 불가 — design.md A-1-1)**: 프레임을 만든 직후, 다른 블록보다 먼저 Foundations `status-bar` 인스턴스를 첫 자식으로 놓는다. `layoutPositioning: ABSOLUTE`, `x 0 / y 0`, 390×47, 헤더 배경이 밝으면 `theme=light`, 어두우면 `theme=dark`. 레이어명 `{screen-id} / status-bar`. 와이어프레임에 상태바가 적혀 있지 않아도 넣는다. 텍스트·벡터로 직접 그리지 않는다.
 3. **레이아웃 스택 조립**: 와이어프레임 표 행 순서대로. 각 행 = 컴포넌트 인스턴스(`importComponentByKeyAsync` 또는 로컬 컴포넌트 `createInstance`) + 텍스트 오버라이드(목데이터 값). **한 `use_figma` 호출에 블록 1~3개.** 호출마다 생성 노드 ID를 return.
 4. **텍스트**: 폰트 로드 → 문자 설정. 목데이터 값 그대로(이름·날짜·상태 라벨). 날짜 표기 `10월 17일 (토)`.
 5. **상태 프레임**: 와이어에 `empty` 상태가 있으면 `{screen-id}--empty` 프레임을 오른쪽에 하나 더 만든다(default와 동일 **상태바**·헤더, 본문만 `empty-state`). 모든 상태 프레임에 2-1의 상태바 인스턴스를 반복한다. `selected`/`error`는 와이어에 있을 때만.
