@@ -25,6 +25,7 @@
 - Interaction
 - 실제 사용 맥락에 가까운 Dummy Content
 - 화면별 Annotation
+- Figma Auto Layout으로 옮길 수 있는 레이아웃 트리 (Markdown)
 
 ---
 
@@ -195,6 +196,7 @@ PRD의 사용 맥락에 맞는 **현실적인 Dummy Content**를 생성하여 �
 - 주요 State
 - Navigation
 - 실제 화면과 유사한 정보 밀도
+- Material Symbols 아이콘 (의미가 합의된 표준 아이콘만)
 
 ### 제외
 
@@ -203,6 +205,7 @@ PRD의 사용 맥락에 맞는 **현실적인 Dummy Content**를 생성하여 �
 - Illustration
 - Graphic Style
 - 정교한 Shadow 및 Effect
+- 커스텀 아이콘, 유니코드 글리프·이모지로 대신한 아이콘
 - 세부 Animation
 
 다음 디자인 단계에서 Visual Style을 적용하면 High-fi UI로 발전시킬 수 있는 수준을 목표로 합니다.
@@ -238,6 +241,7 @@ PRD의 사용 맥락에 맞는 **현실적인 Dummy Content**를 생성하여 �
 - 빈 공간을 채우기 위해 불필요한 콘텐츠를 추가하지 않습니다.
 - 독창성을 위해 익숙한 UX Pattern을 불필요하게 재설계하지 않습니다.
 - 동일한 목적에 화면마다 다른 Component를 사용하지 않습니다.
+- 아이콘의 의미를 보는 사람이 추측하게 두지 않습니다. 표준 Material 아이콘을 쓰고, 단독으로 뜻이 통하지 않는 아이콘에는 라벨을 붙입니다.
 - 시각적 완성도를 위해 정보 구조나 사용성을 희생하지 않습니다.
 
 ---
@@ -257,6 +261,7 @@ PRD의 사용 맥락에 맞는 **현실적인 Dummy Content**를 생성하여 �
 9. 실제 콘텐츠가 들어가도 Layout이 성립하는가?
 10. 불필요한 화면, 정보, 기능이 추가되지 않았는가?
 11. 다음 디자인 단계에서 추가적인 UX 해석 없이 High-fi UI로 발전시킬 수 있는가?
+12. 모든 아이콘이 Material Symbols이고, 라벨 없이 둔 아이콘은 단독으로 의미가 통하는가?
 
 ---
 

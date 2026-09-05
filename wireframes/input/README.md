@@ -9,8 +9,8 @@
 | PRD | [prd.md](prd.md) | 배경·목표·유저 스토리·역할·스코프·REQ-01~15·NFR·성공 기준·평가 기준 |
 | User Flow | [user-flow.md](user-flow.md) | 핵심 경로 2개(예비부부, 초대받은 지인)·상태 전이 ST-01~05·FLW-01~07 |
 | IA | [ia.md](ia.md) | 엔티티 ENT-01~07·화면 SCR-01~10·화면별 정보/행동/상태·내비게이션·커버리지 |
-| 제약사항 | [constraints.md](constraints.md) §1 | 모바일 웹 375pt, Figma 출력, 데이터 규모 |
-| 출력 매체 | [constraints.md](constraints.md) §1 | Figma 신규 파일. 연결이 없으면 HTML |
+| 제약사항 | [constraints.md](constraints.md) §1 | 모바일 웹 375pt, Markdown 출력, 데이터 규모 |
+| 출력 매체 | [constraints.md](constraints.md) §1 | Markdown 고정. `wireframes/output/`에 저장. Figma 변환은 후속 에이전트 |
 | 정책·리스크 | [constraints.md](constraints.md) §2~7 | 권한표, POL-01~20, RISK-01~12, 화면별 주의점 |
 | Dummy Content | [constraints.md](constraints.md) §8 | 시드 데이터 요약과 5대 필수 케이스 |
 | 가정 로그 초안 | [constraints.md](constraints.md) §9 | spec.md 맨 위로 옮긴다 |
@@ -21,7 +21,7 @@
 
 ```
 /wireframe wireframes/input/ 을 입력으로 청첩장모임 스케줄러 와이어프레임을 만들어줘.
-출력 매체는 Figma 신규 파일, 산출물은 wireframes/ 에 남겨줘.
+실행 이름은 all-screens, 산출물은 wireframes/output/ 에 남겨줘.
 ```
 
 스킬은 1단계(범위 확정: Core/Support/Later/Remove 분류, 핵심 경로 선택, 화면 목록)를 먼저 보여주고 확인을 받은 뒤 화면별 스펙으로 넘어간다.
