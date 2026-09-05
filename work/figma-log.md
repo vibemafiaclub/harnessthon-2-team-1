@@ -58,24 +58,24 @@
 
 ### 컴포넌트 (`🎨 Foundations` > `foundations / components`, 총 36 COMPONENT)
 
-| 이름                  | 종류      | 노드 ID  | key                                        | variants (이름 → 노드 ID)                                                                                                                                        |
-| --------------------- | --------- | -------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| button-primary        | SET       | `20:119` | `25aa9b3ebaf7251095e503806156f3f42c1a3917` | State=default,Size=default `20:111` · State=active,Size=default `20:113` · State=default,Size=compact `20:115` · State=active,Size=compact `20:117`              |
-| button-secondary-pill | SET       | `20:126` | `19227016f422f846a2b72a525c1d47e7b5f5666d` | Size=default `20:122` · Size=compact `20:124`                                                                                                                    |
-| button-dark-utility   | COMPONENT | `20:129` | `dee44d59d1cfdd154af991ec4b557e83b0a3a50a` | —                                                                                                                                                                |
-| button-icon-circular  | SET       | `20:236` | `f0cc3a41b25ddaab83e39ecf4480549dc52e8b11` | Size=44 `20:230` · Size=32 `20:233`                                                                                                                              |
-| text-link             | SET       | `20:243` | `a63270fe516ec5de125a16f91b13d13d72c4914d` | Size=body `20:239` · Size=caption `20:241`                                                                                                                       |
-| status-chip           | SET       | `20:434` | `cf4121be63f2d19da293f556fd2aba2c9421a194` | State=default `20:430` · State=selected `20:432`                                                                                                                 |
-| list-row              | SET       | `22:91`  | `ea858f56f168dc209db779d7ef3bf4c68ec7ab1c` | Trailing=caption `22:76` · Trailing=chevron `22:81` · Trailing=none `22:87`                                                                                      |
-| input                 | SET       | `22:98`  | `e0f7901ddbee1bf407d7402fb25437843fad6ffa` | State=empty `22:94` · State=filled `22:96`                                                                                                                       |
-| card                  | COMPONENT | `22:101` | `0f1cf5a4eee1bdfe063fa4483918533c0a76fba1` | —                                                                                                                                                                |
-| mobile-header         | SET       | `22:498` | `a4db1d4f8bdb7eb1df2377035fa7ead76e16fc8a` | Left=title,Right=cta `22:468` · Left=title,Right=none `22:475` · Left=back,Right=cta `22:480` · Left=back,Right=none `22:490`                                    |
-| mobile-tab-bar / tab  | SET       | `25:172` | `95ccc4763624d2fe07017b5fafd4ad01e793a9c2` | State=active × Icon=calendar `25:136` / list.bullet `25:141` / person.2 `25:148` · State=inactive × calendar `25:154` / list.bullet `25:159` / person.2 `25:166` |
-| mobile-tab-bar        | SET       | `25:236` | `0b597577d221bb4d8f0fcc8314aaf514f54bfa63` | Active=calendar `25:173` · Active=meetings `25:194` · Active=contacts `25:215`                                                                                   |
-| mobile-sticky-cta     | SET       | `25:500` | `750c356a765bb15815bcf7257f88aa68942b977d` | Left=summary `25:487` · Left=link `25:493`                                                                                                                       |
-| section-dark          | COMPONENT | `25:503` | `8a4bb3c087ed43972e610157d465045f29de4797` | —                                                                                                                                                                |
-| empty-state           | COMPONENT | `28:473` | `c6fb84cbdef2a985d66a73054caa328ebac488f2` | —                                                                                                                                                                |
-| status-bar            | SET       | `58:619` | `3e0313c30b2e9c8e76c055cf751d202c783eef89` | theme=light `58:601` · theme=dark `58:618` (2026-09-05 추가, 섹션 프레임 `foundations / status-bar` `58:583`)                                                    |
+| 이름                  | 종류      | 노드 ID  | key                                        | variants (이름 → 노드 ID)                                                                                                                                                                                 |
+| --------------------- | --------- | -------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| button-primary        | SET       | `20:119` | `25aa9b3ebaf7251095e503806156f3f42c1a3917` | State=default,Size=default `20:111` · State=active,Size=default `20:113` · State=default,Size=compact `20:115` · State=active,Size=compact `20:117`                                                       |
+| button-secondary-pill | SET       | `20:126` | `19227016f422f846a2b72a525c1d47e7b5f5666d` | Size=default `20:122` · Size=compact `20:124`                                                                                                                                                             |
+| button-dark-utility   | COMPONENT | `20:129` | `dee44d59d1cfdd154af991ec4b557e83b0a3a50a` | —                                                                                                                                                                                                         |
+| button-icon-circular  | SET       | `20:236` | `f0cc3a41b25ddaab83e39ecf4480549dc52e8b11` | Size=44 `20:230` · Size=32 `20:233`                                                                                                                                                                       |
+| text-link             | SET       | `20:243` | `a63270fe516ec5de125a16f91b13d13d72c4914d` | Size=body `20:239` · Size=caption `20:241`                                                                                                                                                                |
+| status-chip           | SET       | `20:434` | `cf4121be63f2d19da293f556fd2aba2c9421a194` | State=default `20:430` · State=selected `20:432`                                                                                                                                                          |
+| list-row              | SET       | `22:91`  | `ea858f56f168dc209db779d7ef3bf4c68ec7ab1c` | Trailing=caption `22:76` · Trailing=chevron `22:81` · Trailing=none `22:87`                                                                                                                               |
+| input                 | SET       | `22:98`  | `e0f7901ddbee1bf407d7402fb25437843fad6ffa` | State=empty `22:94` · State=filled `22:96`                                                                                                                                                                |
+| card                  | COMPONENT | `22:101` | `0f1cf5a4eee1bdfe063fa4483918533c0a76fba1` | —                                                                                                                                                                                                         |
+| mobile-header         | SET       | `22:498` | `a4db1d4f8bdb7eb1df2377035fa7ead76e16fc8a` | Left=title,Right=cta `22:468` · Left=title,Right=none `22:475` · Left=back,Right=cta `22:480` · Left=back,Right=none `22:490` — **safe-top에 `status-bar` theme=light 내장** (2026-09-05, A-1-1 2차 개정) |
+| mobile-tab-bar / tab  | SET       | `25:172` | `95ccc4763624d2fe07017b5fafd4ad01e793a9c2` | State=active × Icon=calendar `25:136` / list.bullet `25:141` / person.2 `25:148` · State=inactive × calendar `25:154` / list.bullet `25:159` / person.2 `25:166`                                          |
+| mobile-tab-bar        | SET       | `25:236` | `0b597577d221bb4d8f0fcc8314aaf514f54bfa63` | Active=calendar `25:173` · Active=meetings `25:194` · Active=contacts `25:215`                                                                                                                            |
+| mobile-sticky-cta     | SET       | `25:500` | `750c356a765bb15815bcf7257f88aa68942b977d` | Left=summary `25:487` · Left=link `25:493`                                                                                                                                                                |
+| section-dark          | COMPONENT | `25:503` | `8a4bb3c087ed43972e610157d465045f29de4797` | —                                                                                                                                                                                                         |
+| empty-state           | COMPONENT | `28:473` | `c6fb84cbdef2a985d66a73054caa328ebac488f2` | —                                                                                                                                                                                                         |
+| status-bar            | SET       | `58:619` | `3e0313c30b2e9c8e76c055cf751d202c783eef89` | theme=light `58:601` · theme=dark `58:618` (2026-09-05 추가, 섹션 프레임 `foundations / status-bar` `58:583`)                                                                                             |
 
 각 컴포넌트 `description`에 design.md 키·토큰 근거 기록됨. 로컬 컴포넌트이므로 화면 조립 시 `getNodeByIdAsync(id).createInstance()` 사용(같은 파일이라 `importComponentByKeyAsync` 불필요).
 
@@ -181,10 +181,10 @@ mobile-header `22:468` · status-chip `20:430`/`20:432` · list-row `22:81` · b
 
 raw 상태바 블록 삭제 → Foundations `status-bar` `theme=light`(`58:601`) 인스턴스를 첫 자식, ABSOLUTE x0 y0, 390×47. 다른 노드 변경 없음.
 
-| 프레임 | 삭제(raw) | 인스턴스 |
-| --- | --- | --- |
-| `calendar-overview` `41:652` | `45:715` | `58:2131` |
-| `calendar-overview--empty` `42:615` | `45:732` | `58:2147` |
+| 프레임                                        | 삭제(raw) | 인스턴스  |
+| --------------------------------------------- | --------- | --------- |
+| `calendar-overview` `41:652`                  | `45:715`  | `58:2131` |
+| `calendar-overview--empty` `42:615`           | `45:732`  | `58:2147` |
 | `calendar-overview--no-meeting-day` `45:1258` | `45:1334` | `58:2163` |
 
 자체 검증(3프레임): 자동 이름 0 / 미바인딩 fill·stroke 0 / 스타일 미적용 0 / Inter 외 0 / 비토큰 padding·gap 0 / (d) status-bar 인스턴스 1개·첫 자식·y0·h47 ✅. 스크린샷 `work/screenshots/calendar-overview.fix-3.png` (390×1066). "9:41"은 컴포넌트 스펙대로 caption-strong → body-strong(17)으로 바뀜.
@@ -192,6 +192,18 @@ raw 상태바 블록 삭제 → Foundations `status-bar` `theme=light`(`58:601`)
 ### 노드 `42:616` 확인 (2026-09-05, 사용자 지시)
 
 `42:616` = `calendar-overview--empty`(`42:615`) 안의 `mobile-header` 인스턴스(`Left=title, Right=cta`, 390×99, 레이어명 `calendar-overview / header`, 배경 `colors/canvas-parchment`). 내부 `safe-top`(47)은 Foundations 인스턴스 내부 프레임이라 자식 삽입 불가·대상 아님. 상태바는 프레임 `42:615`의 첫 자식 인스턴스 `58:2147`(`theme=light`, ABSOLUTE 0,0, 390×47)이 이미 헤더 safe-top 위에 정확히 1개 존재 — 추가 생성 없음(추가 시 (d) "정확히 1개" 위반). raw 잔여 0. 스크린샷 `work/screenshots/node-42-616.png` (헤더 영역, 상태바 오버레이 포함).
+
+- **2026-09-05 15:45 (design.md A-1-1 2차 개정 "헤더 내장" · 사람 결정, home-meetings 세션 수행)**
+  - **`mobile-header` 4변형 수정**: 각 변형의 `safe-top` 프레임(layoutMode NONE, 390×47) 안에 `status-bar` `theme=light`(`58:601`) 인스턴스를 `appendChild`(레이어 최상단), x0 y0 390×47, constraints STRETCH/MIN, 레이어명 `status-bar`. 인스턴스 ID: `22:468` → `62:583` · `22:475` → `62:599` · `22:480` → `62:615` · `22:490` → `62:631`. 변형 크기 390×99·자식 순서(safe-top, bar)·텍스트 프로퍼티 불변. 세트 description에 이력 추가. 어두운 헤더가 필요하면 화면 인스턴스에서 중첩 status-bar를 `theme=dark`로 스왑.
+  - 결과: `mobile-header`를 쓰는 화면은 standalone 상태바를 두지 않는다(합산 1개 규칙). 스크린샷 `work/screenshots/foundations.mobile-header.png`.
+
+### status-bar 헤더 내장 전환 (2026-09-05, A-1-1 2차 개정 · FIX-LOCAL #4 상당)
+
+리뷰 결함(standalone 인스턴스가 `children[0]`이라 헤더에 가려짐) 해소: Foundations `mobile-header` safe-top에 `status-bar` 내장(변경 이력 참조) 후 standalone 인스턴스 삭제 — `41:652` `58:2131` · `42:615` `58:2147` · `45:1258` `58:2163`. 각 프레임의 상태바는 헤더 인스턴스 내부 `safe-top / status-bar`(`I15:4101;62:583` · `I42:616;62:583` · `I45:1259;62:583`, theme=light, y0 h47) 1개. 자체 검증 3프레임: 자동 이름 0 / 미바인딩 fill·stroke 0 / 스타일 미적용 0 / Inter 외 0 / 비토큰 padding·gap 0 / (d) 합산 1개·y0·h47·"9:41" 가시 ✅. 스크린샷 `work/screenshots/calendar-overview.fix-4.png`.
+
+### 글리프 렌더 재적용 (2026-09-05, 오케스트레이터 지시)
+
+`calendar-overview--no-meeting-day` `45:1258` 헤더 `45:1259` 제목 "우리 일정"·cta `I45:1259;22:473` "새 모임"이 촬영본에서 비어 보임(characters 정상) → guest-response와 같은 방법으로 `title#22:17`·`label#20:0` 프로퍼티를 같은 값으로 재설정(다른 값 변경 없음). 확인 스크린샷 `work/screenshots/calendar-overview--no-meeting-day.glyph-fix.png`.
 
 ## meeting-create
 
@@ -249,6 +261,8 @@ raw 상태바 블록 삭제 → Foundations `status-bar` `theme=light`(`58:601`)
 ### status-bar 인스턴스 교체 (A-1-1)
 
 자체 그린 status-bar 프레임 6개(`50:1599`/`50:1616`/`50:1635`/`50:1652`/`50:1681`/`50:1698`) 삭제 → Foundations `status-bar` `theme=light`(key `1e046d5d…`) 인스턴스로 교체, 각 프레임 첫 자식·ABSOLUTE·(0,0)·390×47. 새 인스턴스: default `59:1905` / --empty `59:1921` / --separate-warning `59:1937` / --both `59:1953` / --error `59:1969` / --search-empty `59:1985`. 검증: 인스턴스 1개·y 0·h 47·raw 0·자동 이름 0·미바인딩 fill 0 (6/6). `meeting-create.png` 갱신.
+
+standalone status-bar 삭제 (A-1-1 2차 개정, 헤더 내장): 위 인스턴스 6개(`59:1905`/`59:1921`/`59:1937`/`59:1953`/`59:1969`/`59:1985`) 삭제. 상태바는 `mobile-header` safe-top 내장분(`I{header};62:631`, theme=light) 1개만 존재 — 검증 6/6 합산 1개·standalone 0·y 0·h 47.
 
 ## meeting-dates
 
@@ -397,6 +411,8 @@ mobile-header `22:490` · text-link Size=caption `20:241` · button-secondary-pi
 
 자체 그린 status-bar 프레임 6개(`51:1309`/`51:1607`/`51:1650`/`51:1731`/`51:1818`/`51:1878`) 삭제 → Foundations `status-bar` `theme=light` 인스턴스로 교체(첫 자식·ABSOLUTE·(0,0)·390×47). 새 인스턴스: default `59:2265` / --empty `59:2281` / --urgent `59:2297` / --adding `59:2313` / --error `59:2329` / --resend `59:2345`. 검증: 인스턴스 1개·y 0·h 47·raw 0·자동 이름 0·미바인딩 fill 0 (6/6). `meeting-dates.png` 갱신.
 
+standalone status-bar 삭제 (A-1-1 2차 개정, 헤더 내장): 위 인스턴스 6개(`59:2265`/`59:2281`/`59:2297`/`59:2313`/`59:2329`/`59:2345`) 삭제. 상태바는 `mobile-header` safe-top 내장분(`I{header};62:631`) 1개만 존재 — 검증 6/6 합산 1개·standalone 0·y 0·h 47.
+
 ## meeting-detail
 
 실행일 2026-09-05. 모드 B 첫 생성 (기존 동명 노드 없음). `📱 Screens`(`18:103`), 생성 직전 페이지 재스캔 후 최우측(`meeting-create--search-empty` 64285+390) 오른쪽 +80. 와이어 `## 상태` "03은 default 1개만" → `--empty` 등 상태 프레임 없음.
@@ -524,6 +540,8 @@ mobile-header `22:490` · status-chip default `20:430` ×2 · section-dark `25:5
 
 자체 그린 status-bar 프레임 `50:1303` 삭제 → Foundations `status-bar` `theme=light` 인스턴스 `59:2361`로 교체(첫 자식·ABSOLUTE·(0,0)·390×47). 검증: 인스턴스 1개·y 0·h 47·raw 0·자동 이름 0·미바인딩 fill 0. `meeting-detail.png` 갱신.
 
+standalone status-bar 삭제 (A-1-1 2차 개정, 헤더 내장): 위 인스턴스 `59:2361` 삭제. 상태바는 `mobile-header` 내장분(`I49:1737;62:631`) 1개만 존재 — 검증 합산 1개·standalone 0·y 0·h 47.
+
 ## guest-response
 
 실행일 2026-09-05. 모드 B 첫 생성 (기존 동명 노드 없음). `📱 Screens`(`18:103`), 생성 직전·각 상태 프레임 직전 페이지 재스캔 후 최우측 +80 (다른 세션 노드가 사이에 추가되어 x가 불연속 — 겹침 없음). 와이어 `## 상태` submitted · confirmed · urgent · closed 4개 + default = **5프레임**. `--empty`는 와이어에 없어 만들지 않음.
@@ -598,6 +616,8 @@ mobile-header `22:475` · section-dark `25:503` · status-chip `20:430`/`20:432`
 ### status-bar 인스턴스 교체 (A-1-1)
 
 자체 그린 status-bar 프레임 5개(`51:1942`/`52:1488`/`52:1602`/`52:2025`/`52:2129`) 삭제 → Foundations `status-bar` `theme=light` 인스턴스로 교체(첫 자식·ABSOLUTE·(0,0)·390×47). 새 인스턴스: default `59:2377` / --submitted `59:2393` / --confirmed `59:2409` / --urgent `59:2425` / --closed `59:2441`. 위 '아이콘 교체 필요'의 status-bar SVG 플레이스홀더 항목은 해소됨. 검증: 인스턴스 1개·y 0·h 47·raw 0·자동 이름 0·미바인딩 fill 0 (5/5). `guest-response.png` 갱신.
+
+standalone status-bar 삭제 (A-1-1 2차 개정, 헤더 내장): 위 인스턴스 5개(`59:2377`/`59:2393`/`59:2409`/`59:2425`/`59:2441`) 삭제. 상태바는 `mobile-header` 내장분(`I{header};62:599`) 1개만 존재 — 검증 5/5 합산 1개·standalone 0·y 0·h 47.
 
 ## home-meetings
 
@@ -683,3 +703,72 @@ calendar-overview 카드 문법(제목 body-strong → 소유자 chip + 메타 c
 ### status-bar 인스턴스 교체 (2026-09-05, design.md A-1-1 · 사람 결정)
 
 위 "충돌 보고" 해소: 이 세션이 Foundations 부분 실행으로 `status-bar` 세트(`58:619`)를 만든 뒤 raw 블록을 교체. `home-meetings` `52:1966`: `52:1984` 삭제 → 인스턴스 `58:2179` · `home-meetings--empty` `52:2498`: `52:2543` 삭제 → 인스턴스 `58:2195`. `theme=light`, 첫 자식, ABSOLUTE x0 y0, 390×47, 레이어명 `{screen-id} / status-bar`. 자체 검증 재실행(2프레임 + 홀더): 자동 이름 0 / 미바인딩 fill·stroke 0 / 스타일 미적용 0 / Inter 외 0 / 비토큰 padding·gap 0 / (d) 인스턴스 1개·첫 자식·y0·h47 ✅. 스크린샷 `work/screenshots/home-meetings.fix-0.png` (390×2061). 위 "블록 → 노드" 표의 상태바 행(`52:1984`)과 `--empty`의 `52:2543`은 이 소절로 대체.
+
+### FIX-LOCAL #1 적용 (2026-09-05, `work/reviews/home-meetings.md` 3항목 + A-1-1 2차 개정)
+
+- A11 (`58:2179`·`58:2195` 최상단 이동) → 규칙 개정으로 **standalone 삭제**로 대체: Foundations `mobile-header` safe-top에 `status-bar` 내장(변경 이력) 후 `52:1966`의 `58:2179`, `52:2498`의 `58:2195` 삭제. 상태바는 헤더 인스턴스 내부 `safe-top / status-bar`(`I52:1967;62:583` · `I52:2499;62:583`) 1개, y0 h47, "9:41" 가시.
+- A7 **`home-meetings--filtered-empty`** `62:2871` 신설 (x 69031, `--empty` 오른쪽; 홀더 `52:1564`는 x 69501로 이동). 390×844 FIXED, header `62:2872`(내장 상태바 1개) · body `62:2895`(FILL, gap `spacing/xl`) · filters `62:2896`(chip 전체 `62:2897` · 신부 `62:2899` · 신랑 `62:2901` · **공동 selected** `62:2903`) · caption `62:2905` "공동 모임이 없어요" `caption` `colors/ink-muted-48` 1줄 · tab-bar `62:2906` · home-indicator `62:2927`. standalone 상태바 없음. 링크 https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=62-2871
+- 자체 검증 (default · empty · filtered-empty · 홀더): 자동 이름 0 / 미바인딩 fill·stroke 0 / 스타일 미적용 0 / Inter 외 0 / 비토큰 padding·gap 0 / (d) 상태바 합산 1개(내장 1 + standalone 0)·y0·h47·스크린샷 "9:41" 가시 ✅.
+- 스크린샷 `work/screenshots/home-meetings.fix-1.png` (390×2061) · `work/screenshots/home-meetings--filtered-empty.png` (390×844).
+
+## contacts-list
+
+실행일 2026-09-05. 모드 B 첫 생성 (기존 동명 노드 없음). `📱 Screens`(`18:103`), 최우측 노드(x 70831) 오른쪽 +80. 다른 세션 노드·Foundations 미수정. 상태바는 `mobile-header` 내장분(A-1-1 2차)만 — standalone 없음.
+
+### 프레임
+
+| 프레임                        | 노드 ID   | 크기       | 위치 (x, y)   | 링크                                                                       |
+| ----------------------------- | --------- | ---------- | ------------- | -------------------------------------------------------------------------- |
+| `contacts-list`               | `66:2582` | 390 × 1324 | 70911, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=66-2582 |
+| `contacts-list--empty`        | `66:2781` | 390 × 844  | 71381, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=66-2781 |
+| `contacts-list / _components` | `66:2307` | 390 × 173  | 71851, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=66-2307 |
+
+default 세로 HUG(10행: 81×7 + 105 + 125×2). 배경 `colors/canvas`. 첫 844 안에 블록 1~4 + 행 6개. 컨테이너: header `66:2583`(내장 status-bar `I66:2583;62:583`) · body `66:2606`(pl/pr `spacing/lg`, pt `spacing/sm`, pb `spacing/xl`, gap `spacing/sm`) · tab-bar `66:2759`(Active=contacts) · home-indicator `66:2780`.
+
+### 블록 → 노드 (default)
+
+| 블록 | 노드                            | ID                                                                                                                                                                                                                                                                     | 내용                                                                                             |
+| ---- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| 헤더 | `contacts-list / header`        | `66:2583` (mobile-header Left=title,Right=cta)                                                                                                                                                                                                                         | "지인" / cta "추가"                                                                              |
+| 1    | `contacts-list / search`        | `66:2607` (input State=empty, FILL 342×44)                                                                                                                                                                                                                             | value "이름·관계로 검색". Foundations `input`에 아이콘 슬롯 없음 → 돋보기 없음(교체 필요에 기록) |
+| 2    | `contacts-list / owner-filters` | `66:2609` — 전체(selected) `66:2610` · 신부 `66:2612` · 신랑 `66:2614` · 공동 `66:2616`                                                                                                                                                                                | status-chip ×4                                                                                   |
+| 3    | `contacts-list / group-filters` | `66:2618` (FILL + clipsContent = 가로 스크롤) — 전체 `66:2619` · **대학 동기(selected)** `66:2621` · 직장 동료·신부 `66:2623` · 동네 친구 `66:2625` · 가족·신부 `66:2627` · 대학 후배 `66:2629` · 러닝 크루 `66:2631` · 직장 동료·신랑 `66:2633` · 가족·신랑 `66:2635` | status-chip ×9, 우측 잘림(스크롤 암시)                                                           |
+| 4    | `contacts-list / result-count`  | `66:2637`                                                                                                                                                                                                                                                              | caption muted "10명 · 가나다순"                                                                  |
+| 6    | `contacts-list / rows`          | `66:2638` — p06 `66:2639` · p01 `66:2651` · p20 `66:2663`(125) · p03 `66:2675`(105, 칩 2) · p11 `66:2687` · p07 `66:2699` · p02 `66:2711` · p05 `66:2723` · p52 `66:2735`(125, 칩 2) · p04 `66:2747`                                                                   | contact-row ×10, 가나다순. 소유자는 caption 첫 단어("신부 · …", p52 "공동 · …")                  |
+
+### `--empty` (`66:2781`)
+
+header `66:2782`(내장 상태바) · body `66:2805`(FILL) · empty-state `66:2806`("아직 등록한 지인이 없어요" / "청첩장을 드릴 분을 한 명씩 등록하면, 모임을 만들 때 골라 쓸 수 있어요." / cta `I66:2806;28:477` "지인 추가") · tab-bar `66:2812` · home-indicator `66:2833`. search-empty·group-empty는 데이터 변형이라 프레임 미생성.
+
+### 사용 컴포넌트 (Foundations 인스턴스)
+
+mobile-header `22:468` ×2 · input State=empty `22:94` · status-chip `20:432`/`20:430` (필터 13 + 행 내부 12) · mobile-tab-bar Active=contacts `25:215` ×2 · empty-state `28:473`. `list-row`(meta 단일 TEXT)·`list-row-selectable`(trailing icon/text-link, chip 슬롯 있으나 chevron 없음)은 스펙 불일치 → 아래 로컬 컴포넌트.
+
+### 조합 컴포넌트 — `contacts-list / contact-row` (부록 C 권한 내, 토큰만 사용)
+
+홀더 `contacts-list / _components` `66:2307`(라벨 `66:2308`) > COMPONENT `66:2309`, key `0623a5f6f5514a8028224668f129cd44a7735fc7`. 스펙: 342 폭 / 세로 HUG(기본 81), HORIZONTAL gap `spacing/md`, pt/pb `spacing/sm`, minHeight 44, bg `colors/canvas`, 하단 1px `colors/hairline`; lead(FILL, gap `spacing/xxs`) = `title` body-strong `colors/ink` **FILL + 1줄 말줄임**(textTruncation ENDING, maxLines 1) + `meta`(HORIZONTAL **WRAP**, gap `spacing/xs`, 행 간 `spacing/xxs`) = `chip-1` + `chip-2`(BOOL `Show chip-2`, 기본 true — 마스터에서 hidden이면 한글 라벨이 익스포트에 안 나옴) + `caption` caption `colors/ink-muted-48` (자동 폭, maxWidth 301 = lead 폭, **최대 2줄 말줄임**); trailing = `icon / chevron.right` 16px SVG stroke `colors/ink-muted-48`. 프로퍼티 `title#66:0` · `caption#66:1` TEXT, `Show chip-2#66:2` BOOLEAN. 칩 라벨은 중첩 `label#20:12`. `separateOnly`(p14·p31)는 이 필터 상태에 없어 "따로 만나기" 변형 미작성. 재사용률: 인스턴스 30 ÷ (30 + 직접 그린 프레임 0) = 1.0(자체 프레임 body·owner·group·rows·lead·meta·trailing은 fill/stroke 없는 래퍼).
+
+### 참조 반영 (`15:2020`)
+
+home-meetings·calendar-overview와 같은 행 문법(제목 → 칩 + 메타 caption → chevron)만 재사용. 참조의 색·폰트·컬러 점·FAB 불채택(design.md 충돌). 그룹 칩 가로 스트립은 와이어 결정.
+
+### 자체 검증 (2026-09-05)
+
+| 항목                                                    | contacts-list          | --empty         | _components |
+| ------------------------------------------------------- | ---------------------- | --------------- | ----------- |
+| 자동 이름 노드                                          | 0                      | 0               | 0           |
+| 솔리드 fill / stroke 변수 미바인딩 (인스턴스 내부 제외) | 0 / 0                  | 0 / 0           | 0 / 0       |
+| 텍스트 스타일 미적용 / Inter 외·Medium                  | 0 / 0                  | 0 / 0           | 0 / 0       |
+| 비토큰·미바인딩 padding·gap                             | 0                      | 0               | 0           |
+| 탭 가능 인스턴스 < 44 (행·검색·탭바)                    | 0 (행 81~125, 검색 44) | 0               | —           |
+| (d) status-bar 합산 (내장 + standalone)                 | 1 (1+0), y0 h47        | 1 (1+0), y0 h47 | —           |
+| 제목 2줄                                                | 0 (p20 1줄 말줄임)     | —               | —           |
+
+### 스크린샷
+
+`work/screenshots/contacts-list.png` (390×1324) · `work/screenshots/contacts-list--empty.png` (390×844). "9:41" 두 프레임 모두 가시.
+렌더 메모 → 수정: 첫 촬영본에서 p03·p52의 `chip-2` 라벨이 빈 pill로 보임(characters·폭 정상). 원인: 마스터에서 `chip-2`가 hidden이라 익스포터가 한글 폴백 글리프를 로드하지 않음(재촬영에도 재현 → 레이스 아님). 조치: 마스터 `chip-2` visible=true + `Show chip-2` 기본값 true로 변경, 단일 칩 8행에 `Show chip-2=false` 명시(행 높이 불변 81/105/125). 재촬영 `work/screenshots/contacts-list.png`·`contacts-list.row-p03.png`에서 "직장 동료" 표시.
+
+### 아이콘 교체 필요
+
+`contact-row / icon / chevron.right` SVG 플레이스홀더, 검색 input 돋보기 아이콘 없음(Foundations `input` 슬롯 부재), 탭바·상태바 아이콘은 Foundations 플레이스홀더.
