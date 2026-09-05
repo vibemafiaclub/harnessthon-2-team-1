@@ -1,0 +1,138 @@
+# 온보딩 — 신규 사용자가 처음 진입해 첫 가치를 경험하기까지의 경로
+#
+# ROLE-01·ROLE-02는 권한이 대칭이다(users.md). 먼저 가입해 커플을 만드는 쪽이 ONB-01,
+# 배우자의 초대 코드로 합류하는 쪽이 ONB-02를 탄다. role 필드는 대표값이며,
+# 실제로는 신부·신랑 어느 쪽이든 가입 순서에 따라 두 경로 중 하나를 탄다 (RISK-04).
+
+meta:
+  project: wedding-scheduler
+  updated: "2026-09-05"
+
+paths:
+  - id: ONB-01
+    name: 커플을 처음 만드는 사용자의 시작
+    role: ROLE-01
+    entry: 앱/웹 직접 접속 (검색·지인 추천). 초대 코드 없이 시작한다.
+    entry_state: empty
+    first_value:
+      screen: SCR-05
+      description: 첫 모임에 날짜 후보를 보내 회신 대기(ST-01)가 시작되는 순간. "단체채팅방 대신 여기서 잡힌다"를 처음 체감한다.
+    steps:
+      - screen: SCR-11
+        goal: 계정을 만들고 결혼 예정일을 입력해 커플(ENT-07)을 생성한다
+        required: true
+        required_reason: 계정이 없으면 지인 풀의 소유자(ENT-01.registered_by)를 정할 수 없다. 결혼 예정일이 없으면 긴급 모임 판정(POL-01·POL-05의 "2주 이내")과 전체 조망(SCR-07)의 기준일이 없다 — 다만 날짜 자체는 미정으로 둘 수 있다(POL-25)
+        skip_to: null
+        creates: [ENT-06, ENT-07]
+        resolves_empty_state: null
+      - screen: SCR-10
+        goal: 배우자 초대 코드를 발급해 전달한다
+        required: false
+        required_reason: null
+        skip_to: SCR-01
+        creates: []
+        resolves_empty_state: SCR-10
+        # 통합 조망(SCR-07)에는 필수지만 첫 가치(SCR-05 첫 모임)에는 필요 없다.
+        # 필수로 막으면 배우자가 늦게 합류할 때 아무것도 못 한다. SCR-01·SCR-07의 빈 상태에서 계속 유도한다.
+      - screen: SCR-02.1
+        goal: 첫 지인을 등록한다 (그룹은 이 화면에서 즉시 생성 가능)
+        required: true
+        required_reason: 지인이 0명이면 SCR-05에서 선택할 대상이 없어 첫 가치 화면이 동작하지 않는다 (SCR-05의 empty 상태)
+        skip_to: null
+        creates: [ENT-01, ENT-02]
+        resolves_empty_state: SCR-02
+      - screen: SCR-05
+        goal: 방금 등록한 지인으로 첫 모임을 만들고 날짜 후보를 보낸다
+        required: false
+        required_reason: null
+        skip_to: SCR-01
+        creates: [ENT-03, ENT-04]
+        resolves_empty_state: SCR-04
+        # 첫 가치 도달 단계. 여기까지 오지 않으면 온보딩 미완료로 본다 (completion.criteria).
+    completion:
+      criteria: ENT-06 계정 존재 AND ENT-01 지인 1명 이상 AND ENT-03 모임 1건 이상 (ST-01 도달). ENT-07.wedding_date는 완료 조건이 아니다 (미정 허용, POL-25)
+      re_entry: 마지막으로 마친 단계의 다음 단계부터. 홈(SCR-01)의 빈 상태가 "다음 할 일"로 미완 단계를 가리킨다 — 처음부터 다시 시키지 않는다 (POL-26)
+      reminder: POL-28 — 가입 후 3일 내 지인 0명이면 1회. 채널은 TBD
+    exceptions:
+      - condition: 결혼 예정일을 아직 못 정함
+        handling: SCR-11에서 결혼 예정일을 비워두고 진행 허용 (ENT-07.wedding_date required:false). 긴급 판정(POL-05)은 "결혼일 미정"이면 동작하지 않고, SCR-07 조망은 기준일 없이 표시한다. SCR-10에서 나중에 입력하도록 유도 (POL-25)
+      - condition: 배우자가 이미 커플을 만들어 둔 상태에서 초대 코드 없이 새 커플로 가입함
+        handling: 커플이 둘로 갈라진다. SCR-10에서 초대 코드를 입력하면 지인·모임이 없는 빈 커플을 버리고 배우자 커플로 합류(FLW-03). 이미 지인·모임이 있으면 합류를 거부하고 사유를 안내 (POL-25)
+      - condition: 가입 직후 이탈했다가 지인 0명으로 돌아옴
+        handling: SCR-01 빈 상태(RISK-07)에서 SCR-02.1로 바로 유도. 리마인드는 POL-28, 재진입 규칙은 POL-26
+
+  - id: ONB-02
+    name: 초대 코드로 합류하는 배우자의 시작
+    role: ROLE-02
+    entry: 배우자가 SCR-10에서 발급해 보낸 초대 코드/링크 (문자·카카오 등)
+    entry_state: shared
+    first_value:
+      screen: SCR-07
+      description: 합류 직후 배우자가 이미 잡아 둔 모임이 전체 조망에 보이는 순간. 빈 화면이 아니라 "이미 진행 중인 우리 일정"으로 시작한다 (RISK-04)
+    steps:
+      - screen: SCR-11
+        goal: 계정을 만들면서 "초대 코드로 합류"를 선택해 배우자의 커플(ENT-07)에 연결한다
+        required: true
+        required_reason: 초대로 들어온 사용자가 새 커플을 만들면 커플이 둘로 갈라져 통합 조망(REQ-10)이 성립하지 않는다. 결혼 예정일은 커플에 이미 있으므로 다시 묻지 않는다
+        skip_to: null
+        creates: [ENT-06]
+        resolves_empty_state: SCR-10
+      - screen: SCR-07
+        goal: 배우자가 만든 모임을 통합 조망에서 확인한다
+        required: false
+        required_reason: null
+        skip_to: SCR-01
+        creates: []
+        resolves_empty_state: null
+        # 배우자가 아직 모임을 하나도 안 만들었으면 SCR-07도 빈 상태다. 그 경우 이 단계는 건너뛰고 SCR-01에서 지인 등록으로 유도한다.
+      - screen: SCR-02.1
+        goal: 자기 쪽 첫 지인을 등록한다
+        required: false
+        required_reason: null
+        skip_to: SCR-01
+        creates: [ENT-01, ENT-02]
+        resolves_empty_state: SCR-02
+        # 배우자 모임을 보는 것만으로 첫 가치는 달성된다. 자기 지인 등록은 유도만 한다.
+    completion:
+      criteria: ENT-06 계정이 배우자와 같은 ENT-07에 연결됨. 지인 등록은 완료 조건이 아니다
+      re_entry: 연결만 되어 있으면 온보딩 완료로 보고 일반 홈(SCR-01)으로 진입. 연결 전 이탈이면 계정이 없으므로 SCR-11부터 다시 (POL-26)
+      reminder: none — 초대한 배우자가 SCR-10의 "미연결" 상태를 보고 직접 재전달한다. 시스템 리마인드를 두면 초대한 쪽과 시스템이 이중으로 재촉하게 된다
+    exceptions:
+      - condition: 초대 코드가 잘못되었거나 이미 사용됨
+        handling: SCR-11에서 오류를 표시하고 재입력 요청. 코드 없이 "새로 시작"으로 빠질 수도 있게 열어 두되, 나중에 SCR-10에서 합류 가능 (POL-08, POL-25)
+      - condition: 초대 코드를 받고도 "새로 시작"으로 가입해 버림 (ONB-01을 탐)
+        handling: SCR-10에서 코드 입력으로 합류 (FLW-03). 빈 커플이면 합류를 허용하고, 지인·모임이 이미 있으면 거부하고 안내 (POL-25)
+
+  - id: ONB-03
+    name: 초대받은 지인의 첫 회신
+    role: ROLE-03
+    entry: 모임 초대 링크 (문자·카카오 등, 모임 생성자가 발송)
+    entry_state: invited
+    first_value:
+      screen: SCR-09
+      description: 날짜 후보에 가능/불가능을 표시하고 제출한 순간. 단체채팅에 일일이 답하는 대신 한 화면에서 끝난다
+    steps:
+      - screen: SCR-08
+        goal: 누가(어느 커플이) 왜 초대했는지 확인하고, 요청이 여럿이면 목록에서 고른다
+        required: false
+        required_reason: null
+        skip_to: SCR-09
+        creates: []
+        resolves_empty_state: SCR-08
+        # 요청이 하나뿐이면 목록을 건너뛰고 SCR-09로 직행한다 (SCR-08 empty 상태와 같은 판단, POL-15 미결에 따라 달라질 수 있음)
+      - screen: SCR-09
+        goal: 날짜 후보별 가능/불가능을 표시하고 제출한다
+        required: true
+        required_reason: 회신 제출이 곧 첫 가치다. 계정 생성·본인 확인 같은 선행 단계를 두지 않는다 (RISK-10, POL-15)
+        skip_to: null
+        creates: [ENT-05]
+        resolves_empty_state: null
+    completion:
+      criteria: 초대된 모임에 ENT-05 회신 1건 이상 제출
+      re_entry: 같은 링크로 재진입하면 기존 회신을 보여주고 마감 전까지 수정 가능 (POL-09). 미제출이면 처음 상태
+      reminder: POL-17 — 마감 24시간 전 미응답자 리마인드. 온보딩 전용 리마인드는 두지 않는다
+    exceptions:
+      - condition: 링크가 만료되었거나 유효하지 않음
+        handling: SCR-08·SCR-09의 error 상태로 안내하고, 초대한 커플에게 재발송을 요청하라는 문구를 둔다 (POL-09)
+      - condition: 회신 마감이 지난 뒤 처음 접속
+        handling: 입력을 막고 확정된 날짜가 있으면 결과만 표시 (RISK-02, POL-09)

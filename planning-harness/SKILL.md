@@ -1,6 +1,6 @@
 ---
 name: planning-harness
-description: PRD·RFP·구두 브리프를 받아 에이전시 납품 수준의 상위 기획 산출물(정의서·역할·IA·플로우·정책·검증표·시드데이터)을 생성하는 하네스. 사용자가 "기획해줘", "IA 짜줘", "화면 설계 전에 구조 잡아줘", "요구사항 정리해줘", "이 PRD로 기획 시작해줘" 등을 요청하면 이 스킬을 사용한다. 도메인 무관 범용 구조이며, 화면설계서(스토리보드) 직전까지를 범위로 한다. 결과물은 다음 단계 디자인·화면설계 하네스가 그대로 입력으로 쓸 수 있는 ID 기반 구조화 문서다.
+description: PRD·RFP·구두 브리프를 받아 에이전시 납품 수준의 상위 기획 산출물(정의서·역할·IA·플로우·온보딩·정책·검증표·시드데이터)과 다음 하네스로 넘길 와이어프레임 입력 패키지를 생성하는 하네스. 사용자가 "기획해줘", "IA 짜줘", "화면 설계 전에 구조 잡아줘", "요구사항 정리해줘", "이 PRD로 기획 시작해줘", "온보딩 경로 잡아줘" 등을 요청하면 이 스킬을 사용한다. 도메인 무관 범용 구조이며, 화면설계서(스토리보드) 직전까지를 범위로 한다. 결과물은 ID 기반 구조화 문서 9종과, 그것을 `wireframe` 스킬 입력 형식(prd·user-flow·ia·constraints)으로 재구성한 패키지다.
 ---
 
 # 상위 기획 하네스
@@ -12,12 +12,15 @@ PRD/RFP/브리프 → **화면설계서 직전까지**의 기획 산출물을 �
 
 | 이 하네스가 한다 | 하지 않는다 (다음 하네스) |
 |---|---|
+| 벤치마킹·레퍼런스 조사 (ui bowl) | 컬러·타이포·레이아웃 디테일 |
 | 문제·스코프 정의 | 화면 레이아웃 |
 | 역할·권한 | 컴포넌트 설계 |
 | 정보구조·엔티티·화면목록 | 컬러·타이포·디자인 시스템 |
 | 유저 플로우·상태 전이 | Figma 파일 생성 |
+| 온보딩 경로 (첫 진입 → 첫 가치) | 코치마크·툴팁·튜토리얼 문구 |
 | 정책(예외·권한·데이터) | 퍼블리싱·개발 |
 | 커버리지 검증 | 클라이언트 제출용 PPT·PDF 렌더링 |
+| 다음 하네스용 입력 패키지 변환 | 와이어프레임·화면 렌더링 자체 |
 
 ## 입력
 
@@ -41,18 +44,24 @@ PRD/RFP/브리프 → **화면설계서 직전까지**의 기획 산출물을 �
 | STEP | 읽을 파일 | 산출물 |
 |---|---|---|
 | 0 | `config/project-profile.template.yaml` | `project-profile.yaml` |
-| 1 | `references/step1-definition.md` | `definition.md`, `users.md` |
+| 1 | `references/step1-definition.md` | `definition.md`(벤치마킹 포함), `users.md` |
 | 2 | `references/step2-ia.md` | `ia.yaml` |
 | 3 | `references/step3-flows.md` | `flows.yaml` |
-| 4 | `references/step4-policy.md` | `policy.md` |
-| 5 | `references/step5-validation.md` | `validation.csv` |
-| 6 | `references/step6-seed.md` | `seed-data.json`, `_handoff.md` |
+| 4 | `references/step4-onboarding.md` | `onboarding.yaml` |
+| 5 | `references/step5-policy.md` | `policy.md` |
+| 6 | `references/step6-validation.md` | `validation.csv` |
+| 7 | `references/step7-seed.md` | `seed-data.json`, `_handoff.md` |
+| 8 | `references/step8-wireframe-input.md` | `{wireframe_input_dir}/` 패키지 5종 |
 
-출력 위치: `{프로젝트명}/01-planning/`
+출력 위치: `{프로젝트명}/01-planning/` (STEP 8 패키지만 `project-profile.yaml`의 `output.wireframe_input_dir`, 기본 `wireframes/input/`)
 
-## STEP 5 검증 루프 (필수)
+STEP 4(온보딩)는 화면(STEP 2)과 플로우(STEP 3)를 첫 진입 순서로 꿰는 스텝이다. 여기서 "온보딩 첫 단계가 참조할 화면이 없다"가 발견되면 STEP 2로 돌아가 화면을 추가하고 다시 온다.
 
-STEP 5는 통과할 때까지 반복한다. LLM 자체 판단만으로 "문제없음"이라고 결론내지 않는다.
+STEP 8(와이어프레임 입력 패키지)은 STEP 1~7이 만든 9종을 다음 하네스인 `wireframe` 스킬이 읽는 형식으로 **변환**하는 스텝이다. 새 정보를 만들지 않고 ID도 다시 매기지 않는다. 다음 단계가 화면 설계가 아니면 건너뛸 수 있다.
+
+## STEP 6 검증 루프 (필수)
+
+STEP 6은 통과할 때까지 반복한다. LLM 자체 판단만으로 "문제없음"이라고 결론내지 않는다.
 
 ```bash
 python scripts/validate_ids.py   {프로젝트명}/01-planning
@@ -60,10 +69,20 @@ python scripts/check_coverage.py {프로젝트명}/01-planning
 ```
 
 - `validate_ids.py` 실패 → 깨진 참조가 있는 스텝으로 되돌아가 수정
-- `check_coverage.py` 실패 → 미커버 요구사항은 STEP 2(화면 추가)·STEP 3(플로우 추가)으로 되돌아감
-- 스크립트 실행 환경이 없으면 `references/step5-validation.md`의 수동 체크리스트를 대신 수행하되, 수동 수행했음을 `_handoff.md`에 명시한다
+- `check_coverage.py` 실패 → 미커버 요구사항은 STEP 2(화면 추가)·STEP 3(플로우 추가)으로, 온보딩 경로 누락·필수 단계 근거 없음은 STEP 4로 되돌아감
+- 스크립트 실행 환경이 없으면 `references/step6-validation.md`의 수동 체크리스트를 대신 수행하되, 수동 수행했음을 `_handoff.md`에 명시한다
 
-되돌아가 수정한 뒤에는 **STEP 5를 처음부터 다시 돌린다.** 부분 재검증은 하지 않는다.
+되돌아가 수정한 뒤에는 **STEP 6을 처음부터 다시 돌린다.** 부분 재검증은 하지 않는다.
+
+## STEP 8 패키지 검사 (필수)
+
+```bash
+python scripts/check_wireframe_input.py {프로젝트명}/01-planning {wireframe_input_dir}
+```
+
+- 파일 5종 존재, 절 제목 보존, `REQ`·`ROLE`·`SCR`·`ONB` 누락 없음, 신규 ID 생성 없음, `RISK-01`~`12` 전부 존재, 자리표시자 잔존 없음을 본다
+- 누락 ID가 상위기획 쪽 오류라면 STEP 8이 아니라 해당 스텝으로 되돌아간다
+- 실행 환경이 없으면 `references/step8-wireframe-input.md`의 자체 점검을 손으로 수행하고, 수동이었음을 `_handoff.md`에 적는다
 
 ## 품질 기준선
 
@@ -75,7 +94,11 @@ python scripts/check_coverage.py {프로젝트명}/01-planning
 작업 종료 시 사용자에게 다음을 요약한다.
 
 1. 생성된 파일 목록과 경로
-2. 화면 수·플로우 수·엔티티 수
-3. `references/risk-patterns.md` 12패턴 중 이 프로젝트에 해당한 것과 대응 화면
-4. 남은 `TBD:` 전체 목록 (클라이언트 확인 필요 사항)
-5. 다음 하네스로 넘어갈 때의 주의점
+2. 화면 수·플로우 수·엔티티 수·온보딩 경로 수
+3. 벤치마킹으로 조사한 서비스 수와 출처 (미수행이면 사유)
+4. `references/risk-patterns.md` 12패턴 중 이 프로젝트에 해당한 것과 대응 화면
+5. 역할별 온보딩 경로(`ONB-`)와 각 경로의 첫 가치 화면, 필수 단계 수
+6. 남은 `TBD:` 전체 목록 (클라이언트 확인 필요 사항)
+7. STEP 8 패키지 경로와 `check_wireframe_input.py` 결과
+8. 다음 하네스 호출 문장 (패키지 `README.md`의 "실행 방법" 그대로)
+9. 다음 하네스로 넘어갈 때의 주의점

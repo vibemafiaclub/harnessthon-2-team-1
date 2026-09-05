@@ -7,19 +7,21 @@ PRD·RFP·구두 브리프를 받아 **에이전시 납품 수준의 상위 기�
 
 ## 무엇을 만드는가
 
-화면설계서(스토리보드) **직전까지**의 기획 문서 8종.
+화면설계서(스토리보드) **직전까지**의 기획 문서 9종. 여기에 다음 하네스로 넘길 입력 패키지(STEP 8)가 더해진다.
 
 | 파일 | 내용 |
 |---|---|
 | `project-profile.yaml` | 프로젝트 설정 (사람이 작성) |
-| `definition.md` | 배경·목표·스코프·요구사항 |
+| `definition.md` | 배경·목표·벤치마킹·스코프·요구사항 |
 | `users.md` | 역할·권한·진입 경로 |
 | `ia.yaml` | 엔티티·화면목록·내비게이션 |
 | `flows.yaml` | 상태 전이·유저 플로우 |
+| `onboarding.yaml` | 역할별 온보딩 경로 (첫 진입 → 첫 가치) |
 | `policy.md` | 권한·예외·데이터·알림 정책 |
 | `validation.csv` | 요구사항 커버리지·리스크 판정 |
 | `seed-data.json` | 더미 데이터 |
 | `_handoff.md` | 다음 단계 인계 요약 |
+| `wireframes/input/` | STEP 8 — `wireframe` 스킬이 그대로 읽는 입력 패키지 5종 |
 
 레이아웃·컴포넌트·컬러·타이포는 만들지 않는다. 그건 다음 하네스의 몫이다.
 
@@ -38,7 +40,7 @@ ID 참조 무결성과 요구사항 커버리지는 스크립트로 검사한다
 
 ```
 planning-harness/
-├── SKILL.md              진입점 — 6스텝 라우팅
+├── SKILL.md              진입점 — 8스텝 라우팅
 ├── config/               프로젝트 프로필 템플릿
 ├── references/           스텝별 지침 (스텝 진입 시에만 로드)
 ├── templates/            산출물 뼈대
@@ -67,6 +69,7 @@ planning-harness/
 python scripts/validate_ids.py   wedding-scheduler/01-planning
 python scripts/check_coverage.py wedding-scheduler/01-planning
 python scripts/gen_seed.py       wedding-scheduler/01-planning
+python scripts/check_wireframe_input.py wedding-scheduler/01-planning wireframes/input
 ```
 
 표준 라이브러리만 쓴다. `gen_seed.py`는 PyYAML이 있으면 더 정확하게 파싱한다 (`pip install pyyaml`, 없어도 동작).
@@ -77,19 +80,25 @@ python scripts/gen_seed.py       wedding-scheduler/01-planning
 bash tests/run_tests.sh
 ```
 
-## 6스텝
+## 8스텝
 
 ```
 STEP 0  프로필 작성      → project-profile.yaml
-STEP 1  정의·역할        → definition.md, users.md
+STEP 1  벤치마킹·정의·역할 → definition.md, users.md  (ui bowl로 유사 서비스 먼저 훑는다)
 STEP 2  정보구조         → ia.yaml          (엔티티 먼저, 화면은 나중)
 STEP 3  플로우·상태      → flows.yaml       (상태 먼저, 플로우는 나중)
-STEP 4  정책             → policy.md
-STEP 5  검증  ←──┐      → validation.csv   (실패 시 2~4로 되돌아감)
-STEP 6  시드·인계 ─┘     → seed-data.json, _handoff.md
+STEP 4  온보딩           → onboarding.yaml  (첫 가치 먼저, 단계는 나중)
+STEP 5  정책             → policy.md
+STEP 6  검증  ←──┐      → validation.csv   (실패 시 2~5로 되돌아감)
+STEP 7  시드·인계 ─┘     → seed-data.json, _handoff.md
+STEP 8  입력 패키지      → wireframes/input/  (다음 하네스가 읽는 형식으로 변환)
 ```
 
-STEP 5가 이 하네스의 핵심이다. 통과할 때까지 반복하는 구조라서, 여기가 느슨하면 나머지가 다 무의미해진다.
+STEP 6이 이 하네스의 핵심이다. 통과할 때까지 반복하는 구조라서, 여기가 느슨하면 나머지가 다 무의미해진다.
+
+STEP 4(온보딩)는 화면과 플로우를 **첫 진입 순서로 꿰는** 스텝이다. 회원가입과 홈 사이 — 데이터가 하나도 없는 사용자가 무엇을 어떤 순서로 하게 되는지 — 를 역할별로 확정한다. 튜토리얼 문구를 쓰는 곳이 아니라, "어느 화면에서 어떤 데이터를 만들게 해야 첫 가치에 닿는가"를 정하는 곳이다. → `references/step4-onboarding.md`
+
+STEP 8(입력 패키지)은 다음 하네스인 `wireframe` 스킬이 요구하는 입력 형식으로 STEP 1~7 산출물을 **변환**하는 스텝이다. 9종 문서는 상위기획팀이 읽는 형식이고, 화면설계 하네스는 PRD·User Flow·IA·제약사항 네 덩어리를 요구한다. 이 간극을 사람이 매번 손으로 메우면 그때마다 다르게 메워진다. 새 정보를 만들지 않고 ID도 다시 매기지 않으며, 빠뜨린 것이 있으면 `check_wireframe_input.py`가 잡는다. → `references/step8-wireframe-input.md`
 
 ---
 
@@ -148,5 +157,6 @@ git push -u origin test/소현  # 첫 push만 -u origin {브랜치명} 을 붙�
 
 - [ ] `examples/wedding-scheduler/output/` 완주본 채우기 (품질 기준선)
 - [ ] 다른 도메인 1건으로 범용성 검증 (커머스 또는 예약 권장)
+- [ ] STEP 4 온보딩을 공동 소유(RISK-04)가 없는 도메인에서 돌려 `entry_state: shared` 없이도 자연스러운지 확인
 - [ ] `check_coverage.py`의 목록 화면 판정이 한국어 화면명 키워드 매칭이라 거칠다 — 개선 필요
 - [ ] 클라이언트 제출용 PPT·PDF 렌더링은 별도 하네스로 분리 예정

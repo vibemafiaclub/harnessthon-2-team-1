@@ -1,0 +1,5 @@
+screens:
+  - id: SCR-01
+    name: 목록
+  - id: SCR-02
+    name: 등록

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "onboarding.yaml",
+  "type": "object",
+  "required": ["paths"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": { "project": { "type": "string" }, "updated": { "type": "string" } }
+    },
+    "paths": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "role", "entry", "entry_state", "first_value", "steps", "completion", "exceptions"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ONB-\\d{2,3}$" },
+          "name": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "pattern": "^ROLE-\\d{2,3}$" },
+          "entry": { "type": "string", "minLength": 1 },
+          "entry_state": { "enum": ["empty", "shared", "invited"] },
+          "first_value": {
+            "type": "object",
+            "required": ["screen", "description"],
+            "properties": {
+              "screen": { "type": "string", "pattern": "^SCR-\\d{2,3}(\\.\\d+)?$" },
+              "description": { "type": "string", "minLength": 1 }
+            }
+          },
+          "steps": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["screen", "goal", "required"],
+              "properties": {
+                "screen": { "type": "string", "pattern": "^SCR-\\d{2,3}(\\.\\d+)?$" },
+                "goal": { "type": "string", "minLength": 1 },
+                "required": { "type": "boolean" },
+                "required_reason": { "type": ["string", "null"] },
+                "skip_to": { "type": ["string", "null"], "pattern": "^SCR-\\d{2,3}(\\.\\d+)?$" },
+                "creates": { "type": "array", "items": { "type": "string", "pattern": "^ENT-\\d{2,3}$" } },
+                "resolves_empty_state": { "type": ["string", "null"], "pattern": "^SCR-\\d{2,3}(\\.\\d+)?$" }
+              },
+              "if": { "properties": { "required": { "const": true } } },
+              "then": { "required": ["required_reason"], "properties": { "required_reason": { "type": "string", "minLength": 1 } } },
+              "else": { "required": ["skip_to"], "properties": { "skip_to": { "type": "string" } } }
+            }
+          },
+          "completion": {
+            "type": "object",
+            "required": ["criteria", "re_entry", "reminder"],
+            "properties": {
+              "criteria": { "type": "string", "minLength": 1 },
+              "re_entry": { "type": "string", "minLength": 1 },
+              "reminder": { "type": "string", "minLength": 1 }
+            }
+          },
+          "exceptions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["condition", "handling"],
+              "properties": {
+                "condition": { "type": "string" },
+                "handling": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

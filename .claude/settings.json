@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_uibowl__search_ui_patterns",
+      "mcp__claude_ai_uibowl__search_by_ocr_text",
+      "mcp__claude_ai_uibowl__search_components",
+      "mcp__claude_ai_uibowl__filter_by_app",
+      "WebFetch(domain:uibowl.io)",
+      "WebSearch",
+      "Bash(claude mcp *)",
+      "Bash(python3 planning-harness/scripts/validate_ids.py *)",
+      "Bash(python3 planning-harness/scripts/check_coverage.py *)",
+      "Bash(python3 planning-harness/scripts/gen_seed.py *)",
+      "Bash(python3 planning-harness/scripts/check_wireframe_input.py *)",
+      "Bash(bash planning-harness/tests/run_tests.sh)"
+    ]
+  }
+}

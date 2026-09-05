@@ -1,5 +1,6 @@
 type,id,description,covered_by_screen,covered_by_flow,policy,status,note
 REQ,REQ-01,,,,,gap,
+ONB,ONB-01,,,,,gap,
 RISK,RISK-01,다대다 귀속 모호성,,,,,
 RISK,RISK-02,응답 타임아웃 / 마감,,,,,
 RISK,RISK-03,리소스 충돌,,,,,
