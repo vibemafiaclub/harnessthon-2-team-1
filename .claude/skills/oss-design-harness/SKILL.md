@@ -109,7 +109,7 @@ description: PRD나 서비스 설명을 받아 IA·와이어프레임을 거쳐 
 | A7  | Variant 상태 커버리지 | 와이어프레임 `## 상태`에 적힌 상태마다 프레임 존재 여부                                                                                                                   | 전부 존재 (empty 필수, selected/error 해당 시)                                         |
 | A8  | 터치 타깃             | 탭 가능 컴포넌트(button-*, list-row, status-chip, tab) 높이 < 44 개수                                                                                                     | 0 (chip 32 허용)                                                                       |
 | A9  | 그림자                | effect 있는 노드 중 `effect/product-shadow` 외 개수                                                                                                                       | 0                                                                                      |
-| A10 | 와이어 대조           | 와이어 레이아웃 스택 행 수 vs 실제 최상위 블록 수, 누락 블록 이름                                                                                                         | 누락 0                                                                                 |
+| A10 | 와이어 대조           | 와이어프레임 "레이아웃 트리" 절의 형제 노드·`comp` 키 수 vs 실제 최상위 블록·컴포넌트 수, 누락/추가 블록 이름                                                             | 누락·추가 0                                                                            |
 | A11 | 상태바 필수           | 프레임(상태 프레임 포함)마다 `status-bar` 인스턴스 개수(`mobile-header` 내장 + standalone 합산), `y 0`·높이 47, 배경에 맞는 `theme`, 자체 드로잉 개수, 스크린샷 가시 여부 | 합산 정확히 1 · 자체 드로잉 0 · 가시 (design.md A-1-1). 누락·중복·비가시는 `FIX-LOCAL` |
 
 ## C단계 — 미적·게슈탈트 판단 (04-reviewer)

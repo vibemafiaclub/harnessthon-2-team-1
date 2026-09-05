@@ -73,10 +73,21 @@ C. ... — A와 무엇이 다른지 한 줄
 
 ## 트리거
 
-- "PRD로 시작", "하네스 돌려", "{파일}로 디자인 만들어" → 파이프라인 처음부터
+- `/oss-design-harness` 슬래시 실행(스킬만 로드하고 PRD를 안 준 경우 포함), "PRD로 시작", "하네스 돌려", "{파일}로 디자인 만들어" → 파이프라인 처음부터. PRD가 지정되지 않았으면 `청첩장모임-스케줄러-PRD.md`(기본값, `docs/`에 있으면 그 경로)를 쓰고, 그 사실을 첫 응답에서 한 줄로 알린다.
 - "{screen-id} 다시" → 03→04 해당 화면만
 - "리뷰만" → 04만
 - "Foundations만" → 03 Foundations 모드만
+
+### 파이프라인 처음부터 실행할 때 (오케스트레이터가 직접 하는 일)
+
+1. `work/`에 이전 실행의 산출물이 남아 있으면(특히 `work/brief.md`, `work/ia.md`) 사용자에게 "이어서 할지 새로 시작할지" 묻는다(auto 모드면 새로 시작 + 기존 `work/`를 `work-{타임스탬프}/`로 이동).
+2. `Agent(subagent_type: "01-planner")`를 호출해 PRD 경로를 넘긴다. 반환된 파일 경로와 게이트 1 질문을 그대로 사람에게 보여준다.
+3. 게이트 1 응답을 받으면(또는 auto/추천안 자동 선택), `Agent(subagent_type: "02-wireframer")`를 호출한다. 반환된 파일 경로와 게이트 2 질문을 보여준다.
+4. 게이트 2 응답을 받으면, `Agent(subagent_type: "03-figma-builder")`를 **Foundations 모드**로 1회 호출한다. 반환된 스크린샷과 게이트 3 질문을 보여준다.
+5. 게이트 3 응답을 받으면, `work/wireframes/_index.md`의 화면 목록을 순서대로 돌며 화면마다 `Agent(subagent_type: "03-figma-builder")`(Screen 모드, screen-id 지정) → `Agent(subagent_type: "04-reviewer")`를 호출한다. 04의 판정에 따라 위 파이프라인 다이어그램의 라우팅(FIX-LOCAL/REDIRECT-B/ESCALATE-0)을 그대로 따른다.
+6. 전 화면이 `reviewed-pass`가 되면 최종 보고(Figma 링크 + `work/reviews/` 요약)를 한다.
+
+오케스트레이터가 이 단계들 사이에서 스스로 `use_figma`나 `get_screenshot`을 호출하지 않는다 — 파일 경로와 게이트 질문만 사람과 주고받고, 실행은 전부 서브에이전트에 위임한다.
 
 ## 입력이 "패턴 Figma" 대신 "디자인 시스템 문서"(design.md 등)인 경우
 
@@ -90,7 +101,7 @@ C. ... — A와 무엇이 다른지 한 줄
 | 에이전트          | 파일                                   | 역할                                                       |
 | ----------------- | -------------------------------------- | ------------------------------------------------------------ |
 | 01-planner        | `.claude/agents/01-planner.md`         | 0단계 가정·판단기준 + IA/상위기획, 대안 2~3개               |
-| 02-wireframer     | `.claude/agents/02-wireframer.md`      | 화면별 와이어프레임 스펙 + 목데이터                         |
+| 02-wireframer     | `.claude/agents/02-wireframer.md`      | 화면별 와이어프레임 스펙 + 목데이터 (`wireframe` 스킬의 표기법·절차 차용) |
 | 03-figma-builder  | `.claude/agents/03-figma-builder.md`   | Foundations(변수·스타일·컴포넌트) 및 화면을 `use_figma`로 생성 |
 | 04-reviewer       | `.claude/agents/04-reviewer.md`        | A(구조 검증) + C(스크린샷 심미 검증) + 라우팅               |
 | pattern-extractor | `.claude/agents/pattern-extractor.md`  | (필요 시 01이 위임) 소스 Figma 패턴 F1·F2 진단, 읽기 전용   |
@@ -98,3 +109,5 @@ C. ... — A와 무엇이 다른지 한 줄
 | design-critic     | `.claude/agents/design-critic.md`      | (필요 시 04가 위임) C단계 Codex 폴백                        |
 
 판단 기준 체크리스트 원본: `.claude/skills/oss-design-harness/SKILL.md`. 04-reviewer는 이 파일을 읽고 검사한다.
+
+02-wireframer는 와이어프레임 작성 절차와 표기법을 `wireframe` 스킬(`.claude/skills/wireframe/SKILL.md`)에서 그대로 차용한다 — 색·타이포 토큰만 `wireframe` 스킬의 고정값 대신 `design.md` 토큰으로 바꿔 쓴다. 두 문서가 충돌하면 색·타이포는 `design.md` > `wireframe` 스킬, 그 외 표기법·작업 순서는 `wireframe` 스킬이 원본이다.
