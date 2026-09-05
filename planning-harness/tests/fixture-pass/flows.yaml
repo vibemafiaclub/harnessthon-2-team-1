@@ -1,0 +1,35 @@
+states:
+  entity: ENT-01
+  nodes:
+    - id: ST-01
+      name: 대기
+  transitions:
+    - from: ST-01
+      to: ST-01
+      trigger: x
+      trigger_type: user
+      actor: ROLE-01
+      screen: SCR-01
+flows:
+  - id: FLW-01
+    name: 지인 등록
+    role: ROLE-01
+    trigger: 최초 진입
+    steps:
+      - screen: SCR-01
+        action: 등록
+    outcome: 완료
+    exceptions:
+      - condition: 중복
+        handling: POL-01
+  - id: FLW-02
+    name: 지인 회신
+    role: ROLE-02
+    trigger: 초대 링크 수신
+    steps:
+      - screen: SCR-09
+        action: 회신
+    outcome: 완료
+    exceptions:
+      - condition: 마감 초과
+        handling: POL-01

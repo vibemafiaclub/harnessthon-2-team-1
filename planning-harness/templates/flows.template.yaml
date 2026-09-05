@@ -1,0 +1,47 @@
+# 플로우와 상태 — 상태를 먼저 정의하고 플로우를 그린다
+
+meta:
+  project: ""
+  updated: ""
+
+# ─────────────────────────────────────────
+# 1. 상태
+# ─────────────────────────────────────────
+states:
+  entity: ENT-01            # 어느 엔티티의 상태인가
+  nodes:
+    - id: ST-01
+      name: ""
+      description: ""
+      is_terminal: false
+  transitions:
+    - from: ST-01
+      to: ST-02
+      trigger: ""           # 사용자 행동 / 시간 경과 / 외부 이벤트
+      trigger_type: user    # user / time / system
+      actor: ROLE-01
+      screen: SCR-01
+      notify: []            # 이 전이로 알림을 받는 역할 (RISK-11)
+      note: ""
+
+# 검토 필수 전이 (해당 없으면 none 으로 명시)
+# - time_based:  시간 경과 전이 (RISK-02)
+# - reverse:     취소·되돌리기 (RISK-09)
+# - bypass:      우회 경로 (RISK-05)
+
+# ─────────────────────────────────────────
+# 2. 플로우
+# ─────────────────────────────────────────
+flows:
+  - id: FLW-01
+    name: ""
+    role: ROLE-01
+    trigger: ""             # 어떤 상황에서 시작되는가
+    steps:
+      - screen: SCR-01
+        action: ""
+        result: ""          # 상태 전이가 있으면 ST- 표기
+    outcome: ""             # 정상 종료 시 결과
+    exceptions:             # 비워두지 않는다
+      - condition: ""
+        handling: ""        # SCR- 와 POL- 참조

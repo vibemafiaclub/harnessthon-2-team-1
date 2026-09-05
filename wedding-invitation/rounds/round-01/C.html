@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DOHYUN & SEOYUN — The Wedding Issue</title>
+<meta property="og:title" content="김도현 ♥ 이서윤 결혼합니다">
+<meta property="og:description" content="2026년 11월 14일 토요일 낮 12시 30분 · 더채플앳청담">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --off:#f1efe9; --black:#101010; --red:#c1272d; --gray:#8c8c8c; --gray-2:#c9c6be; --white:#ffffff;
+  --display:"Bodoni Moda","Noto Serif KR",serif; --kr:"Noto Serif KR",serif; --sans:"Pretendard Variable",Pretendard,-apple-system,sans-serif;
+  --pad:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:#d9d7d0;color:var(--black);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:anywhere}
+body.lock{overflow:hidden}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:0}
+a{color:inherit;text-decoration:none}
+input,textarea{border-radius:0}
+.phone{position:relative;max-width:390px;margin:0 auto;background:var(--off);min-height:100vh;box-shadow:0 0 0 1px rgba(0,0,0,.08);overflow:hidden}
+
+/* ---------- opening ---------- */
+.opening{position:fixed;inset:0;z-index:100;background:var(--black);overflow:hidden}
+.opening.out{display:none}
+.op-num{position:absolute;font-family:var(--display);font-weight:700;font-size:176px;line-height:.8;color:var(--red)}
+.op-num.l{left:7%;top:50%;transform:translateY(-104%);clip-path:inset(0 100% 0 0);animation:clipL 1s cubic-bezier(.7,0,.2,1) .2s forwards}
+.op-num.r{right:7%;top:50%;transform:translateY(8%);clip-path:inset(0 0 0 100%);animation:clipR 1s cubic-bezier(.7,0,.2,1) .5s forwards}
+@keyframes clipL{to{clip-path:inset(0 0 0 0)}}
+@keyframes clipR{to{clip-path:inset(0 0 0 0)}}
+.op-rule{position:absolute;left:50%;top:50%;height:1px;width:0;background:var(--off);transform:translate(-50%,0);animation:rule .7s cubic-bezier(.7,0,.2,1) 1.4s forwards}
+@keyframes rule{to{width:calc(100% - 48px)}}
+.op-cap{position:absolute;left:0;right:0;bottom:36px;text-align:center;font-family:var(--sans);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gray);opacity:0;animation:capIn .5s ease 1.7s forwards}
+.op-cap2{position:absolute;left:0;right:0;top:34px;text-align:center;font-family:var(--display);font-style:italic;font-size:13px;letter-spacing:.06em;color:var(--off);opacity:0;animation:capIn .5s ease 1.6s forwards}
+@keyframes capIn{to{opacity:1}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* ---------- helpers ---------- */
+section{padding:56px var(--pad) 64px;position:relative}
+.sh{border-top:1px solid var(--black);padding-top:12px;margin-bottom:30px;display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-items:end}
+.sh .no{font-family:var(--display);font-weight:400;font-size:52px;line-height:.85;color:var(--red);grid-row:1/3}
+.sh .lab{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gray);align-self:start;padding-top:2px}
+.sh h2{font-family:var(--kr);font-weight:700;font-size:22px;line-height:1.25;letter-spacing:-.01em}
+.rule{height:1px;background:var(--black)}
+.small{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray)}
+
+/* ---------- cover ---------- */
+.cover{padding:0;height:100vh;height:100svh;min-height:640px;max-height:900px;display:flex;flex-direction:column;position:relative;color:var(--white);background:var(--black)}
+.cover .mast{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:0 var(--pad);height:44px;background:var(--off);color:var(--black);font-size:10px;letter-spacing:.26em;text-transform:uppercase;border-bottom:1px solid var(--black)}
+.cover .mast b{font-family:var(--display);font-weight:700;letter-spacing:.06em;font-size:13px}
+.cover .photo{position:absolute;left:0;right:0;top:44px;bottom:0;overflow:hidden}
+.cover .photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:contrast(1.08) saturate(.9);transform:scale(1.06);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
+body.ready .cover .photo img{transform:scale(1)}
+.cover .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 78%,rgba(0,0,0,.72) 100%)}
+.cover .body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:30px var(--pad) 34px}
+.cover .big{font-family:var(--display);font-weight:500;font-size:64px;line-height:.9;letter-spacing:-.01em;text-transform:uppercase}
+.cover .big em{display:block;font-style:italic;font-weight:400;color:var(--red);font-size:.75em;line-height:1.1;margin:8px 0 6px 4px;text-transform:none}
+.cover .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:34px}
+.cover .foot>div:first-child{flex:1;min-width:0}
+.cover .kr{font-family:var(--kr);font-weight:700;font-size:16px;letter-spacing:.12em}
+.cover .dt{font-family:var(--display);font-style:italic;font-size:15px;margin-top:6px;color:rgba(255,255,255,.85)}
+.badge{width:96px;height:96px;position:relative;flex:0 0 auto;margin-bottom:-4px}
+.badge svg{width:100%;height:100%;animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.badge b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:26px;color:var(--white)}
+.cover .idx{position:relative;z-index:2;background:var(--off);color:var(--black);border-top:1px solid var(--black);display:grid;grid-template-columns:1fr 1fr 1fr;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+.cover .idx div{padding:10px var(--pad);border-left:1px solid var(--black)}
+.cover .idx div:first-child{border-left:0}
+.cover .idx b{display:block;font-family:var(--display);font-size:14px;letter-spacing:0;font-weight:500;text-transform:none}
+
+/* ---------- greeting ---------- */
+.greeting .pull{font-family:var(--display);font-style:italic;font-weight:400;font-size:27px;line-height:1.2;letter-spacing:-.005em;margin-bottom:30px}
+.greeting .pull span{color:var(--red)}
+.greeting .body{font-size:15px;line-height:2.05;white-space:pre-line;color:#2a2a2a}
+.parents{margin-top:36px;border-top:1px solid var(--black)}
+.parents div{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--black)}
+.parents .p{font-family:var(--kr);font-size:14.5px}
+.parents .rel{font-size:11px;letter-spacing:.06em;color:var(--gray);margin-left:8px}
+.parents .n{font-family:var(--kr);font-weight:700;font-size:17px}
+
+/* ---------- couple ---------- */
+.couple .person{display:grid;grid-template-columns:70% 1fr;gap:14px;align-items:end;margin-bottom:36px}
+.couple .person.bride{grid-template-columns:1fr 70%}
+.couple .person.bride figure{order:2}
+.couple figure{aspect-ratio:3/4;overflow:hidden;background:var(--gray-2)}
+.couple figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12)}
+.couple .txt{padding-bottom:4px}
+.couple .role{font-family:var(--display);font-style:italic;font-size:13px;color:var(--red)}
+.couple .nm{font-family:var(--kr);font-weight:700;font-size:22px;line-height:1.1;margin:4px 0 10px}
+.couple .en{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gray)}
+.couple .ct{display:flex;gap:12px;margin-top:12px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
+.couple .ct a{border-bottom:1px solid var(--black);padding-bottom:2px}
+.couple .in{font-size:13px;line-height:1.75;color:#2a2a2a;padding-top:14px;border-top:1px solid var(--black);margin-top:-22px}
+.couple .bride .in{text-align:right}
+
+/* ---------- date ---------- */
+.date .hero{display:flex;align-items:flex-end;gap:10px;margin-bottom:6px}
+.date .hero b{font-family:var(--display);font-weight:700;font-size:184px;line-height:.78;letter-spacing:-.04em;color:var(--red)}
+.date .hero .m{font-family:var(--display);font-style:italic;font-size:34px;line-height:1;padding-bottom:10px}
+.date .hero .m small{display:block;font-family:var(--sans);font-style:normal;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gray);margin-bottom:6px}
+.date .line{border-top:1px solid var(--black);border-bottom:1px solid var(--black);padding:12px 0;display:flex;justify-content:space-between;font-family:var(--kr);font-size:14px}
+.date .line b{font-weight:700}
+.cal{margin-top:26px;border:1px solid var(--black)}
+.cal .wd,.cal .days{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal .wd span{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:9px 0;text-align:center;border-bottom:1px solid var(--black);color:var(--gray)}
+.cal .wd span:first-child{color:var(--red)}
+.cal .days span{font-family:var(--display);font-size:16px;font-weight:500;height:44px;display:grid;place-items:center;border-right:1px solid var(--gray-2);border-bottom:1px solid var(--gray-2)}
+.cal .days span:nth-child(7n){border-right:0}
+.cal .days span:nth-child(7n+1){color:var(--red)}
+.cal .days span.on{background:var(--black);color:var(--white);font-weight:700}
+.cnt{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--black)}
+.cnt div{padding:14px 0 10px;border-right:1px solid var(--black);text-align:center}
+.cnt div:last-child{border-right:0}
+.cnt b{display:block;font-family:var(--display);font-weight:500;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.cnt small{display:block;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--gray);margin-top:8px}
+.date p.dl{margin-top:16px;font-size:13.5px;color:#2a2a2a}
+.date p.dl b{font-family:var(--display);font-weight:700;font-size:18px;color:var(--red);margin:0 2px}
+
+/* ---------- gallery ---------- */
+.gallery{padding-left:0;padding-right:0}
+.gallery .sh{margin-left:var(--pad);margin-right:var(--pad)}
+.fig{position:relative;cursor:zoom-in;overflow:hidden;background:var(--gray-2)}
+.fig img{width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(.88);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.fig:hover img{transform:scale(1.03)}
+.fig .cap{position:absolute;left:var(--pad);bottom:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--white);background:var(--black);padding:5px 9px 4px;line-height:1.3}
+.fig .cap i{font-family:var(--display);font-style:italic;text-transform:none;letter-spacing:0;font-size:12px;margin-right:6px}
+.g-full{aspect-ratio:3/4}
+.g-two{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0}
+.g-two .fig{aspect-ratio:1}
+.g-two .fig .cap{left:8px;bottom:8px;font-size:8.5px;padding:4px 7px 3px}
+.g-wide{aspect-ratio:4/3}
+.marq{overflow:hidden;border-top:1px solid var(--black);border-bottom:1px solid var(--black);padding:10px 0;margin:6px 0;white-space:nowrap}
+.marq div{display:inline-block;font-family:var(--display);font-style:italic;font-size:20px;letter-spacing:.02em;animation:marq 22s linear infinite}
+.marq span{margin:0 18px}
+.marq em{font-style:normal;color:var(--red)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- location ---------- */
+.venue{margin-bottom:22px}
+.venue .nm{font-family:var(--kr);font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.02em}
+.venue .hall{font-family:var(--display);font-style:italic;font-size:15px;color:var(--red);margin-top:4px}
+.venue .addr{font-size:13.5px;margin-top:14px;color:#2a2a2a}
+.venue .tel{font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--black);display:inline-block;margin-top:6px}
+.map{aspect-ratio:4/3;border:1px solid var(--black);background:var(--off);position:relative;overflow:hidden}
+.map svg{width:100%;height:100%;display:block}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px;background:var(--black);color:var(--white)}
+.nav button{height:52px;font-size:12.5px;letter-spacing:.08em;border-left:1px solid var(--off);transition:.2s}
+.nav button:first-child{border-left:0}
+.nav button:active{background:var(--red)}
+.trans{margin-top:32px;border-top:1px solid var(--black)}
+.trans div{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--black)}
+.trans dt{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+.trans dd{font-size:13.5px;line-height:1.7;color:#2a2a2a}
+
+/* ---------- gift ---------- */
+.gift .lead{font-size:14px;line-height:1.95;color:#2a2a2a;margin-bottom:28px}
+.acc{border-top:1px solid var(--black)}
+.acc .hd{width:100%;display:flex;justify-content:space-between;align-items:center;height:56px;border-bottom:1px solid var(--black);text-align:left}
+.acc .hd span{font-family:var(--kr);font-weight:700;font-size:15px}
+.acc .hd i{font-style:normal;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray)}
+.acc.open .hd i{color:var(--red)}
+.acc .bd{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1)}
+.acc.open .bd{max-height:420px}
+.acc .row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-2)}
+.acc .row:last-child{border-bottom:1px solid var(--black)}
+.acc .who{font-size:11px;letter-spacing:.06em;color:var(--gray)}
+.acc .num{font-family:var(--display);font-weight:500;font-size:16px;letter-spacing:.02em;margin-top:2px}
+.acc .num small{font-family:var(--sans);font-size:12.5px;color:#2a2a2a;margin-right:8px;font-weight:400}
+.acc .btns{display:flex;gap:10px;align-items:center}
+.acc .cp{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--black);padding-bottom:2px;transition:.2s}
+.acc .cp:active{color:var(--red);border-color:var(--red)}
+.acc .kp{font-size:10px;letter-spacing:.1em;padding:4px 8px;background:#f7e600;color:#1a1a1a;font-weight:600}
+
+/* ---------- rsvp ---------- */
+.rsvp{background:var(--black);color:var(--white);padding-top:56px;padding-bottom:64px}
+.rsvp .sh{border-top-color:var(--white)}
+.rsvp .sh .lab{color:rgba(255,255,255,.6)}
+.rsvp .lead{font-size:14px;line-height:1.95;color:rgba(255,255,255,.8)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 24px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;width:100%;transition:.2s}
+.btn.white{background:var(--white);color:var(--black)}
+.btn.white:active{background:var(--red);color:var(--white)}
+.btn.black{background:var(--black);color:var(--white)}
+.btn.black:active{background:var(--red)}
+.btn.line{border:1px solid var(--black)}
+.btn.line:active{background:var(--black);color:var(--white)}
+.rsvp .btn{margin-top:30px}
+.rsvp .btn span{font-family:var(--display);font-style:italic;text-transform:none;letter-spacing:0;font-size:16px;margin-left:10px}
+
+/* ---------- guestbook ---------- */
+.gb .list{border-top:1px solid var(--black)}
+.gb .it{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--black)}
+.gb .no{font-family:var(--display);font-style:italic;font-size:14px;color:var(--red);padding-top:2px}
+.gb .msg{font-size:14px;line-height:1.85;color:#2a2a2a}
+.gb .by{margin-top:8px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.gb .by b{font-family:var(--kr);font-weight:700;font-size:13px;letter-spacing:0;color:var(--black);margin-right:10px}
+.gb .empty{text-align:center;padding:36px 0;border-bottom:1px solid var(--black);color:var(--gray);font-size:14px}
+.gb form{margin-top:30px;display:grid;gap:18px}
+.ul{border:0;border-bottom:1px solid var(--black);background:transparent;padding:10px 0;font:inherit;font-size:15px;color:var(--black);width:100%;outline:none;transition:border-color .2s}
+.ul::placeholder{color:var(--gray)}
+.ul:focus{border-bottom-width:2px}
+textarea.ul{height:96px;resize:none;line-height:1.6}
+.gb .btn{margin-top:8px}
+
+/* ---------- notice / footer ---------- */
+.notice ol{list-style:none;border-top:1px solid var(--black)}
+.notice li{display:grid;grid-template-columns:36px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--black);font-size:13.5px;line-height:1.7;color:#2a2a2a}
+.notice li i{font-family:var(--display);font-style:italic;color:var(--red);font-size:14px}
+.share{display:grid;gap:8px;margin-top:34px}
+footer{padding:36px var(--pad) 48px;border-top:1px solid var(--black)}
+footer .colo{font-size:11px;line-height:1.9;color:var(--gray);letter-spacing:.02em}
+footer .colo b{color:var(--black);font-weight:600}
+footer .mark{margin-top:26px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--black);padding-top:14px}
+footer .mark .t{font-family:var(--display);font-weight:700;font-size:22px;line-height:1;text-transform:uppercase}
+footer .mark .t em{font-style:italic;font-weight:400;color:var(--red)}
+footer .mark .n{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gray);text-align:right}
+
+/* ---------- overlays ---------- */
+.fixedc{position:fixed;left:50%;transform:translateX(-50%);width:100%;max-width:390px}
+.toast{bottom:36px;z-index:90;display:flex;justify-content:center;pointer-events:none}
+.toast span{background:var(--black);color:var(--white);font-size:11.5px;letter-spacing:.1em;padding:12px 20px;opacity:0;transform:translateY(8px);transition:.3s;border:1px solid var(--off)}
+.toast.show span{opacity:1;transform:none}
+.dim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:80;opacity:0;visibility:hidden;transition:.3s}
+.dim.show{opacity:1;visibility:visible}
+.sheet{bottom:0;z-index:85;background:var(--black);color:var(--white);padding:24px var(--pad) calc(26px + env(safe-area-inset-bottom));transform:translate(-50%,105%);transition:transform .45s cubic-bezier(.2,.8,.2,1);border-top:1px solid var(--off)}
+.sheet.show{transform:translate(-50%,0)}
+.sheet .hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px;border-bottom:1px solid var(--white);padding-bottom:12px}
+.sheet .hd h3{font-family:var(--kr);font-weight:700;font-size:17px}
+.sheet .hd h3 i{font-family:var(--display);font-style:italic;font-weight:400;color:var(--red);margin-right:8px}
+.sheet .x{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--white)}
+.seg button{height:44px;font-size:13px;color:rgba(255,255,255,.75);transition:.2s;border-left:1px solid var(--white)}
+.seg button:first-child{border-left:0}
+.seg button.on{background:var(--white);color:var(--black)}
+.step{display:grid;grid-template-columns:44px 1fr 44px;border:1px solid var(--white);height:44px;align-items:center;text-align:center}
+.step button{height:100%;font-family:var(--display);font-size:22px;color:rgba(255,255,255,.75)}
+.step b{font-family:var(--display);font-size:18px;font-weight:500}
+.sheet .ul{color:var(--white);border-bottom-color:var(--white)}
+.sheet .ul::placeholder{color:rgba(255,255,255,.4)}
+.done{text-align:center;padding:20px 0 6px}
+.done .k{font-family:var(--display);font-weight:700;font-size:64px;line-height:1;color:var(--red);animation:pop .5s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.done h4{font-family:var(--kr);font-weight:700;font-size:17px;margin-top:14px}
+.done p{font-size:13.5px;color:rgba(255,255,255,.75);margin-top:8px;line-height:1.8}
+.lb{position:fixed;inset:0;z-index:95;background:var(--black);display:grid;place-items:center;opacity:0;visibility:hidden;transition:.3s}
+.lb.show{opacity:1;visibility:visible}
+.lb img{max-width:92vw;max-height:78vh;object-fit:contain;transition:opacity .25s}
+.lb .x{position:absolute;top:20px;right:22px;color:#fff;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase}
+.lb .n{position:absolute;bottom:26px;left:22px;right:22px;display:flex;justify-content:space-between;color:#fff;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
+.lb .n i{font-family:var(--display);font-style:italic;font-size:14px;text-transform:none;letter-spacing:0}
+.lb .prev,.lb .next{position:absolute;top:0;bottom:0;width:40%}
+.lb .prev{left:0}.lb .next{right:0}
+</style>
+</head>
+<body class="lock">
+
+<div class="opening" id="opening">
+  <div class="op-cap2">The Wedding Issue</div>
+  <div class="op-num l">11</div>
+  <div class="op-num r">14</div>
+  <div class="op-rule"></div>
+  <div class="op-cap">Dohyun &amp; Seoyun · Seoul · 2026</div>
+</div>
+
+<main class="phone">
+
+  <!-- 1. cover -->
+  <section class="cover">
+    <div class="mast"><span>The Wedding Issue</span><b>No.01</b><span>Nov 2026</span></div>
+    <div class="photo"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85" alt="신랑 신부"></div>
+    <div class="body">
+      <h1 class="big rv">Dohyun<em>&amp;</em>Seoyun</h1>
+      <div class="foot">
+        <div class="rv d1"><div class="kr">김도현 · 이서윤</div><div class="dt">Sat. 14 Nov 2026 — 12:30 PM</div></div>
+        <div class="badge rv d2">
+          <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><circle cx="50" cy="50" r="49" fill="#c1272d"/><text font-family="Pretendard Variable, sans-serif" font-size="9.2" letter-spacing="2.2" fill="#fff"><textPath href="#circ">SAVE THE DATE · 14 . 11 . 2026 · </textPath></text></svg>
+          <b>&amp;</b>
+        </div>
+      </div>
+    </div>
+    <div class="idx"><div>Venue<b>더채플앳청담</b></div><div>Hall<b>3F Chapel</b></div><div>Time<b>12:30 PM</b></div></div>
+  </section>
+
+  <!-- 2. greeting -->
+  <section class="greeting">
+    <header class="sh rv"><div class="no">01</div><div class="lab">Greeting</div><h2>소중한 분들을 초대합니다</h2></header>
+    <p class="pull rv">Every day we have shared<br>has led us <span>to this one.</span></p>
+    <p class="body rv d1">서로의 계절을 지나
+같은 곳을 바라보게 된 두 사람이
+이제 하나의 길을 걸으려 합니다.
+
+따뜻한 마음으로 오셔서
+저희의 시작을 함께 축복해 주시면
+더없는 기쁨으로 간직하겠습니다.</p>
+    <div class="parents rv d2">
+      <div><span class="p">김성호 · 박미경<span class="rel">의 장남</span></span><span class="n">도현</span></div>
+      <div><span class="p">이재훈 · 최은정<span class="rel">의 차녀</span></span><span class="n">서윤</span></div>
+    </div>
+  </section>
+
+  <!-- 3. couple -->
+  <section class="couple">
+    <header class="sh rv"><div class="no">02</div><div class="lab">Bride &amp; Groom</div><h2>두 사람을 소개합니다</h2></header>
+    <div class="person groom rv">
+      <figure><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="신랑"></figure>
+      <div class="txt"><div class="role">The Groom</div><div class="nm">김도현</div><div class="en">Dohyun Kim</div><div class="ct"><a href="tel:010-2345-6789">Call</a><a href="sms:010-2345-6789">SMS</a></div></div>
+    </div>
+    <p class="in rv d1" style="margin-top:-22px;margin-bottom:40px">책보다 사람을 먼저 읽는 사람. 주말 아침엔 늘 먼저 일어나 커피를 내립니다.</p>
+    <div class="person bride rv">
+      <figure><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="신부"></figure>
+      <div class="txt"><div class="role">The Bride</div><div class="nm">이서윤</div><div class="en">Seoyun Lee</div><div class="ct"><a href="tel:010-9876-5432">Call</a><a href="sms:010-9876-5432">SMS</a></div></div>
+    </div>
+    <p class="in rv d1" style="margin-top:-22px;text-align:right">길을 잃어도 웃는 사람. 낯선 도시의 골목을 걷는 걸 가장 좋아합니다.</p>
+  </section>
+
+  <!-- 4. date -->
+  <section class="date">
+    <header class="sh rv"><div class="no">03</div><div class="lab">Save the Date</div><h2>예식 안내</h2></header>
+    <div class="hero rv"><b>14</b><div class="m"><small>Saturday</small>Nov.</div></div>
+    <div class="line rv d1"><span>2026년 11월 14일 토요일</span><b>낮 12시 30분</b></div>
+    <div class="cal rv d2">
+      <div class="wd"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+      <div class="days" id="cal"></div>
+    </div>
+    <div class="cnt rv d3" id="cnt"><div><b>--</b><small>Days</small></div><div><b>--</b><small>Hours</small></div><div><b>--</b><small>Min</small></div><div><b>--</b><small>Sec</small></div></div>
+    <p class="dl rv d3">도현 &amp; 서윤의 결혼식까지 <b id="dleft">--</b>일 남았습니다.</p>
+  </section>
+
+  <!-- 5. gallery -->
+  <section class="gallery">
+    <header class="sh rv"><div class="no">04</div><div class="lab">Gallery</div><h2>우리의 순간들</h2></header>
+    <div id="gal"></div>
+  </section>
+
+  <!-- 6. location -->
+  <section class="location">
+    <header class="sh rv"><div class="no">05</div><div class="lab">Location</div><h2>오시는 길</h2></header>
+    <div class="venue rv">
+      <div class="nm">더채플앳청담</div>
+      <div class="hall">3F Chapel Hall</div>
+      <div class="addr">서울 강남구 선릉로 757</div>
+      <a class="tel" href="tel:02-3444-8020">Tel 02-3444-8020</a>
+    </div>
+    <div class="map rv d1">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard Variable, sans-serif">
+        <g stroke="#101010" stroke-width="1" fill="none" opacity=".35">
+          <path d="M-10 90 C120 80 200 100 410 70"/><path d="M-10 190 C100 200 260 180 410 200"/>
+          <path d="M120 -10 C130 100 110 200 130 310"/><path d="M270 -10 C260 120 280 200 265 310"/>
+        </g>
+        <g stroke="#101010" stroke-width="2" fill="none"><path d="M-10 140 C120 135 260 150 410 130"/></g>
+        <g font-size="9" fill="#101010" letter-spacing="1.5" opacity=".6">
+          <text x="150" y="128">SEOLLEUNG-RO</text><text x="292" y="66">DOSAN-DAERO</text>
+        </g>
+        <g><rect x="113" y="133" width="14" height="14" fill="#f1efe9" stroke="#101010" stroke-width="2"/><text x="72" y="168" font-size="11" font-weight="700" fill="#101010">강남구청역</text><text x="86" y="180" font-size="8.5" fill="#101010" letter-spacing="1" opacity=".6">EXIT 3</text></g>
+        <g><circle cx="270" cy="72" r="2.5" fill="#101010"/><text x="232" y="57" font-size="10" fill="#101010" opacity=".7">청담사거리</text></g>
+        <g><circle cx="262" cy="148" r="16" fill="none" stroke="#c1272d" stroke-width="1"/><circle cx="262" cy="148" r="7" fill="#c1272d"/></g>
+        <text x="222" y="186" font-size="13" font-weight="700" fill="#101010">더채플앳청담</text>
+        <text x="20" y="284" font-size="8.5" fill="#101010" letter-spacing="2" opacity=".5">FIG. MAP — NOT TO SCALE</text>
+      </svg>
+    </div>
+    <div class="nav rv d2">
+      <button onclick="nav('kakao')">카카오맵</button>
+      <button onclick="nav('naver')">네이버지도</button>
+      <button onclick="nav('tmap')">티맵</button>
+    </div>
+    <dl class="trans rv d3">
+      <div><dt>Subway</dt><dd>7호선 · 분당선 강남구청역 3번 출구에서 도보 7분</dd></div>
+      <div><dt>Bus</dt><dd>간선 141 · 242 · 361 / 지선 3414 · 4412<br>청담사거리 하차</dd></div>
+      <div><dt>Parking</dt><dd>건물 지하 주차장 2시간 무료<br>안내데스크에서 주차권 수령</dd></div>
+      <div><dt>Shuttle</dt><dd>강남구청역 3번 출구 앞<br>11:30부터 20분 간격 운행</dd></div>
+    </dl>
+  </section>
+
+  <!-- 7. gift -->
+  <section class="gift">
+    <header class="sh rv"><div class="no">06</div><div class="lab">With Love</div><h2>마음 전하실 곳</h2></header>
+    <p class="lead rv">참석이 어려우신 분들을 위해 계좌번호를 안내드립니다.<br>전해주시는 마음은 소중하게 간직하겠습니다.</p>
+    <div class="acc rv d1">
+      <button class="hd" onclick="this.parentNode.classList.toggle('open')"><span>신랑측 계좌번호</span><i>Open</i></button>
+      <div class="bd">
+        <div class="row"><div><div class="who">신랑 김도현</div><div class="num"><small>국민은행</small>123456-04-567890</div></div><div class="btns"><button class="kp" onclick="toast('카카오페이로 이동합니다')">Pay</button><button class="cp" onclick="copy('123456-04-567890')">Copy</button></div></div>
+        <div class="row"><div><div class="who">아버지 김성호</div><div class="num"><small>신한은행</small>110-345-678901</div></div><div class="btns"><button class="cp" onclick="copy('110-345-678901')">Copy</button></div></div>
+        <div class="row"><div><div class="who">어머니 박미경</div><div class="num"><small>우리은행</small>1002-456-789012</div></div><div class="btns"><button class="cp" onclick="copy('1002-456-789012')">Copy</button></div></div>
+      </div>
+    </div>
+    <div class="acc rv d2" style="border-top:0">
+      <button class="hd" onclick="this.parentNode.classList.toggle('open')"><span>신부측 계좌번호</span><i>Open</i></button>
+      <div class="bd">
+        <div class="row"><div><div class="who">신부 이서윤</div><div class="num"><small>카카오뱅크</small>3333-08-1234567</div></div><div class="btns"><button class="kp" onclick="toast('카카오페이로 이동합니다')">Pay</button><button class="cp" onclick="copy('3333-08-1234567')">Copy</button></div></div>
+        <div class="row"><div><div class="who">아버지 이재훈</div><div class="num"><small>하나은행</small>620-910123-45607</div></div><div class="btns"><button class="cp" onclick="copy('620-910123-45607')">Copy</button></div></div>
+        <div class="row"><div><div class="who">어머니 최은정</div><div class="num"><small>농협은행</small>302-1234-5678-91</div></div><div class="btns"><button class="cp" onclick="copy('302-1234-5678-91')">Copy</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. rsvp -->
+  <section class="rsvp">
+    <header class="sh rv"><div class="no">07</div><div class="lab">R.S.V.P.</div><h2>참석 의사 전달</h2></header>
+    <p class="lead rv">축하의 마음으로 참석해 주시는 모든 분들을 귀하게 모실 수 있도록 참석 여부를 알려주시면 감사하겠습니다.</p>
+    <button class="btn white rv d1" onclick="openSheet()">참석 의사 전달하기<span>Reply</span></button>
+  </section>
+
+  <!-- 9. guestbook -->
+  <section class="gb">
+    <header class="sh rv"><div class="no">08</div><div class="lab">Guest Book</div><h2>축하의 말을 남겨주세요</h2></header>
+    <div class="list rv" id="gbList"></div>
+    <form class="rv d1" onsubmit="return addGb(event)">
+      <input class="ul" id="gbName" placeholder="성함" maxlength="12" required>
+      <textarea class="ul" id="gbMsg" placeholder="따뜻한 한마디를 남겨주세요" maxlength="200" required></textarea>
+      <button class="btn black" type="submit">남기기</button>
+    </form>
+  </section>
+
+  <!-- 10. notice + share -->
+  <section class="notice">
+    <header class="sh rv"><div class="no">09</div><div class="lab">Notice</div><h2>안내 말씀</h2></header>
+    <ol class="rv">
+      <li><i>i.</i><span>예식 후 3층 연회장에서 식사가 준비되어 있습니다.</span></li>
+      <li><i>ii.</i><span>화환은 정중히 사양하며, 마음만 감사히 받겠습니다.</span></li>
+      <li><i>iii.</i><span>주차 공간이 협소하니 가급적 대중교통을 이용해 주세요.</span></li>
+    </ol>
+    <div class="share rv d1">
+      <button class="btn black" onclick="toast('카카오톡 공유 (SDK 연결 시 동작)')">카카오톡으로 공유하기</button>
+      <button class="btn line" onclick="copy(location.href,'링크가 복사되었습니다')">링크 복사하기</button>
+    </div>
+  </section>
+
+  <footer>
+    <p class="colo"><b>Colophon.</b> Published on the occasion of the wedding of <b>Kim Dohyun &amp; Lee Seoyun</b>. Seoul, 2026. Set in Bodoni Moda, Noto Serif KR and Pretendard. The Chapel at Cheongdam, 3F, Saturday 14 November, 12:30 PM.</p>
+    <div class="mark"><div class="t">Dohyun<em>&amp;</em>Seoyun</div><div class="n">No.01<br>Nov 2026</div></div>
+  </footer>
+</main>
+
+<div class="fixedc toast" id="toast"><span></span></div>
+<div class="dim" id="dim" onclick="closeSheet()"></div>
+<div class="fixedc sheet" id="sheet">
+  <div class="hd"><h3><i>07</i>참석 의사 전달</h3><button class="x" onclick="closeSheet()">Close</button></div>
+  <div id="sheetForm">
+    <div class="fg"><label>Side</label><div class="seg" data-k="side"><button class="on">신랑측</button><button>신부측</button></div></div>
+    <div class="fg"><label>Attendance</label><div class="seg" data-k="att"><button class="on">참석</button><button>불참</button></div></div>
+    <div class="fg"><label>Name</label><input class="ul" id="rsName" placeholder="성함을 입력해 주세요"></div>
+    <div class="fg"><label>Guests</label><div class="step"><button onclick="stepN(-1)">−</button><b id="rsN">1</b><button onclick="stepN(1)">+</button></div></div>
+    <div class="fg"><label>Meal</label><div class="seg" data-k="meal"><button class="on">식사 예정</button><button>식사 안 함</button></div></div>
+    <button class="btn white" style="margin-top:6px" onclick="submitRs()">전달하기</button>
+  </div>
+  <div id="sheetDone" class="done" hidden>
+    <div class="k">&amp;</div>
+    <h4>감사합니다</h4>
+    <p>소중한 마음 잘 받았습니다.<br>11월 14일에 뵙겠습니다.</p>
+    <button class="btn white" style="margin-top:22px" onclick="closeSheet()">닫기</button>
+  </div>
+</div>
+<div class="lb" id="lb"><button class="prev" onclick="lbMove(-1)" aria-label="이전"></button><img id="lbImg" alt=""><button class="next" onclick="lbMove(1)" aria-label="다음"></button><button class="x" onclick="closeLb()">Close</button><div class="n"><span id="lbN"></span><i id="lbC"></i></div></div>
+
+<script>
+const GAL=["https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80","https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80","https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80","https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80","https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=1200&q=80","https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80","https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80","https://images.unsplash.com/photo-1529636798458-92182e662485?w=1200&q=80","https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80"];
+const CAPS=["청담, 봄","반지","첫 만남","프러포즈","우리 둘","같은 방향","손","그 여름","가을, 결혼"];
+const WEDDING=new Date("2026-11-14T12:30:00+09:00");
+const VENUE={name:"더채플앳청담",lat:37.5245,lng:127.0398};
+
+/* opening: hard cut */
+setTimeout(()=>{document.getElementById('opening').classList.add('out');document.body.classList.remove('lock');document.body.classList.add('ready');},2400);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:"0px 0px -6% 0px"});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+(function(){const c=document.getElementById('cal');const first=new Date(2026,10,1).getDay();let h='';for(let i=0;i<first;i++)h+='<span></span>';for(let d=1;d<=30;d++)h+=`<span class="${d===14?'on':''}">${d}</span>`;const total=first+30;for(let i=total;i<Math.ceil(total/7)*7;i++)h+='<span></span>';c.innerHTML=h})();
+
+function tick(){const now=new Date();let diff=Math.max(0,WEDDING-now);const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);const b=document.querySelectorAll('#cnt b');[d,h,m,s].forEach((v,i)=>b[i].textContent=String(v).padStart(2,'0'));document.getElementById('dleft').textContent=Math.ceil((WEDDING-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5)}
+tick();setInterval(tick,1000);
+
+/* gallery layout: full / two / marquee / wide / two / full / two */
+const fig=(i,cls='')=>`<div class="fig ${cls} rv" onclick="openLb(${i})"><img src="${GAL[i]}" loading="lazy" alt=""><div class="cap"><i>Fig. ${String(i+1).padStart(2,'0')}</i>${CAPS[i]}</div></div>`;
+const MQ=`<div class="marq"><div>${'<span>Dohyun <em>&amp;</em> Seoyun</span><span>·</span><span>14 Nov 2026</span><span>·</span><span>The Chapel at Cheongdam</span><span>·</span>'.repeat(4)}</div></div>`;
+document.getElementById('gal').innerHTML=fig(0,'g-full')+`<div class="g-two">${fig(1)}${fig(2)}</div>`+MQ+fig(3,'g-wide')+`<div class="g-two">${fig(4)}${fig(5)}</div>`+fig(6,'g-full')+`<div class="g-two">${fig(7)}${fig(8)}</div>`;
+document.querySelectorAll('#gal .rv').forEach(el=>io.observe(el));
+
+let li=0;const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+function setN(i){document.getElementById('lbN').textContent=`${String(i+1).padStart(2,'0')} / ${String(GAL.length).padStart(2,'0')}`;document.getElementById('lbC').textContent=`Fig. ${String(i+1).padStart(2,'0')} — ${CAPS[i]}`}
+function openLb(i){li=i;lbImg.src=GAL[i];setN(i);lb.classList.add('show');document.body.classList.add('lock')}
+function closeLb(){lb.classList.remove('show');document.body.classList.remove('lock')}
+function lbMove(d){li=(li+d+GAL.length)%GAL.length;lbImg.style.opacity=0;setTimeout(()=>{lbImg.src=GAL[li];setN(li);lbImg.style.opacity=1},200)}
+let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)lbMove(dx<0?1:-1)});
+
+let tt;function toast(m){const t=document.getElementById('toast');t.querySelector('span').textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1800)}
+function copy(v,m='계좌번호가 복사되었습니다'){(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast(m)).catch(()=>{const i=document.createElement('input');i.value=v;document.body.appendChild(i);i.select();document.execCommand('copy');i.remove();toast(m)})}
+function nav(k){const n=encodeURIComponent(VENUE.name);const u={kakao:`https://map.kakao.com/link/to/${n},${VENUE.lat},${VENUE.lng}`,naver:`https://map.naver.com/p/search/${n}`,tmap:`tmap://route?goalname=${n}&goaly=${VENUE.lat}&goalx=${VENUE.lng}`}[k];window.open(u,'_blank')}
+
+const rs={side:'신랑측',att:'참석',meal:'식사 예정',n:1};
+document.querySelectorAll('.seg').forEach(s=>s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{s.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');rs[s.dataset.k]=b.textContent})));
+function stepN(d){rs.n=Math.min(10,Math.max(1,rs.n+d));document.getElementById('rsN').textContent=rs.n}
+function openSheet(){document.getElementById('sheetForm').hidden=false;document.getElementById('sheetDone').hidden=true;document.getElementById('dim').classList.add('show');document.getElementById('sheet').classList.add('show');document.body.classList.add('lock')}
+function closeSheet(){document.getElementById('dim').classList.remove('show');document.getElementById('sheet').classList.remove('show');document.body.classList.remove('lock')}
+function submitRs(){const nm=document.getElementById('rsName');if(!nm.value.trim()){nm.focus();nm.style.borderBottomColor='var(--red)';return}document.getElementById('sheetForm').hidden=true;document.getElementById('sheetDone').hidden=false}
+
+let GB=[{name:"박지훈",at:"2026.10.02",msg:"도현아 드디어 장가가는구나. 서윤 씨랑 오래오래 행복해라!"},{name:"정하늘",at:"2026.10.05",msg:"서윤 언니 결혼 축하해요 🤍 그날 제일 예쁠 거예요. 꼭 갈게요."},{name:"대학 동기 일동",at:"2026.10.11",msg:"14일 다 같이 갑니다. 2차는 우리가 쏜다."}];
+function renderGb(){const l=document.getElementById('gbList');l.innerHTML=GB.length?GB.map((x,i)=>`<div class="it"><div class="no">No. ${String(GB.length-i).padStart(2,'0')}</div><div><p class="msg">${x.msg}</p><div class="by"><b>${x.name}</b>${x.at}</div></div></div>`).join(''):'<div class="empty">아직 남겨진 글이 없습니다.<br>첫 번째 축하의 말을 남겨주세요.</div>'}
+renderGb();
+function addGb(e){e.preventDefault();const n=document.getElementById('gbName'),m=document.getElementById('gbMsg');const d=new Date();GB.unshift({name:n.value.trim(),msg:m.value.trim(),at:`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`});renderGb();n.value='';m.value='';toast('축하의 말이 남겨졌습니다');return false}
+</script>
+</body>
+</html>

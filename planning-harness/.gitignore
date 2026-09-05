@@ -1,0 +1,16 @@
+# 하네스 실행 결과물은 커밋하지 않는다 (examples/ 는 예외)
+*/01-planning/
+!examples/**/01-planning/
+output/
+!examples/**/output/
+
+# 채워진 프로필 (템플릿만 관리)
+config/project-profile.yaml
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+.idea/
+.vscode/

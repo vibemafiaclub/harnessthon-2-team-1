@@ -1,0 +1,62 @@
+{
+  "groom": {
+    "name": "김도현", "en": "Dohyun Kim", "role": "신랑", "order": "장남",
+    "father": "김성호", "mother": "박미경", "phone": "010-2345-6789",
+    "intro": "책보다 사람을 먼저 읽는 사람. 주말 아침엔 늘 먼저 일어나 커피를 내립니다."
+  },
+  "bride": {
+    "name": "이서윤", "en": "Seoyun Lee", "role": "신부", "order": "차녀",
+    "father": "이재훈", "mother": "최은정", "phone": "010-9876-5432",
+    "intro": "길을 잃어도 웃는 사람. 낯선 도시의 골목을 걷는 걸 가장 좋아합니다."
+  },
+  "date": { "iso": "2026-11-14T12:30:00+09:00", "text": "2026년 11월 14일 토요일 낮 12시 30분", "short": "2026. 11. 14. SAT 12:30 PM", "year": 2026, "month": 11, "day": 14, "weekday": "토요일", "time": "낮 12시 30분" },
+  "venue": {
+    "name": "더채플앳청담", "hall": "3층 채플홀",
+    "address": "서울 강남구 선릉로 757", "tel": "02-3444-8020",
+    "lat": 37.5245, "lng": 127.0398,
+    "subway": "7호선 · 분당선 강남구청역 3번 출구에서 도보 7분",
+    "bus": "간선 141 · 242 · 361 / 지선 3414 · 4412 → 청담사거리 하차",
+    "parking": "건물 지하 주차장 2시간 무료 (안내데스크에서 주차권 수령)",
+    "shuttle": "강남구청역 3번 출구 앞 11:30부터 20분 간격 운행"
+  },
+  "greeting": {
+    "title": "소중한 분들을 초대합니다",
+    "body": "서로의 계절을 지나\n같은 곳을 바라보게 된 두 사람이\n이제 하나의 길을 걸으려 합니다.\n\n따뜻한 마음으로 오셔서\n저희의 시작을 함께 축복해 주시면\n더없는 기쁨으로 간직하겠습니다."
+  },
+  "quote": { "text": "우리가 함께한 모든 날이, 이 하루를 위해 있었습니다.", "en": "Every day we have shared has led us to this one." },
+  "gallery": [
+    "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80",
+    "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80",
+    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80",
+    "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=1200&q=80",
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80",
+    "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80",
+    "https://images.unsplash.com/photo-1529636798458-92182e662485?w=1200&q=80",
+    "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80"
+  ],
+  "cover": "https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=85",
+  "accounts": {
+    "groom": [
+      { "who": "신랑 김도현", "bank": "국민은행", "number": "123456-04-567890", "kakao": true },
+      { "who": "아버지 김성호", "bank": "신한은행", "number": "110-345-678901", "kakao": false },
+      { "who": "어머니 박미경", "bank": "우리은행", "number": "1002-456-789012", "kakao": false }
+    ],
+    "bride": [
+      { "who": "신부 이서윤", "bank": "카카오뱅크", "number": "3333-08-1234567", "kakao": true },
+      { "who": "아버지 이재훈", "bank": "하나은행", "number": "620-910123-45607", "kakao": false },
+      { "who": "어머니 최은정", "bank": "농협은행", "number": "302-1234-5678-91", "kakao": false }
+    ]
+  },
+  "guestbook": [
+    { "name": "박지훈", "at": "2026.10.02", "msg": "도현아 드디어 장가가는구나. 서윤 씨랑 오래오래 행복해라!" },
+    { "name": "정하늘", "at": "2026.10.05", "msg": "서윤 언니 결혼 축하해요 🤍 그날 제일 예쁠 거예요. 꼭 갈게요." },
+    { "name": "대학 동기 일동", "at": "2026.10.11", "msg": "14일 다 같이 갑니다. 2차는 우리가 쏜다." }
+  ],
+  "notice": [
+    "예식 후 3층 연회장에서 식사가 준비되어 있습니다.",
+    "화환은 정중히 사양하며, 마음만 감사히 받겠습니다.",
+    "주차 공간이 협소하니 가급적 대중교통을 이용해 주세요."
+  ],
+  "share": { "title": "김도현 ♥ 이서윤 결혼합니다", "desc": "2026년 11월 14일 토요일 낮 12시 30분 · 더채플앳청담" }
+}

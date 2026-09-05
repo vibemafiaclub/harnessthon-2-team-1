@@ -1,0 +1,145 @@
+<title>Reference Board</title>
+<style>
+  :root{--bg:#f6f6f4;--card:#ffffff;--ink:#1a1a1a;--muted:#6b6b6b;--line:#e2e2de;--good:#1f7a4d;--bad:#b8322f;--accent:#2f5bea}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141414;--card:#1f1f1f;--ink:#f0f0ec;--muted:#a0a09a;--line:#333;--good:#5fd39a;--bad:#ff7b76;--accent:#8aa4ff}}
+  :root[data-theme="dark"]{--bg:#141414;--card:#1f1f1f;--ink:#f0f0ec;--muted:#a0a09a;--line:#333;--good:#5fd39a;--bad:#ff7b76;--accent:#8aa4ff}
+  body{background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,"SF Pro Text",Inter,system-ui,sans-serif;padding:32px 24px 120px}
+  header{max-width:1200px;margin:0 auto 24px}
+  h1{font-size:22px;margin:0 0 4px}
+  header p{color:var(--muted);margin:0}
+  .grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+  .card .img{background:#0b0b0b;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .card .img img{width:100%;height:100%;object-fit:contain}
+  .card .img.wide{aspect-ratio:16/10}
+  .body{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+  .num{font-size:12px;color:var(--muted);letter-spacing:.04em}
+  .title{font-weight:600;font-size:15px}
+  .src{font-size:12px;color:var(--muted)}
+  .src a{color:var(--accent);text-decoration:none}
+  .look{font-size:13px;margin:0;padding-left:16px}
+  .dir{font-size:13px;padding:8px 10px;border-radius:8px;background:var(--bg)}
+  .vote{display:flex;gap:8px;margin-top:4px}
+  .vote button{flex:1;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:8px;cursor:pointer;font-size:13px}
+  .vote button.on.good{border-color:var(--good);color:var(--good);font-weight:600}
+  .vote button.on.bad{border-color:var(--bad);color:var(--bad);font-weight:600}
+  textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:8px;background:transparent;color:var(--ink);font:inherit;min-height:64px;resize:vertical}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:12px 24px;display:flex;gap:12px;align-items:center;justify-content:center}
+  .bar button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:14px;cursor:pointer}
+  .bar span{color:var(--muted);font-size:13px}
+  .out{max-width:1200px;margin:24px auto 0;display:none}
+  .out textarea{min-height:160px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+</style>
+
+<header>
+  <h1 id="boardTitle">Reference Board</h1>
+  <p id="boardIntro">카드마다 좋다/싫다를 누르고 이유를 적어주세요. 다 적으면 아래 "피드백 복사"를 눌러 터미널에 붙여넣으면 됩니다.</p>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="out" id="out">
+  <textarea id="outText" readonly></textarea>
+</div>
+
+<div class="bar">
+  <button id="copyBtn">피드백 복사</button>
+  <span id="status">선택 사항은 이 브라우저에만 저장됩니다.</span>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// 여기만 채우면 됩니다.
+// img: data URI 또는 Artifact asset URL. 없으면 빈 문자열(자리표시 표시).
+// look: 관찰 포인트 1~2개. direction: 이 카드가 제안하는 방향.
+// wide: true면 가로형(16:10) 프레임.
+// ─────────────────────────────────────────────────────────────
+const BOARD = {
+  title: "Reference Board — <프로젝트명>",
+  intro: "카드마다 좋다/싫다를 누르고 이유를 적어주세요. 다 적으면 아래 \"피드백 복사\"를 눌러 터미널에 붙여넣으면 됩니다."
+};
+const REFS = [
+  {
+    title: "예시 카드",
+    source: "App Store / 앱 이름",
+    sourceUrl: "",
+    img: "",
+    wide: false,
+    look: ["여기서 볼 것 1", "여기서 볼 것 2"],
+    direction: "이 후보가 제안하는 방향"
+  }
+];
+
+// ─────────────────────────────────────────────────────────────
+const KEY = "refboard:" + location.pathname;
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+document.getElementById("boardTitle").textContent = BOARD.title;
+document.getElementById("boardIntro").textContent = BOARD.intro;
+
+const grid = document.getElementById("grid");
+REFS.forEach((r, i) => {
+  const n = i + 1;
+  const st = state[n] || { vote: "", why: "" };
+  const card = document.createElement("div");
+  card.className = "card";
+  const imgHtml = r.img
+    ? `<img src="${r.img}" alt="${r.title}">`
+    : `<span style="color:#666;font-size:12px">이미지 없음 — 캡처를 추가하세요</span>`;
+  card.innerHTML = `
+    <div class="img ${r.wide ? "wide" : ""}">${imgHtml}</div>
+    <div class="body">
+      <div class="num">#${n}</div>
+      <div class="title">${r.title}</div>
+      <div class="src">${r.sourceUrl ? `<a href="${r.sourceUrl}" target="_blank" rel="noopener">${r.source}</a>` : r.source}</div>
+      <ul class="look">${(r.look || []).map(x => `<li>${x}</li>`).join("")}</ul>
+      <div class="dir">${r.direction || ""}</div>
+      <div class="vote">
+        <button class="good ${st.vote === "good" ? "on" : ""}" data-v="good">좋다</button>
+        <button class="bad ${st.vote === "bad" ? "on" : ""}" data-v="bad">싫다</button>
+      </div>
+      <textarea placeholder="이유 (자유서술)">${st.why || ""}</textarea>
+    </div>`;
+  card.querySelectorAll(".vote button").forEach(b => {
+    b.addEventListener("click", () => {
+      const v = b.dataset.v;
+      state[n] = state[n] || { vote: "", why: "" };
+      state[n].vote = state[n].vote === v ? "" : v;
+      save();
+      card.querySelectorAll(".vote button").forEach(x => x.classList.toggle("on", x.dataset.v === state[n].vote));
+    });
+  });
+  card.querySelector("textarea").addEventListener("input", e => {
+    state[n] = state[n] || { vote: "", why: "" };
+    state[n].why = e.target.value;
+    save();
+  });
+  grid.appendChild(card);
+});
+
+function compile(){
+  const lines = ["[reference-board 피드백]"];
+  REFS.forEach((r, i) => {
+    const n = i + 1;
+    const st = state[n] || {};
+    const v = st.vote === "good" ? "좋다" : st.vote === "bad" ? "싫다" : "미응답";
+    lines.push(`#${n} ${r.title} — ${v}${st.why ? " — " + st.why.replace(/\s+/g, " ").trim() : ""}`);
+  });
+  return lines.join("\n");
+}
+
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  const text = compile();
+  const out = document.getElementById("out");
+  out.style.display = "block";
+  document.getElementById("outText").value = text;
+  try {
+    await navigator.clipboard.writeText(text);
+    document.getElementById("status").textContent = "복사됨 — 터미널에 붙여넣으세요.";
+  } catch (e) {
+    document.getElementById("status").textContent = "자동 복사가 막혔습니다. 아래 텍스트를 직접 복사하세요.";
+  }
+});
+</script>

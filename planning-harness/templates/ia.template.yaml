@@ -1,0 +1,53 @@
+# 정보구조 — 엔티티를 먼저 정의하고 화면을 파생시킨다
+
+meta:
+  project: ""
+  updated: ""
+
+# ─────────────────────────────────────────
+# 1. 엔티티
+# ─────────────────────────────────────────
+entities:
+  - id: ENT-01
+    name: ""
+    description: ""
+    owner: ROLE-01          # 누가 생성·관리하는가
+    fields:
+      - name: ""
+        type: string        # string / number / date / datetime / enum / ref / bool
+        required: true
+        note: ""
+    relations:
+      - to: ENT-02
+        type: N:M           # 1:1 / 1:N / N:M
+        note: ""            # N:M이면 RISK-01 결정 3가지를 여기 기록
+
+# ─────────────────────────────────────────
+# 2. 화면
+# ─────────────────────────────────────────
+screens:
+  - id: SCR-01
+    name: ""
+    purpose: ""             # 이 화면이 책임지는 것 한 문장
+    roles: [ROLE-01]
+    entities: [ENT-01]
+    requirements: [REQ-01]
+    entry_points: []        # 어디서 들어오는가 (SCR- 또는 외부 링크)
+    key_info:               # 반드시 보여야 하는 정보. 레이아웃 아님
+      - ""
+    actions:                # 이 화면에서 할 수 있는 행동
+      - ""
+    states:                 # 상태 변형. 목록 화면이면 empty 필수
+      - type: empty         # empty / loading / error / partial / no-permission / large-dataset
+        description: ""
+    notes: ""
+
+# ─────────────────────────────────────────
+# 3. 내비게이션 구조
+# ─────────────────────────────────────────
+navigation:
+  authenticated:            # 로그인 사용자 트리
+    - screen: SCR-01
+      children: []
+  unauthenticated:          # RISK-10 해당 시. 로그인 트리를 재사용하지 않는다
+    - screen: null

@@ -1,0 +1,40 @@
+project:
+  name: "wedding-scheduler"
+  client: "내부 과제"
+  domain: "일정조율"
+  one_liner: "예비부부가 청첩장모임 대상을 묶고 날짜를 조율해 확정하는 서비스"
+
+scope:
+  platform: ["responsive"]
+  primary_device: "mobile"
+  greenfield: true
+  deliverable_end: "화면설계 직전"
+
+roles_expected:
+  - name: "예비신부"
+    authenticated: true
+  - name: "예비신랑"
+    authenticated: true
+  - name: "초대받은 지인"
+    authenticated: false      # RISK-10 해당
+
+data_scale:
+  persons: 100                # 평균 40~60, 최대 100+
+  groups: 15
+  meetings: 40                # 3개월 × 주말 2~3건
+
+constraints:
+  deadline: "TBD"
+  next_phase: "디자인 (Figma)"
+  budget_notes: ""
+  existing_system: "없음"
+  legal: "지인 연락처 수집 — 개인정보 처리 정책 검토 필요"
+
+inputs:
+  source_files:
+    - "examples/wedding-scheduler/input/prd.md"
+  source_quality: "detailed"
+
+output:
+  dir: "examples/wedding-scheduler/output"
+  language: "ko"
