@@ -5,7 +5,7 @@
     python scripts/gen_seed.py {산출물디렉토리}
 
 이 스크립트는 값을 지어내지 않는다. 필드 구조와 필수 케이스 자리만 만들고,
-실제 값은 하네스(LLM)가 STEP 6에서 채운다. 도메인 맥락을 모르는 스크립트가
+실제 값은 하네스(LLM)가 STEP 7에서 채운다. 도메인 맥락을 모르는 스크립트가
 생성한 더미는 화면 설계 검증에 쓸모가 없기 때문이다.
 
 PyYAML이 있으면 정확히 파싱하고, 없으면 정규식 폴백으로 동작한다.
@@ -22,6 +22,7 @@ REQUIRED_CASES = [
     ("resource_conflict", "RISK-03", "같은 시점에 겹치는 건 2개"),
     ("multi_membership", "RISK-01", "한 대상이 두 분류에 동시 소속"),
     ("deadline_edge", "RISK-02", "마감 임박 1건 + 마감 초과 1건"),
+    ("onboarding_incomplete", "RISK-07", "온보딩 미완료 사용자 1명 (필수 단계 일부만 마쳐 첫 화면이 빈 상태)"),
 ]
 
 
@@ -104,7 +105,7 @@ def main():
     seed = {
         "_meta": {
             "generated_by": "scripts/gen_seed.py",
-            "note": "구조만 생성됨. 값은 STEP 6에서 하네스가 채운다.",
+            "note": "구조만 생성됨. 값은 STEP 7에서 하네스가 채운다.",
             "required_cases": [
                 {"key": k, "risk": r, "description": d} for k, r, d in REQUIRED_CASES
             ],
@@ -129,7 +130,7 @@ def main():
     print(f"엔티티 {len(entities)}개 → {out}\n")
     print("다음으로 하네스가 채울 것:")
     print("  1. _target_count를 실제 최대 건수로 교체하고 그만큼 레코드 생성")
-    print("  2. 아래 필수 케이스 5종을 반드시 포함")
+    print("  2. 아래 필수 케이스 6종을 반드시 포함")
     for k, r, d in REQUIRED_CASES:
         print(f"     - {k} ({r}): {d}")
     print("  3. 이름·텍스트 길이·날짜를 현실적인 분포로")

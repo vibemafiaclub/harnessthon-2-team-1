@@ -51,3 +51,5 @@ navigation:
       children: []
   unauthenticated:          # RISK-10 해당 시. 로그인 트리를 재사용하지 않는다
     - screen: null
+  onboarding:               # 가입·초기 설정 화면 (로그인 트리 진입 전). 순서는 onboarding.yaml이 정한다
+    - screen: null

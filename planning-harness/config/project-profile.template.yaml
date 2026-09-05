@@ -23,6 +23,14 @@ data_scale:                   # RISK-06 판정과 seed-data 생성에 사용
   # 예: persons: 100
   #     meetings: 40
 
+benchmark: "auto"             # STEP 1 ui bowl 벤치마킹. on(반드시) / off(건너뜀) / auto(MCP 있으면 수행)
+                              # 어느 값이든 건너뛴 사유는 definition.md와 _handoff.md에 남는다
+
+onboarding:                   # STEP 4에서 사용. 모르면 TBD — 하네스가 인터뷰로 되묻는다
+  first_value: ""             # 사용자가 처음 "쓸모 있다"고 느끼는 순간을 한 문장으로. 화면이 아니라 사건
+  must_have_before_start: []  # 사용 시작 전 반드시 입력받아야 하는 것. 비어 있으면 바로 빈 화면으로 진입
+  signup_method: ""           # 이메일 / 소셜 로그인 / 전화번호 / 없음(미인증만) / TBD
+
 constraints:
   deadline: ""                # 납품 기한
   next_phase: ""              # 이후 단계 (디자인 / 개발 / 없음)
@@ -37,4 +45,5 @@ inputs:
 
 output:
   dir: ""                     # 예: wedding-scheduler/01-planning
+  wireframe_input_dir: ""     # STEP 8 패키지 위치. 비우면 wireframes/input/
   language: "ko"

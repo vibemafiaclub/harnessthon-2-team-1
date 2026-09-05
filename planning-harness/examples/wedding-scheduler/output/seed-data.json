@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_by": "STEP 6 — 하네스가 채움 (도메인 분포는 examples/wedding-scheduler 시나리오 기준, 스크립트로 대량 생성 후 5대 필수 케이스를 수동 배치)",
-    "note": "기준 시점(오늘)은 2026-09-05, 결혼식 예정일은 couple_01.wedding_date(2026-12-05) 기준. 이 시드는 한 커플(이서연·박준호)의 시점만 담는다 — ROLE-03(초대받은 지인)이 여러 커플의 요청을 한 곳에서 보는 시나리오(REQ-15)를 100% 재현하려면 다른 커플의 시드가 최소 1세트 더 필요하다 (TBD, _handoff.md 참고).",
+    "generated_by": "STEP 7 — 하네스가 채움 (도메인 분포는 examples/wedding-scheduler 시나리오 기준, 스크립트로 대량 생성 후 6대 필수 케이스를 수동 배치)",
+    "note": "기준 시점(오늘)은 2026-09-05, 결혼식 예정일은 couple_01.wedding_date(2026-12-05) 기준. 이 시드는 한 커플(이서연·박준호)의 시점만 담는다 — ROLE-03(초대받은 지인)이 여러 커플의 요청을 한 곳에서 보는 시나리오(REQ-15)를 100% 재현하려면 다른 커플의 시드가 최소 1세트 더 필요하다 (TBD, _handoff.md 참고). couple_02·account_new는 온보딩 미완료 케이스 전용이며 지인·모임이 없다 — REQ-15 검증용 '두 번째 커플'을 대신하지 못한다.",
     "required_cases": [
       {
         "key": "empty_group",
@@ -50,25 +50,39 @@
           "meeting_28 (오늘 밤 마감 임박)",
           "meeting_26 (마감 지났지만 확정 미처리)"
         ]
+      },
+      {
+        "key": "onboarding_incomplete",
+        "risk": "RISK-07",
+        "description": "온보딩 미완료 사용자 1명 (필수 단계 일부만 마쳐 첫 화면이 빈 상태)",
+        "included": true,
+        "example_ids": [
+          "account_new (김하늘, couple_02 — SCR-11 가입·결혼 예정일까지만 마침. 배우자 미연결·지인 0명·모임 0건 → ONB-01 2단계에서 멈춘 상태)"
+        ]
       }
     ]
   },
   "ent_07": {
     "_entity": "ENT-07",
     "_name": "커플",
-    "_target_count": 1,
+    "_target_count": 2,
     "records": [
       {
         "id": "couple_01",
         "wedding_date": "2026-12-05",
         "created_at": "2026-07-01T09:00:00"
+      },
+      {
+        "id": "couple_02",
+        "wedding_date": "2027-03-20",
+        "created_at": "2026-09-04T21:12:00"
       }
     ]
   },
   "ent_06": {
     "_entity": "ENT-06",
     "_name": "계정",
-    "_target_count": 2,
+    "_target_count": 3,
     "records": [
       {
         "id": "account_bride",
@@ -85,6 +99,14 @@
         "phone": "010-3333-2000",
         "couple": "couple_01",
         "created_at": "2026-07-01T09:06:00"
+      },
+      {
+        "id": "account_new",
+        "name": "김하늘",
+        "side": "신부",
+        "phone": "010-5555-3000",
+        "couple": "couple_02",
+        "created_at": "2026-09-04T21:10:00"
       }
     ]
   },

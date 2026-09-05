@@ -1,0 +1,31 @@
+entities:
+  - id: ENT-01
+    name: 지인
+    fields:
+      - name: 이름
+        type: string
+        required: true
+      - name: 연락처
+        type: string
+        required: false
+screens:
+  - id: SCR-01
+    name: 지인 목록
+    purpose: 등록된 지인을 탐색한다
+    roles: [ROLE-01]
+    entities: [ENT-01]
+    requirements: [REQ-01, REQ-02]
+    key_info:
+      - 이름
+    states:
+      - type: empty
+        description: 지인이 없을 때
+  - id: SCR-09
+    name: 미사용 화면
+    purpose: 고아 테스트
+    roles: [ROLE-01]
+    requirements: [REQ-01]
+    key_info: [x]
+    states:
+      - type: empty
+        description: x

@@ -200,10 +200,10 @@ screens:
       - 지인 관리로 이동
     states:
       - type: empty
-        description: 등록된 지인·모임이 하나도 없는 최초 진입 (RISK-07) — 지인 등록으로 유도
+        description: 등록된 지인·모임이 하나도 없는 최초 진입 (RISK-07) — 온보딩(ONB-01)의 미완 단계를 "다음 할 일"로 표시하고 지인 등록으로 유도. 배우자 미연결이면 초대 코드 발급도 함께 유도
       - type: loading
         description: 요약 데이터 집계 중
-    notes: 로그인 화면 자체는 도메인 요구사항과 무관해 이 문서에서 별도로 다루지 않는다.
+    notes: 회원가입·시작 설정은 SCR-11에서 다룬다 (STEP 4 온보딩에서 추가). 온보딩 완료 판정(POL-26)에 따라 빈 상태와 일반 상태를 가른다.
 
   - id: SCR-02
     name: 지인 목록
@@ -424,7 +424,7 @@ screens:
     roles: [ROLE-01, ROLE-02]
     entities: [ENT-06, ENT-07]
     requirements: [REQ-13]
-    entry_points: [SCR-01, "회원가입 직후"]
+    entry_points: [SCR-01, SCR-11]
     key_info:
       - 배우자 연결 상태 (연결됨/미연결)
       - 배우자 초대 코드 발급/입력
@@ -440,6 +440,29 @@ screens:
         description: 잘못되었거나 이미 사용된 초대 코드
       - type: loading
         description: 연결 처리 중
+
+  - id: SCR-11
+    name: 회원가입·시작 설정
+    purpose: 계정을 만들고, 새 커플을 시작할지 배우자의 초대 코드로 합류할지 정한다.
+    roles: [ROLE-01, ROLE-02]
+    entities: [ENT-06, ENT-07]
+    requirements: [REQ-13]
+    entry_points: ["앱/웹 직접 접속 (미가입)", "배우자 초대 링크 (코드가 미리 채워진 상태)"]
+    key_info:
+      - 이름·연락처 입력값 (인증 방식은 TBD — POL-27)
+      - "새로 시작" / "초대 코드로 합류" 선택
+      - 새로 시작 시 결혼 예정일 (미정 허용, POL-25)
+      - 초대 코드로 합류 시 초대한 배우자 이름과 결혼 예정일 (다시 묻지 않고 보여주기만)
+    actions:
+      - 계정 생성
+      - 결혼 예정일 입력 또는 "아직 미정" 선택
+      - 초대 코드 입력해 합류
+    states:
+      - type: error
+        description: 필수값 누락, 잘못되었거나 이미 사용된 초대 코드 (POL-08)
+      - type: loading
+        description: 계정 생성·커플 연결 처리 중
+    notes: STEP 4 온보딩에서 추가된 화면. ONB-01·ONB-02의 첫 단계다. 원본 PRD에 가입 방식은 없어 인증 수단은 TBD(POL-27)로 두고, 무엇을 입력받는지(결혼 예정일)만 여기서 확정했다 — 이전까지 ENT-07.wedding_date를 입력받는 화면이 없었다.
 
 # ─────────────────────────────────────────
 # 3. 내비게이션 구조
@@ -469,3 +492,6 @@ navigation:
       children:
         - screen: SCR-09
           children: []
+  onboarding:               # 가입·시작 설정 (로그인 트리 진입 전). 순서는 onboarding.yaml이 정한다
+    - screen: SCR-11
+      children: []

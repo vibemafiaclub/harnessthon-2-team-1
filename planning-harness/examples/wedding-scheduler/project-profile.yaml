@@ -23,6 +23,13 @@ data_scale:
   groups: 15
   meetings: 40                # 3개월 × 주말 2~3건
 
+benchmark: "auto"             # 이 환경에는 ui bowl MCP가 없어 미수행 (definition.md §3 참고)
+
+onboarding:
+  first_value: "첫 모임에 날짜 후보를 보내 회신 대기가 시작되는 순간"
+  must_have_before_start: ["결혼 예정일 (미정 허용)"]
+  signup_method: "TBD"
+
 constraints:
   deadline: "TBD"
   next_phase: "디자인 (Figma)"

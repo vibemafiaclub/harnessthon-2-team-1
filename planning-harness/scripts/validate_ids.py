@@ -26,6 +26,7 @@ OWNER = {
     "SCR": "ia.yaml",
     "FLW": "flows.yaml",
     "ST": "flows.yaml",
+    "ONB": "onboarding.yaml",
     "POL": "policy.md",
     "EC": "validation.csv",
 }
@@ -33,7 +34,7 @@ OWNER = {
 # 고정 상수 — 프로젝트에서 정의하지 않는다
 FIXED = {f"RISK-{i:02d}" for i in range(1, 13)}
 
-ID_RE = re.compile(r"\b(REQ|ROLE|ENT|SCR|FLW|ST|POL|EC|RISK)-(\d{2,3})(?:\.(\d+))?\b")
+ID_RE = re.compile(r"\b(REQ|ROLE|ENT|SCR|FLW|ST|ONB|POL|EC|RISK)-(\d{2,3})(?:\.(\d+))?\b")
 YAML_DEF_RE = re.compile(r"^\s*-?\s*id:\s*([A-Z]+-\d{2,3}(?:\.\d+)?)\s*$", re.M)
 
 # 고아여도 경고하지 않는 접두사 (최종 산출물이라 참조될 필요가 없음)

@@ -1,0 +1,25 @@
+paths:
+  - id: ONB-01
+    name: 첫 지인 등록
+    role: ROLE-01
+    entry: 직접 접속
+    entry_state: empty
+    first_value:
+      screen: SCR-01
+      description: 첫 지인이 목록에 보이는 순간
+    steps:
+      - screen: SCR-01
+        goal: 지인 1명 등록
+        required: true
+        required_reason: ""
+        skip_to: null
+        creates: [ENT-01]
+        resolves_empty_state: SCR-01
+    completion:
+      criteria: ENT-01 1건 이상
+      re_entry: 다음 미완 단계부터
+      reminder: none
+    exceptions:
+      - condition: 가입 후 이탈
+        handling: SCR-01 빈 상태에서 유도 (POL-01)
+# ROLE-02 의 온보딩 경로가 없다
