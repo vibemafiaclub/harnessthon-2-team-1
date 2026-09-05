@@ -1,0 +1,103 @@
+{
+  "wedding": { "date": "2026-12-12" },
+  "contacts": [
+    { "id": "c1", "name": "김서연", "group": "대학 동기", "side": "bride", "phone": "010-1234-5671" },
+    { "id": "c2", "name": "박준호", "group": "대학 동기", "side": "bride", "phone": "010-1234-5672" },
+    { "id": "c3", "name": "이수진", "group": ["대학 동기", "직장 동료"], "side": "bride", "phone": "010-1234-5673" },
+    { "id": "c4", "name": "최민석", "group": "직장 동료", "side": "groom", "phone": "010-1234-5674" },
+    { "id": "c5", "name": "정하은", "group": "동네 친구", "side": "bride", "phone": "010-1234-5675" },
+    { "id": "c6", "name": "강도윤", "group": "직장 동료", "side": "groom", "phone": "010-1234-5676" },
+    { "id": "c7", "name": "윤서아주 오래된 대학 동아리 친구", "group": "대학 동기", "side": "bride", "phone": "010-1234-5677" },
+    { "id": "c8", "name": "임태양", "group": "직장 상사", "side": "groom", "phone": "010-1234-5678" },
+    { "id": "c9", "name": "한지민", "group": "가족", "side": "both", "phone": "010-1234-5679" },
+    { "id": "c10", "name": "오세훈", "group": "동네 친구", "side": "groom", "phone": "010-1234-5680" }
+  ],
+  "meetings": [
+    {
+      "id": "m1",
+      "title": "대학 동기 모임",
+      "members": ["c1", "c2", "c3", "c7"],
+      "status": "회신대기",
+      "candidateDates": ["2026-09-19", "2026-09-26", "2026-10-03"],
+      "responses": {
+        "c1": ["2026-09-19", "2026-09-26"],
+        "c2": ["2026-10-03"],
+        "c3": ["2026-09-26", "2026-10-03"]
+      },
+      "deadline": "2026-09-17",
+      "note": "edgeCase: 회신 마감 임박, 미회신자 1명(c7)"
+    },
+    {
+      "id": "m2",
+      "title": "임태양 상사님과 1:1",
+      "members": ["c8"],
+      "status": "확정대기",
+      "candidateDates": ["2026-09-20", "2026-09-27"],
+      "responses": { "c8": ["2026-09-20"] },
+      "deadline": "2026-09-18",
+      "note": "edgeCase: 1:1로 따로 만나야 하는 관계(직장 상사)"
+    },
+    {
+      "id": "m3",
+      "title": "직장 동료 모임",
+      "members": ["c4", "c6"],
+      "status": "확정",
+      "candidateDates": ["2026-09-19", "2026-10-03"],
+      "confirmedDate": "2026-09-19",
+      "responses": { "c4": ["2026-09-19"], "c6": ["2026-09-19", "2026-10-03"] },
+      "note": "edgeCase: m4와 같은 날짜(2026-09-19)에 겹침"
+    },
+    {
+      "id": "m4",
+      "title": "동네 친구 모임",
+      "members": ["c5", "c10"],
+      "status": "확정",
+      "candidateDates": ["2026-09-19"],
+      "confirmedDate": "2026-09-19",
+      "responses": { "c5": ["2026-09-19"], "c10": ["2026-09-19"] },
+      "note": "edgeCase: m3와 같은 날짜(2026-09-19)에 겹침"
+    },
+    {
+      "id": "m5",
+      "title": "양가 상견례",
+      "members": ["c9"],
+      "status": "확정",
+      "candidateDates": ["2026-09-13"],
+      "confirmedDate": "2026-09-13",
+      "responses": { "c9": ["2026-09-13"] },
+      "note": "edgeCase: 양가가 같이 나가는 모임(side: both)"
+    },
+    {
+      "id": "m6",
+      "title": "급하게 잡힌 동기 모임",
+      "members": ["c1", "c2"],
+      "status": "확정대기",
+      "candidateDates": ["2026-11-29"],
+      "responses": { "c1": ["2026-11-29"], "c2": ["2026-11-29"] },
+      "deadline": "2026-11-28",
+      "note": "edgeCase: 결혼식(2026-12-12) 2주 전 급하게 잡힌 모임"
+    },
+    {
+      "id": "m7",
+      "title": "동네 친구와의 저녁",
+      "members": ["c5", "c10"],
+      "status": "완료",
+      "candidateDates": ["2026-08-15"],
+      "confirmedDate": "2026-08-15",
+      "responses": { "c5": ["2026-08-15"], "c10": ["2026-08-15"] },
+      "note": "지나간 모임(완료 상태 예시)"
+    }
+  ],
+  "emptyStateExample": {
+    "group": "가족",
+    "message": "아직 가족과 잡힌 모임이 없어요."
+  },
+  "edgeCases": {
+    "multiGroupMembership": "c3 (이수진 — 대학 동기 + 직장 동료 동시 소속)",
+    "overdueNoResponse": "m1의 c7 (윤서아주 오래된 대학 동아리 친구 — 마감 임박, 미회신)",
+    "overlappingConfirmedDates": "m3, m4 (둘 다 2026-09-19 확정)",
+    "oneOnOneWithSuperior": "m2 (임태양 — 직장 상사, 1:1)",
+    "bothSidesMeeting": "m5 (한지민 — side: both, 상견례)",
+    "lastMinuteMeeting": "m6 (결혼식 2주 전, 2026-11-29)"
+  }
+}
