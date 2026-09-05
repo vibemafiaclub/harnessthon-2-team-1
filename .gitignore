@@ -1,2 +1,6 @@
 .claude/scheduled_tasks.lock
 .DS_Store
+
+wireframes/output/
+
+.claude/skills/wireframe-viewable
