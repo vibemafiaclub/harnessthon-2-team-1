@@ -1,0 +1,226 @@
+meta:
+  project: wedding-scheduler
+  updated: "2026-09-05"
+
+# ─────────────────────────────────────────
+# 1. 상태 — ENT-03 모임
+# ─────────────────────────────────────────
+states:
+  entity: ENT-03
+  nodes:
+    - id: ST-01
+      name: 회신중
+      description: 모임이 생성되고 날짜 후보에 대한 참가자 회신을 받는 중. 모임의 시작 상태(생성 시 진입, 별도의 진입 전이 없음).
+      is_terminal: false
+    - id: ST-02
+      name: 확정대기
+      description: 회신 마감 기한에 도달해 최종 날짜 확정을 기다리는 중.
+      is_terminal: false
+    - id: ST-03
+      name: 확정됨
+      description: 최종 날짜가 정해져 구성원 전원에게 공유된 상태.
+      is_terminal: false
+    - id: ST-04
+      name: 완료
+      description: 확정된 모임 날짜가 지나 이력으로 전환된 상태.
+      is_terminal: true
+    - id: ST-05
+      name: 취소됨
+      description: 확정 전후를 막론하고 모임이 무산된 상태.
+      is_terminal: true
+  transitions:
+    - from: ST-01
+      to: ST-02
+      trigger: 회신 마감 기한 도달
+      trigger_type: time
+      actor: ROLE-01
+      screen: SCR-06
+      notify: [ROLE-01, ROLE-02]
+      note: RISK-02. 마감 전 리마인드는 POL-17, 마감 후 처리 규칙은 POL-02 참고. actor는 시간 경과를 확인·대응하는 모임 생성자.
+    - from: ST-01
+      to: ST-03
+      trigger: 긴급 모임 — 후보 제시·회신 수합을 생략하고 바로 확정
+      trigger_type: user
+      actor: ROLE-01
+      screen: SCR-05
+      notify: [ROLE-02, "참가 지인 전체"]
+      note: RISK-05 우회 경로. 결혼식 임박 등. POL-05 참고.
+    - from: ST-02
+      to: ST-03
+      trigger: 모임 생성자가 날짜 후보 중 최종 날짜를 확정
+      trigger_type: user
+      actor: ROLE-01
+      screen: SCR-06
+      notify: [ROLE-01, ROLE-02, "참가 지인 전체"]
+      note: 확정 시 REQ-09에 따라 전체 참가 지인에게 알림 (POL-18). 배우자가 대신 확정하는 경우는 POL-01.
+    - from: ST-02
+      to: ST-05
+      trigger: 회신 결과 확정 가능한 날짜가 없어 모임을 취소
+      trigger_type: user
+      actor: ROLE-01
+      screen: SCR-06
+      notify: [ROLE-02]
+      note: 확정 대기 중 무산되는 경로. 취소 처리 규칙은 POL-04.
+    - from: ST-03
+      to: ST-04
+      trigger: 확정된 모임 날짜가 지남
+      trigger_type: time
+      actor: ROLE-01
+      screen: SCR-04
+      notify: []
+      note: RISK-12 이력 전환. 보관 규칙은 POL-12. 목록에서 완료 탭으로 이동.
+    - from: ST-03
+      to: ST-05
+      trigger: 확정된 모임을 취소함
+      trigger_type: user
+      actor: ROLE-01
+      screen: SCR-06
+      notify: [ROLE-02, "참가 지인 전체"]
+      note: RISK-09. 취소 처리·알림 규칙은 POL-04, POL-19. 재조율이 필요하면 새 모임(ST-01)을 다시 생성한다 — 같은 레코드를 되돌리지 않는다.
+
+# 검토 필수 전이
+# - time_based: ST-01→ST-02, ST-03→ST-04 (RISK-02, 시간 경과)
+# - reverse:    ST-02→ST-05, ST-03→ST-05 (RISK-09, 취소)
+# - bypass:     ST-01→ST-03 (RISK-05, 긴급 우회)
+
+# ─────────────────────────────────────────
+# 2. 플로우
+# ─────────────────────────────────────────
+flows:
+  - id: FLW-01
+    name: 지인 등록과 그룹 편성
+    role: ROLE-01
+    trigger: 청첩장을 줄 지인을 서비스에 처음 등록하려 할 때
+    steps:
+      - screen: SCR-02
+        action: 지인 목록에서 "지인 추가" 선택
+        result: SCR-02.1 진입
+      - screen: SCR-02.1
+        action: 이름·연락처 입력, 소속 그룹을 복수 선택(기존 그룹 선택 또는 새 그룹 즉시 생성)
+        result: ENT-01 지인 레코드 생성, ENT-02 그룹과 N:M으로 연결
+      - screen: SCR-02
+        action: 등록된 지인이 목록과 그룹 필터에 반영된 것을 확인
+        result: ""
+    outcome: 지인이 하나 이상의 그룹에 등록되어 이후 모임 편성(FLW-02)에서 선택 가능해짐
+    exceptions:
+      - condition: 이미 등록된 연락처로 다시 등록을 시도
+        handling: SCR-02.1에서 중복 후보를 안내하고 기존 레코드에 그룹만 추가할지 확인 (POL-06)
+      - condition: 그룹을 지정하지 않고 저장 시도
+        handling: 그룹 없이 저장 가능하게 허용하되 SCR-02 목록에서 "미분류" 필터로 노출 (POL-07)
+
+  - id: FLW-02
+    name: 모임 편성과 일정 조율
+    role: ROLE-01
+    trigger: 특정 그룹 또는 개별 지인과 청첩장모임을 잡고 싶을 때
+    steps:
+      - screen: SCR-05
+        action: 지인 선택(그룹 필터 활용), 날짜 후보 다건 입력, 회신 마감 기한 설정
+        result: ENT-03 모임 생성, ST-01 진입
+      - screen: SCR-06
+        action: 참가자별 회신 현황과 겹침 경고 확인
+        result: ""
+      - screen: SCR-06
+        action: 회신 마감 도달 후 후보 중 최종 날짜 확정
+        result: ST-02 → ST-03 전이
+      - screen: SCR-06
+        action: 확정 결과가 구성원 전원에게 공유됐는지 확인
+        result: ""
+    outcome: 모임이 확정되어 전체 일정 조망(SCR-07)에 반영됨
+    exceptions:
+      - condition: 마감까지 일부 인원이 미회신
+        handling: SCR-06에서 마감 연장 또는 미응답자 제외 후 확정 진행 (RISK-02, RISK-08, POL-02)
+      - condition: 확정하려는 날짜에 이미 다른 모임이 있음
+        handling: SCR-06에서 겹침 경고를 표시하고 확정을 차단하지 않되 재확인을 요구 (RISK-03, POL-03)
+
+  - id: FLW-03
+    name: 배우자 계정 연결
+    role: ROLE-02
+    trigger: 회원가입 직후, 또는 배우자가 먼저 만든 초대 코드를 받았을 때
+    steps:
+      - screen: SCR-10
+        action: 배우자 초대 코드를 생성하거나, 배우자가 보낸 코드를 입력
+        result: ""
+      - screen: SCR-10
+        action: 연결 성공 확인
+        result: ENT-06 계정이 ENT-07 커플에 연결됨
+    outcome: 신랑·신부 계정이 하나의 커플로 묶여 이후 서로의 확정 일정을 공유해 볼 수 있게 됨 (REQ-13)
+    exceptions:
+      - condition: 잘못된 초대 코드를 입력
+        handling: SCR-10에서 오류를 표시하고 재입력을 요청 (POL-08)
+      - condition: 이미 다른 계정과 연결된 코드를 입력
+        handling: 커플은 정확히 2개 계정만 허용되므로(ia.yaml ENT-07) 연결을 거부하고 사유를 안내 (POL-08)
+
+  - id: FLW-04
+    name: 전체 일정 조망에서 겹침 확인
+    role: ROLE-02
+    trigger: 이번 달 남은 모임을 배우자 것까지 합쳐 확인하고 싶을 때
+    steps:
+      - screen: SCR-01
+        action: 홈에서 "전체 일정 조망"으로 이동
+        result: ""
+      - screen: SCR-07
+        action: 월별 확정 모임을 신부측·신랑측·공동 구분과 함께 확인
+        result: ""
+      - screen: SCR-07
+        action: 같은 날짜에 겹치는 모임이 강조 표시된 것을 확인하고 필요 시 상세로 이동
+        result: SCR-06 진입
+    outcome: 결혼식 전까지 남은 모든 확정 모임과 겹치는 날짜를 파악함 (REQ-10, REQ-11)
+    exceptions:
+      - condition: 아직 확정된 모임이 하나도 없음
+        handling: SCR-07에서 빈 상태로 안내하고 모임 편성(SCR-05)으로 유도 (RISK-07)
+
+  - id: FLW-05
+    name: 초대받은 지인의 회신
+    role: ROLE-03
+    trigger: 청첩장모임 초대 링크를 문자·카카오 등으로 받았을 때
+    steps:
+      - screen: SCR-08
+        action: 초대 링크로 진입해 자신에게 온 모임 요청 목록 확인(여러 커플의 요청 포함)
+        result: ""
+      - screen: SCR-09
+        action: 응답할 모임을 선택해 날짜 후보별 가능/불가능 표시
+        result: ENT-05 회신 레코드 생성
+      - screen: SCR-09
+        action: 회신 제출
+        result: ""
+    outcome: 회신이 모임 생성자에게 반영되어 SCR-06 회신 현황에 나타남 (REQ-06, REQ-14, REQ-15)
+    exceptions:
+      - condition: 회신 마감 기한이 지난 뒤 접속
+        handling: SCR-09에서 마감 지남을 안내하고 입력을 막되, 이미 확정된 날짜가 있으면 결과를 보여줌 (RISK-02, POL-09)
+      - condition: 마감 전 회신을 바꾸고 싶음
+        handling: SCR-09에서 기존 회신을 다시 열어 수정 가능하게 허용 (POL-09)
+
+  - id: FLW-06
+    name: 긴급 모임 우회 확정
+    role: ROLE-01
+    trigger: 결혼식이 임박해 정식 회신 절차를 밟을 시간이 없을 때 (원본 §3)
+    steps:
+      - screen: SCR-05
+        action: '"긴급 모임" 옵션으로 후보 제시 없이 참가자와 확정 날짜를 바로 입력'
+        result: ENT-03 모임이 ST-03으로 바로 생성
+      - screen: SCR-06
+        action: 구성원에게 확정 사실이 공유됐는지 확인
+        result: ""
+    outcome: 정규 절차(회신 수합) 없이도 확정된 모임이 즉시 전체 일정에 반영됨 (RISK-05, POL-05)
+    exceptions:
+      - condition: 구성원 중 일부가 이미 다른 확정 모임과 겹침
+        handling: SCR-06에서 겹침 경고를 표시하되 생성 자체는 막지 않음 (RISK-03, POL-03)
+
+  - id: FLW-07
+    name: 확정된 모임 취소·재조율
+    role: ROLE-01
+    trigger: 확정된 모임을 부득이하게 취소해야 할 때
+    steps:
+      - screen: SCR-06
+        action: 확정된 모임에서 "취소" 선택, 취소 사유 입력(선택)
+        result: ST-03 → ST-05 전이
+      - screen: SCR-06
+        action: 취소 사실이 배우자와 참가 지인에게 공유됐는지 확인
+        result: ""
+      - screen: SCR-05
+        action: 필요 시 같은 구성원으로 새 모임을 다시 편성
+        result: 새 ENT-03 레코드가 ST-01로 생성
+    outcome: 취소된 모임은 완료 이력과 구분되어 남고(RISK-12, POL-12), 필요하면 새 모임으로 재조율됨 (RISK-09)
+    exceptions:
+      - condition: 참가자 다수가 이미 일정을 비워둔 상태에서 취소
+        handling: 강제 규정은 두지 않되, 취소 알림에 사유를 포함해 신뢰 저하를 최소화 (POL-04, POL-19)

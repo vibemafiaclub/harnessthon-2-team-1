@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "seed-data.json",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta": {
+      "type": "object",
+      "required": ["required_cases"],
+      "properties": {
+        "generated_by": { "type": "string" },
+        "note": { "type": "string" },
+        "required_cases": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["key", "risk", "description"],
+            "properties": {
+              "key": { "type": "string" },
+              "risk": { "type": "string", "pattern": "^RISK-\\d{2}$" },
+              "description": { "type": "string" },
+              "included": { "type": "boolean" },
+              "example_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": {
+    "type": "object",
+    "required": ["_entity", "records"],
+    "properties": {
+      "_entity": { "type": "string", "pattern": "^ENT-\\d{2,3}$" },
+      "_name": { "type": "string" },
+      "records": { "type": "array" }
+    }
+  }
+}

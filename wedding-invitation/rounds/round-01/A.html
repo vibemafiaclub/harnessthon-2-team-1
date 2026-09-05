@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>김도현 · 이서윤 결혼합니다</title>
+<meta property="og:title" content="김도현 ♥ 이서윤 결혼합니다">
+<meta property="og:description" content="2026년 11월 14일 토요일 낮 12시 30분 · 더채플앳청담">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --paper:#f7f4ed; --paper-2:#f0ebe1; --ink:#221f1b; --ink-2:#605a51; --ink-3:#9d9689; --line:#ddd6c9; --accent:#a3885f;
+  --serif-en:"Cormorant Garamond",serif; --serif-kr:"Noto Serif KR","Cormorant Garamond",serif; --sans:"Pretendard Variable",Pretendard,-apple-system,sans-serif;
+  --pad:28px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:#e6e1d6;color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:anywhere}
+body.lock{overflow:hidden}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+.phone{position:relative;max-width:390px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 0 1px rgba(0,0,0,.04),0 40px 100px -50px rgba(40,30,10,.5);overflow:hidden}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- opening ---------- */
+.opening{position:fixed;inset:0;z-index:100;background:var(--paper);display:grid;place-items:center;text-align:center;transition:opacity 1s ease .2s,visibility 0s 1.3s}
+.opening.out{opacity:0;visibility:hidden}
+.op-date{font-family:var(--serif-en);font-size:13px;letter-spacing:.7em;color:var(--ink-3);opacity:0;animation:opd 1.6s cubic-bezier(.2,.7,.2,1) .2s forwards}
+.op-names{font-family:var(--serif-en);font-weight:300;font-size:38px;line-height:1.1;margin:18px 0;opacity:0;animation:opn 1.4s ease .7s forwards}
+.op-names i{font-style:italic;color:var(--accent);font-size:.8em;margin:0 .15em}
+.op-line{width:0;height:1px;background:var(--ink);margin:0 auto;animation:opl 1.1s cubic-bezier(.7,0,.2,1) 1.1s forwards}
+@keyframes opd{to{opacity:1;letter-spacing:.28em}}
+@keyframes opn{to{opacity:1}}
+@keyframes opl{to{width:56px}}
+
+/* ---------- type helpers ---------- */
+.eyebrow{font-family:var(--serif-en);font-style:italic;font-size:14px;letter-spacing:.04em;color:var(--accent)}
+.sh{text-align:center;margin-bottom:34px}
+.sh h2{font-family:var(--serif-kr);font-weight:500;font-size:20px;letter-spacing:.02em;margin-top:6px}
+.sh::after{content:"";display:block;width:1px;height:26px;background:var(--line);margin:18px auto 0}
+section{padding:72px var(--pad)}
+section + section{border-top:0}
+.alt{background:var(--paper-2)}
+.serif{font-family:var(--serif-kr)}
+.caps{font-family:var(--serif-en);letter-spacing:.22em;text-transform:uppercase;font-size:11px}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+/* ---------- cover ---------- */
+.cover{padding:64px var(--pad) 56px;text-align:center}
+.cover .caps{color:var(--ink-3)}
+.cover h1{font-family:var(--serif-en);font-weight:300;font-size:46px;line-height:1.05;letter-spacing:-.01em;margin:14px 0 8px}
+.cover h1 i{font-style:italic;color:var(--accent);font-size:.78em;margin:0 .12em}
+.cover .kr{font-family:var(--serif-kr);font-weight:400;font-size:14px;letter-spacing:.32em;color:var(--ink-2);margin-left:.32em}
+.cover figure{margin:34px 0 26px;aspect-ratio:4/5;overflow:hidden;position:relative}
+.cover figure img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.02);transform:scale(1.06);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
+body.ready .cover figure img{transform:scale(1)}
+.cover .when{font-family:var(--serif-en);font-size:17px;letter-spacing:.14em;color:var(--ink)}
+.cover .where{font-size:13px;color:var(--ink-2);margin-top:4px;letter-spacing:.04em}
+.scroll-hint{margin:40px auto 0;width:1px;height:44px;background:linear-gradient(var(--ink-3),transparent);position:relative;overflow:hidden}
+.scroll-hint::after{content:"";position:absolute;left:0;top:-44px;width:1px;height:44px;background:var(--ink);animation:sh 2.2s ease-in-out infinite}
+@keyframes sh{to{top:44px}}
+
+/* ---------- greeting ---------- */
+.greeting .quote{font-family:var(--serif-en);font-style:italic;font-size:15px;color:var(--ink-2);text-align:center;line-height:1.6;margin-bottom:30px}
+.greeting .body{font-family:var(--serif-kr);font-weight:300;font-size:15px;line-height:2.15;text-align:center;white-space:pre-line;color:var(--ink)}
+.parents{margin-top:44px;padding-top:30px;border-top:1px solid var(--line);display:grid;gap:10px;text-align:center;font-family:var(--serif-kr);font-size:14px;color:var(--ink-2)}
+.parents b{font-weight:500;color:var(--ink);margin-left:6px;font-size:15px}
+.parents .rel{font-size:12px;color:var(--ink-3);margin:0 4px}
+
+/* ---------- couple ---------- */
+.couple .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.couple figure{aspect-ratio:3/4;overflow:hidden;margin-bottom:16px}
+.couple figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .8s}
+.couple .p:hover figure img{filter:grayscale(0)}
+.couple .en{font-family:var(--serif-en);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.couple .nm{font-family:var(--serif-kr);font-size:18px;font-weight:500;margin:4px 0 8px}
+.couple .in{font-size:12.5px;color:var(--ink-2);line-height:1.7;min-height:64px}
+.couple .ct{display:flex;gap:8px;margin-top:14px}
+.couple .ct a{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ink-2)}
+.couple .ct svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.4}
+
+/* ---------- date ---------- */
+.date{text-align:center}
+.date .big{font-family:var(--serif-en);font-weight:300;font-size:104px;line-height:.9;letter-spacing:-.03em;color:var(--ink)}
+.date .mon{font-family:var(--serif-en);font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin-top:10px}
+.date .time{font-family:var(--serif-kr);font-size:14px;color:var(--ink-2);margin-top:10px}
+.cal{margin:40px auto 0;max-width:300px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0 14px}
+.cal .wd,.cal .days{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal .wd span{font-family:var(--serif-en);font-size:11px;letter-spacing:.1em;color:var(--ink-3);padding-bottom:10px}
+.cal .days span{font-family:var(--serif-en);font-size:16px;height:38px;display:grid;place-items:center;color:var(--ink-2);position:relative}
+.cal .days span.on{color:var(--ink);font-weight:500}
+.cal .days span.on::before{content:"";position:absolute;width:32px;height:32px;border:1px solid var(--accent);border-radius:50%;animation:ring 1.2s cubic-bezier(.2,.7,.2,1) both}
+.cal .days span.on::after{content:"";position:absolute;bottom:-1px;width:3px;height:3px;border-radius:50%;background:var(--accent)}
+@keyframes ring{from{transform:scale(.4);opacity:0}}
+.dday{margin-top:36px}
+.dday .cnt{display:grid;grid-template-columns:repeat(4,1fr);max-width:300px;margin:0 auto}
+.dday .cnt div{padding:6px 0;border-left:1px solid var(--line)}
+.dday .cnt div:first-child{border-left:0}
+.dday .cnt b{display:block;font-family:var(--serif-en);font-weight:300;font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.dday .cnt small{display:block;font-family:var(--serif-en);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+.dday p{margin-top:22px;font-family:var(--serif-kr);font-size:14px;color:var(--ink-2)}
+.dday p b{color:var(--accent);font-weight:500}
+
+/* ---------- gallery ---------- */
+.gallery{padding-left:18px;padding-right:18px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g figure{overflow:hidden;position:relative;cursor:zoom-in;background:var(--paper-2)}
+.g figure img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.g figure:hover img{transform:scale(1.04)}
+.g figure:nth-child(1){grid-column:1/-1;aspect-ratio:4/5}
+.g figure:nth-child(2){aspect-ratio:3/4;margin-top:26px}
+.g figure:nth-child(3){aspect-ratio:3/4}
+.g figure:nth-child(4){grid-column:1/-1;aspect-ratio:3/2;margin:14px 34px 0}
+.g figure:nth-child(5){aspect-ratio:1}
+.g figure:nth-child(6){aspect-ratio:1;margin-top:26px}
+.g figure:nth-child(7){grid-column:1/-1;aspect-ratio:4/5;margin-top:14px}
+.g figure:nth-child(8){aspect-ratio:3/4;margin-top:26px}
+.g figure:nth-child(9){aspect-ratio:3/4}
+.g figure figcaption{position:absolute;left:10px;bottom:8px;font-family:var(--serif-en);font-style:italic;font-size:12px;color:#fff;opacity:.85;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+/* ---------- location ---------- */
+.venue{text-align:center;margin-bottom:26px}
+.venue .nm{font-family:var(--serif-kr);font-size:20px;font-weight:500}
+.venue .hall{font-size:13px;color:var(--ink-2);margin-top:2px}
+.venue .addr{font-size:13px;color:var(--ink-2);margin-top:12px}
+.venue .tel{font-family:var(--serif-en);font-size:14px;letter-spacing:.08em;color:var(--ink-3);margin-top:2px}
+.map{aspect-ratio:4/3;border:1px solid var(--line);background:var(--paper-2);position:relative;overflow:hidden}
+.map svg{width:100%;height:100%;display:block}
+.map .pin{animation:pin 2.4s ease-in-out infinite}
+@keyframes pin{50%{transform:translateY(-4px)}}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px;border:1px solid var(--ink)}
+.nav button{height:48px;font-size:13px;letter-spacing:.02em;border-left:1px solid var(--ink);transition:background .2s,color .2s}
+.nav button:first-child{border-left:0}
+.nav button:active{background:var(--ink);color:var(--paper)}
+.trans{margin-top:36px;display:grid;gap:18px}
+.trans div{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:baseline}
+.trans dt{font-family:var(--serif-en);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.trans dd{font-size:13.5px;line-height:1.7;color:var(--ink-2)}
+
+/* ---------- gift ---------- */
+.gift .lead{font-family:var(--serif-kr);font-weight:300;font-size:14px;line-height:2;text-align:center;color:var(--ink-2);margin-bottom:34px}
+.acc{border-top:1px solid var(--line)}
+.acc .hd{width:100%;display:flex;justify-content:space-between;align-items:center;height:60px;border-bottom:1px solid var(--line);font-family:var(--serif-kr);font-size:15px;font-weight:500}
+.acc .hd i{font-family:var(--serif-en);font-style:normal;font-size:22px;font-weight:300;color:var(--ink-3);transition:transform .4s}
+.acc.open .hd i{transform:rotate(45deg)}
+.acc .bd{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1)}
+.acc.open .bd{max-height:400px}
+.acc .row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.acc .row:last-child{border-bottom:1px solid var(--line)}
+.acc .who{font-size:12px;color:var(--ink-3)}
+.acc .num{font-family:var(--serif-en);font-size:16px;letter-spacing:.04em;margin-top:2px}
+.acc .num small{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);letter-spacing:0;margin-right:8px}
+.acc .btns{display:flex;gap:6px}
+.acc .cp,.acc .kp{height:32px;padding:0 12px;border:1px solid var(--line);font-size:11.5px;letter-spacing:.06em;color:var(--ink-2);transition:.2s}
+.acc .cp:active,.acc .kp:active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.acc .kp{border-color:#e9d98a;background:#fbf2c7;color:#5b4a00}
+
+/* ---------- rsvp ---------- */
+.rsvp{text-align:center}
+.rsvp .lead{font-family:var(--serif-kr);font-weight:300;font-size:14px;line-height:2;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;font-size:14px;letter-spacing:.06em;transition:.2s}
+.btn.solid{background:var(--ink);color:var(--paper);width:100%}
+.btn.solid:active{background:#000}
+.btn.ghost{border:1px solid var(--ink);width:100%}
+.btn.ghost:active{background:var(--ink);color:var(--paper)}
+.rsvp .btn{margin-top:30px}
+
+/* ---------- guestbook ---------- */
+.gb .list{display:grid;gap:26px}
+.gb .it{position:relative;padding-left:26px}
+.gb .it::before{content:"\201C";position:absolute;left:0;top:-6px;font-family:var(--serif-en);font-size:34px;color:var(--accent);line-height:1}
+.gb .msg{font-family:var(--serif-kr);font-weight:300;font-size:14px;line-height:1.9}
+.gb .by{margin-top:8px;font-size:12px;color:var(--ink-3)}
+.gb .by b{font-weight:500;color:var(--ink-2);margin-right:8px}
+.gb .empty{text-align:center;padding:30px 0;color:var(--ink-3);font-family:var(--serif-kr);font-size:14px}
+.gb form{margin-top:40px;padding-top:30px;border-top:1px solid var(--line);display:grid;gap:10px}
+.field{border:1px solid var(--line);background:#fff;padding:0 14px;font:inherit;font-size:14px;color:var(--ink);height:48px;width:100%;outline:none;transition:border-color .2s}
+.field:focus{border-color:var(--ink)}
+textarea.field{height:110px;padding:12px 14px;resize:none;line-height:1.6}
+
+/* ---------- notice / footer ---------- */
+.notice ul{display:grid;gap:14px;list-style:none}
+.notice li{position:relative;padding-left:18px;font-size:13.5px;color:var(--ink-2);line-height:1.7}
+.notice li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--accent)}
+.share{display:grid;gap:8px;margin-top:40px}
+footer{padding:40px var(--pad) 56px;text-align:center;border-top:1px solid var(--line)}
+footer .nm{font-family:var(--serif-en);font-size:18px;font-weight:300}
+footer .nm i{color:var(--accent);font-size:.8em}
+footer small{display:block;margin-top:8px;font-family:var(--serif-en);letter-spacing:.2em;font-size:10px;color:var(--ink-3);text-transform:uppercase}
+
+/* ---------- overlays ---------- */
+.fixedc{position:fixed;left:50%;transform:translateX(-50%);width:100%;max-width:390px}
+.toast{bottom:36px;z-index:90;display:flex;justify-content:center;pointer-events:none}
+.toast span{background:var(--ink);color:var(--paper);font-size:12.5px;letter-spacing:.04em;padding:11px 18px;opacity:0;transform:translateY(8px);transition:.35s}
+.toast.show span{opacity:1;transform:none}
+
+.dim{position:fixed;inset:0;background:rgba(20,16,10,.5);z-index:80;opacity:0;visibility:hidden;transition:.4s}
+.dim.show{opacity:1;visibility:visible}
+.sheet{bottom:0;z-index:85;background:var(--paper);padding:26px var(--pad) calc(28px + env(safe-area-inset-bottom));transform:translate(-50%,105%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.sheet.show{transform:translate(-50%,0)}
+.sheet .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.sheet .hd h3{font-family:var(--serif-kr);font-weight:500;font-size:17px}
+.sheet .x{font-family:var(--serif-en);font-size:26px;font-weight:300;line-height:1}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-family:var(--serif-en);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.seg button{height:44px;font-size:13.5px;color:var(--ink-2);transition:.2s;border-left:1px solid var(--line)}
+.seg button:first-child{border-left:0}
+.seg button.on{background:var(--ink);color:var(--paper)}
+.step{display:grid;grid-template-columns:44px 1fr 44px;border:1px solid var(--line);height:44px;align-items:center;text-align:center}
+.step button{height:100%;font-family:var(--serif-en);font-size:22px;font-weight:300;color:var(--ink-2)}
+.step b{font-family:var(--serif-en);font-size:17px;font-weight:400}
+.done{text-align:center;padding:26px 0 10px}
+.done svg{width:52px;height:52px;margin:0 auto 18px;display:block}
+.done svg path{fill:none;stroke:var(--accent);stroke-width:1.3;stroke-dasharray:200;stroke-dashoffset:200;animation:draw 1.2s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h4{font-family:var(--serif-kr);font-weight:500;font-size:17px}
+.done p{font-family:var(--serif-kr);font-weight:300;font-size:13.5px;color:var(--ink-2);margin-top:8px;line-height:1.8}
+
+.lb{position:fixed;inset:0;z-index:95;background:rgba(14,12,10,.96);display:grid;place-items:center;opacity:0;visibility:hidden;transition:.35s}
+.lb.show{opacity:1;visibility:visible}
+.lb img{max-width:92vw;max-height:80vh;object-fit:contain;transition:opacity .25s}
+.lb .x{position:absolute;top:18px;right:20px;color:#fff;font-family:var(--serif-en);font-size:34px;font-weight:300}
+.lb .n{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#fff;font-family:var(--serif-en);letter-spacing:.2em;font-size:12px;opacity:.7}
+.lb .prev,.lb .next{position:absolute;top:0;bottom:0;width:40%}
+.lb .prev{left:0}.lb .next{right:0}
+</style>
+</head>
+<body class="lock">
+<div class="grain"></div>
+
+<div class="opening" id="opening">
+  <div>
+    <div class="op-date">2026 · 11 · 14</div>
+    <div class="op-names">Dohyun<i>&amp;</i>Seoyun</div>
+    <div class="op-line"></div>
+  </div>
+</div>
+
+<main class="phone">
+
+  <!-- 1. cover -->
+  <section class="cover">
+    <div class="caps rv">The Wedding of</div>
+    <h1 class="rv d1">Dohyun<i>&amp;</i>Seoyun</h1>
+    <div class="kr rv d2">김도현 · 이서윤</div>
+    <figure class="rv d2"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85" alt="신랑 신부"></figure>
+    <div class="when rv d3">2026. 11. 14. SAT 12:30 PM</div>
+    <div class="where rv d3">더채플앳청담 3층 채플홀</div>
+    <div class="scroll-hint"></div>
+  </section>
+
+  <!-- 2. greeting -->
+  <section class="greeting">
+    <header class="sh rv"><div class="eyebrow">Invitation</div><h2>소중한 분들을 초대합니다</h2></header>
+    <p class="quote rv">Every day we have shared<br>has led us to this one.</p>
+    <p class="body rv d1">서로의 계절을 지나
+같은 곳을 바라보게 된 두 사람이
+이제 하나의 길을 걸으려 합니다.
+
+따뜻한 마음으로 오셔서
+저희의 시작을 함께 축복해 주시면
+더없는 기쁨으로 간직하겠습니다.</p>
+    <div class="parents rv d2">
+      <div>김성호 · 박미경<span class="rel">의 장남</span><b>도현</b></div>
+      <div>이재훈 · 최은정<span class="rel">의 차녀</span><b>서윤</b></div>
+    </div>
+  </section>
+
+  <!-- 3. couple -->
+  <section class="couple alt">
+    <header class="sh rv"><div class="eyebrow">Bride &amp; Groom</div><h2>두 사람을 소개합니다</h2></header>
+    <div class="grid">
+      <div class="p rv">
+        <figure><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="신랑"></figure>
+        <div class="en">Groom</div>
+        <div class="nm">김도현</div>
+        <p class="in">책보다 사람을 먼저 읽는 사람. 주말 아침엔 늘 먼저 일어나 커피를 내립니다.</p>
+        <div class="ct"><a href="tel:010-2345-6789" aria-label="전화"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><a href="sms:010-2345-6789" aria-label="문자"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></a></div>
+      </div>
+      <div class="p rv d1">
+        <figure><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="신부"></figure>
+        <div class="en">Bride</div>
+        <div class="nm">이서윤</div>
+        <p class="in">길을 잃어도 웃는 사람. 낯선 도시의 골목을 걷는 걸 가장 좋아합니다.</p>
+        <div class="ct"><a href="tel:010-9876-5432" aria-label="전화"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><a href="sms:010-9876-5432" aria-label="문자"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. date -->
+  <section class="date">
+    <header class="sh rv"><div class="eyebrow">Save the Date</div><h2>예식 안내</h2></header>
+    <div class="big rv">14</div>
+    <div class="mon rv d1">November 2026</div>
+    <div class="time rv d1">토요일 낮 12시 30분</div>
+    <div class="cal rv d2">
+      <div class="wd"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
+      <div class="days" id="cal"></div>
+    </div>
+    <div class="dday rv d3">
+      <div class="cnt" id="cnt"><div><b>--</b><small>Days</small></div><div><b>--</b><small>Hours</small></div><div><b>--</b><small>Min</small></div><div><b>--</b><small>Sec</small></div></div>
+      <p>도현 <span style="color:var(--accent)">&amp;</span> 서윤의 결혼식이 <b id="dleft">--</b>일 남았습니다</p>
+    </div>
+  </section>
+
+  <!-- 5. gallery -->
+  <section class="gallery alt">
+    <header class="sh rv"><div class="eyebrow">Gallery</div><h2>우리의 순간들</h2></header>
+    <div class="g" id="gal"></div>
+  </section>
+
+  <!-- 6. location -->
+  <section class="location">
+    <header class="sh rv"><div class="eyebrow">Location</div><h2>오시는 길</h2></header>
+    <div class="venue rv">
+      <div class="nm">더채플앳청담</div>
+      <div class="hall">3층 채플홀</div>
+      <div class="addr">서울 강남구 선릉로 757</div>
+      <a class="tel" href="tel:02-3444-8020">02 · 3444 · 8020</a>
+    </div>
+    <div class="map rv d1">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard Variable, sans-serif">
+        <g stroke="#cfc6b5" stroke-width="1" fill="none">
+          <path d="M-10 90 C120 80 200 100 410 70"/><path d="M-10 190 C100 200 260 180 410 200"/>
+          <path d="M120 -10 C130 100 110 200 130 310"/><path d="M270 -10 C260 120 280 200 265 310"/>
+          <path d="M-10 250 L410 240" stroke-dasharray="3 5"/>
+        </g>
+        <g stroke="#221f1b" stroke-width="1.6" fill="none"><path d="M-10 140 C120 135 260 150 410 130"/></g>
+        <g font-size="10" fill="#9d9689" letter-spacing=".5">
+          <text x="150" y="128">선릉로</text><text x="300" y="66" >도산대로</text><text x="98" y="285" transform="rotate(-88 98 285)">삼성로</text>
+        </g>
+        <g><circle cx="120" cy="140" r="5" fill="#f7f4ed" stroke="#221f1b" stroke-width="1.6"/><text x="80" y="164" font-size="11" fill="#221f1b">강남구청역</text><text x="86" y="176" font-size="9" fill="#9d9689">3번 출구</text></g>
+        <g><circle cx="268" cy="70" r="3" fill="#9d9689"/><text x="230" y="55" font-size="10" fill="#9d9689">청담사거리</text></g>
+        <g class="pin" style="transform-origin:262px 148px">
+          <path d="M262 122 c-10 0 -16 7 -16 15 c0 11 16 26 16 26 s16 -15 16 -26 c0 -8 -6 -15 -16 -15z" fill="#221f1b"/>
+          <circle cx="262" cy="137" r="5" fill="#f7f4ed"/>
+        </g>
+        <text x="236" y="182" font-size="12" font-weight="600" fill="#221f1b">더채플앳청담</text>
+        <text x="322" y="288" font-size="9" fill="#bfb7a8" font-style="italic" font-family="Cormorant Garamond">sketch map</text>
+      </svg>
+    </div>
+    <div class="nav rv d2">
+      <button onclick="nav('kakao')">카카오맵</button>
+      <button onclick="nav('naver')">네이버지도</button>
+      <button onclick="nav('tmap')">티맵</button>
+    </div>
+    <dl class="trans rv d3">
+      <div><dt>Subway</dt><dd>7호선 · 분당선 강남구청역 3번 출구에서 도보 7분</dd></div>
+      <div><dt>Bus</dt><dd>간선 141 · 242 · 361 / 지선 3414 · 4412<br>청담사거리 하차</dd></div>
+      <div><dt>Parking</dt><dd>건물 지하 주차장 2시간 무료<br>안내데스크에서 주차권 수령</dd></div>
+      <div><dt>Shuttle</dt><dd>강남구청역 3번 출구 앞<br>11:30부터 20분 간격 운행</dd></div>
+    </dl>
+  </section>
+
+  <!-- 7. gift -->
+  <section class="gift alt">
+    <header class="sh rv"><div class="eyebrow">With Love</div><h2>마음 전하실 곳</h2></header>
+    <p class="lead rv">참석이 어려우신 분들을 위해<br>계좌번호를 안내드립니다.<br>전해주시는 마음은 소중하게 간직하겠습니다.</p>
+    <div class="acc rv d1" id="accG">
+      <button class="hd" onclick="this.parentNode.classList.toggle('open')"><span>신랑측 계좌번호</span><i>+</i></button>
+      <div class="bd">
+        <div class="row"><div><div class="who">신랑 김도현</div><div class="num"><small>국민은행</small>123456-04-567890</div></div><div class="btns"><button class="kp" onclick="toast('카카오페이로 이동합니다')">Pay</button><button class="cp" onclick="copy('123456-04-567890')">복사</button></div></div>
+        <div class="row"><div><div class="who">아버지 김성호</div><div class="num"><small>신한은행</small>110-345-678901</div></div><div class="btns"><button class="cp" onclick="copy('110-345-678901')">복사</button></div></div>
+        <div class="row"><div><div class="who">어머니 박미경</div><div class="num"><small>우리은행</small>1002-456-789012</div></div><div class="btns"><button class="cp" onclick="copy('1002-456-789012')">복사</button></div></div>
+      </div>
+    </div>
+    <div class="acc rv d2" style="border-top:0" id="accB">
+      <button class="hd" onclick="this.parentNode.classList.toggle('open')"><span>신부측 계좌번호</span><i>+</i></button>
+      <div class="bd">
+        <div class="row"><div><div class="who">신부 이서윤</div><div class="num"><small>카카오뱅크</small>3333-08-1234567</div></div><div class="btns"><button class="kp" onclick="toast('카카오페이로 이동합니다')">Pay</button><button class="cp" onclick="copy('3333-08-1234567')">복사</button></div></div>
+        <div class="row"><div><div class="who">아버지 이재훈</div><div class="num"><small>하나은행</small>620-910123-45607</div></div><div class="btns"><button class="cp" onclick="copy('620-910123-45607')">복사</button></div></div>
+        <div class="row"><div><div class="who">어머니 최은정</div><div class="num"><small>농협은행</small>302-1234-5678-91</div></div><div class="btns"><button class="cp" onclick="copy('302-1234-5678-91')">복사</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. rsvp -->
+  <section class="rsvp">
+    <header class="sh rv"><div class="eyebrow">R.S.V.P.</div><h2>참석 의사 전달</h2></header>
+    <p class="lead rv">축하의 마음으로 참석해 주시는 모든 분들을<br>귀하게 모실 수 있도록<br>참석 여부를 알려주시면 감사하겠습니다.</p>
+    <button class="btn solid rv d1" onclick="openSheet()">참석 의사 전달하기</button>
+  </section>
+
+  <!-- 9. guestbook -->
+  <section class="gb alt">
+    <header class="sh rv"><div class="eyebrow">Guest Book</div><h2>축하의 말을 남겨주세요</h2></header>
+    <div class="list rv" id="gbList"></div>
+    <form class="rv d1" onsubmit="return addGb(event)">
+      <input class="field" id="gbName" placeholder="성함" maxlength="12" required>
+      <textarea class="field" id="gbMsg" placeholder="따뜻한 한마디를 남겨주세요" maxlength="200" required></textarea>
+      <button class="btn ghost" type="submit">남기기</button>
+    </form>
+  </section>
+
+  <!-- 10. notice + share -->
+  <section class="notice">
+    <header class="sh rv"><div class="eyebrow">Notice</div><h2>안내 말씀</h2></header>
+    <ul class="rv">
+      <li>예식 후 3층 연회장에서 식사가 준비되어 있습니다.</li>
+      <li>화환은 정중히 사양하며, 마음만 감사히 받겠습니다.</li>
+      <li>주차 공간이 협소하니 가급적 대중교통을 이용해 주세요.</li>
+    </ul>
+    <div class="share rv d1">
+      <button class="btn solid" onclick="toast('카카오톡 공유 (SDK 연결 시 동작)')">카카오톡으로 공유하기</button>
+      <button class="btn ghost" onclick="copy(location.href,'링크가 복사되었습니다')">링크 복사하기</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="nm">Dohyun <i>&amp;</i> Seoyun</div>
+    <small>14 November 2026 · Seoul</small>
+  </footer>
+</main>
+
+<div class="fixedc toast" id="toast"><span></span></div>
+<div class="dim" id="dim" onclick="closeSheet()"></div>
+<div class="fixedc sheet" id="sheet">
+  <div class="hd"><h3>참석 의사 전달</h3><button class="x" onclick="closeSheet()">×</button></div>
+  <div id="sheetForm">
+    <div class="fg"><label>Side</label><div class="seg" data-k="side"><button class="on">신랑측</button><button>신부측</button></div></div>
+    <div class="fg"><label>Attendance</label><div class="seg" data-k="att"><button class="on">참석</button><button>불참</button></div></div>
+    <div class="fg"><label>Name</label><input class="field" id="rsName" placeholder="성함을 입력해 주세요"></div>
+    <div class="fg"><label>Guests</label><div class="step"><button onclick="stepN(-1)">−</button><b id="rsN">1</b><button onclick="stepN(1)">+</button></div></div>
+    <div class="fg"><label>Meal</label><div class="seg" data-k="meal"><button class="on">식사 예정</button><button>식사 안 함</button></div></div>
+    <button class="btn solid" style="margin-top:6px" onclick="submitRs()">전달하기</button>
+  </div>
+  <div id="sheetDone" class="done" hidden>
+    <svg viewBox="0 0 52 52"><path d="M26 2a24 24 0 1 0 0 48 24 24 0 0 0 0-48z"/><path d="M15 27l8 8 15-16"/></svg>
+    <h4>감사합니다</h4>
+    <p>소중한 마음 잘 받았습니다.<br>11월 14일에 뵙겠습니다.</p>
+    <button class="btn ghost" style="margin-top:22px" onclick="closeSheet()">닫기</button>
+  </div>
+</div>
+<div class="lb" id="lb"><button class="prev" onclick="lbMove(-1)" aria-label="이전"></button><img id="lbImg" alt=""><button class="next" onclick="lbMove(1)" aria-label="다음"></button><button class="x" onclick="closeLb()">×</button><div class="n" id="lbN"></div></div>
+
+<script>
+const GAL=["https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80","https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80","https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80","https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80","https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=1200&q=80","https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80","https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80","https://images.unsplash.com/photo-1529636798458-92182e662485?w=1200&q=80","https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80"];
+const WEDDING=new Date("2026-11-14T12:30:00+09:00");
+const VENUE={name:"더채플앳청담",lat:37.5245,lng:127.0398};
+
+/* opening */
+setTimeout(()=>{document.getElementById('opening').classList.add('out');document.body.classList.remove('lock');document.body.classList.add('ready');},2500);
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* calendar */
+(function(){const c=document.getElementById('cal');const first=new Date(2026,10,1).getDay();let h='';for(let i=0;i<first;i++)h+='<span></span>';for(let d=1;d<=30;d++)h+=`<span class="${d===14?'on':''}">${d}</span>`;c.innerHTML=h})();
+
+/* countdown */
+function tick(){const now=new Date();let diff=Math.max(0,WEDDING-now);const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);const b=document.querySelectorAll('#cnt b');[d,h,m,s].forEach((v,i)=>b[i].textContent=String(v).padStart(2,'0'));document.getElementById('dleft').textContent=Math.ceil((WEDDING-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5)}
+tick();setInterval(tick,1000);
+
+/* gallery */
+const g=document.getElementById('gal');g.innerHTML=GAL.map((u,i)=>`<figure class="rv" onclick="openLb(${i})"><img src="${u}" loading="lazy" alt=""><figcaption>${String(i+1).padStart(2,'0')}</figcaption></figure>`).join('');g.querySelectorAll('.rv').forEach(el=>io.observe(el));
+let li=0;const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+function openLb(i){li=i;lbImg.src=GAL[i];document.getElementById('lbN').textContent=`${i+1} / ${GAL.length}`;lb.classList.add('show');document.body.classList.add('lock')}
+function closeLb(){lb.classList.remove('show');document.body.classList.remove('lock')}
+function lbMove(d){li=(li+d+GAL.length)%GAL.length;lbImg.style.opacity=0;setTimeout(()=>{lbImg.src=GAL[li];document.getElementById('lbN').textContent=`${li+1} / ${GAL.length}`;lbImg.style.opacity=1},200)}
+let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)lbMove(dx<0?1:-1)});
+
+/* toast & copy */
+let tt;function toast(m){const t=document.getElementById('toast');t.querySelector('span').textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1800)}
+function copy(v,m='계좌번호가 복사되었습니다'){(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast(m)).catch(()=>{const i=document.createElement('input');i.value=v;document.body.appendChild(i);i.select();document.execCommand('copy');i.remove();toast(m)})}
+
+/* nav */
+function nav(k){const n=encodeURIComponent(VENUE.name);const u={kakao:`https://map.kakao.com/link/to/${n},${VENUE.lat},${VENUE.lng}`,naver:`https://map.naver.com/p/search/${n}`,tmap:`tmap://route?goalname=${n}&goaly=${VENUE.lat}&goalx=${VENUE.lng}`}[k];window.open(u,'_blank')}
+
+/* rsvp */
+const rs={side:'신랑측',att:'참석',meal:'식사 예정',n:1};
+document.querySelectorAll('.seg').forEach(s=>s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{s.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');rs[s.dataset.k]=b.textContent})));
+function stepN(d){rs.n=Math.min(10,Math.max(1,rs.n+d));document.getElementById('rsN').textContent=rs.n}
+function openSheet(){document.getElementById('sheetForm').hidden=false;document.getElementById('sheetDone').hidden=true;document.getElementById('dim').classList.add('show');document.getElementById('sheet').classList.add('show');document.body.classList.add('lock')}
+function closeSheet(){document.getElementById('dim').classList.remove('show');document.getElementById('sheet').classList.remove('show');document.body.classList.remove('lock')}
+function submitRs(){const nm=document.getElementById('rsName');if(!nm.value.trim()){nm.focus();nm.style.borderColor='#b3231e';return}document.getElementById('sheetForm').hidden=true;document.getElementById('sheetDone').hidden=false}
+
+/* guestbook */
+let GB=[{name:"박지훈",at:"2026.10.02",msg:"도현아 드디어 장가가는구나. 서윤 씨랑 오래오래 행복해라!"},{name:"정하늘",at:"2026.10.05",msg:"서윤 언니 결혼 축하해요 🤍 그날 제일 예쁠 거예요. 꼭 갈게요."},{name:"대학 동기 일동",at:"2026.10.11",msg:"14일 다 같이 갑니다. 2차는 우리가 쏜다."}];
+function renderGb(){const l=document.getElementById('gbList');l.innerHTML=GB.length?GB.map(x=>`<div class="it"><p class="msg">${x.msg}</p><div class="by"><b>${x.name}</b>${x.at}</div></div>`).join(''):'<div class="empty">아직 남겨진 글이 없습니다.<br>첫 번째 축하의 말을 남겨주세요.</div>'}
+renderGb();
+function addGb(e){e.preventDefault();const n=document.getElementById('gbName'),m=document.getElementById('gbMsg');const d=new Date();GB.unshift({name:n.value.trim(),msg:m.value.trim(),at:`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`});renderGb();n.value='';m.value='';toast('축하의 말이 남겨졌습니다');return false}
+</script>
+</body>
+</html>
