@@ -170,6 +170,8 @@ mobile-header `22:468` · status-chip `20:430`/`20:432` · list-row `22:81` · b
 - **2026-09-05 (리뷰 meeting-create #1 A5/A8, 다른 세션 동의 후)**
   - A8 `status-chip` 변형 `20:430`·`20:432`: `minHeight` 32 + 세로 CENTER (패딩 4×12 유지, 높이 28→32). 세트 `20:434` description에 이력 추가. 공유 컴포넌트라 `calendar-overview` 등 모든 chip 인스턴스 높이 자동 반영.
   - A5 조합 컴포넌트 **`list-row-selectable`** 신설 (기존 컴포넌트 수정 없음, 추가만): 섹션 프레임 `foundations / list-row-selectable` `49:1652`(라벨 `49:1653`) > 세트 `49:1654`, key `341e781c25e3978bfb7383242d90baa943941b5f`, 변형 `Selected=false` `49:1628` · `Selected=true` `49:1639`. 스펙: 390 폭, pl/pr `spacing/lg`, pt/pb `spacing/sm`, gap `spacing/md`, minHeight 44, bg `colors/canvas`(true: `colors/canvas-parchment`), 하단 1px `colors/hairline`; lead = title `body-strong` `colors/ink` + meta WRAP[`status-chip` 슬롯 chip-1/chip-2 + caption `caption` `colors/ink-muted-48`]; 우측 24px 아이콘(false: circle `ink-muted-48` 1.5px / true: checkmark.circle.fill `ink` + check `canvas`). 프로퍼티: `title#49:0` TEXT, `caption#49:3` TEXT, `Show caption#49:6` BOOL, `Show chip-2#49:9` BOOL, `Selected` VARIANT. 중첩 chip 라벨은 chip-1/chip-2 인스턴스의 `label#20:12`로 오버라이드. 아이콘 교체 필요(SF Symbols).
+- **2026-09-05 (리뷰 meeting-dates #1 A5, meeting-dates 빌더)**
+  - `list-row-selectable` 세트 `49:1654`에 **변형 축 `Trailing` 추가**: 새 변형 `Selected=false, Trailing=text-link` `50:1715` (text-link `50:1725`) — lead(title `body-strong` `colors/ink` + caption `caption` **`colors/ink`**, chip 없음) + 우측 `text-link` Size=caption "삭제" `minHeight` 44 + 세로 CENTER (A-5). 프로퍼티 `title#49:0`·`caption#49:3`·`Show caption#49:6` 참조 유지(clone 시 참조가 빠져 재설정). **주의:** Figma 변형 세트는 모든 변형이 같은 프로퍼티를 가져야 해서 기존 변형 이름만 `Selected=false, Trailing=icon` / `Selected=true, Trailing=icon`으로 바뀜(시각·바인딩·인스턴스 오버라이드 무변경, `Selected` 프로퍼티 그대로). 세트 defs: `Selected` [false,true] · `Trailing` [icon,text-link].
 
 ## meeting-create
 
@@ -435,13 +437,209 @@ mobile-header `22:490` · status-chip default `20:430` ×2 · section-dark `25:5
 - `{id} / status-bar`: 390×47, (0,0), HORIZONTAL SPACE_BETWEEN, pl/pr `spacing/lg`, 좌 `time` "9:41" `caption-strong` `colors/ink`, 우 `icons`(gap `spacing/xs`) = `signal`·`wifi`·`battery` SVG 벡터, fill/stroke `colors/ink` 바인딩(배터리 외곽·꼭지는 변수 + opacity 0.35/0.4).
 - `{id} / home-indicator`: 134×5 RECTANGLE, x 128 / y = 높이-13 (safe-bottom 안), radius `rounded/pill`, fill `colors/ink`, constraints CENTER/MAX.
 
-| 프레임 | status-bar | home-indicator |
-| --- | --- | --- |
-| `meeting-create` `42:603` | `50:1599` | `50:1615` |
-| `--empty` `43:991` | `50:1616` | `50:1632` |
-| `--separate-warning` `49:1164` | `50:1635` | `50:1651` |
-| `--both` `49:1280` | `50:1652` | `50:1668` |
-| `--error` `49:1396` | `50:1681` | `50:1697` |
-| `--search-empty` `49:1512` | `50:1698` | `50:1714` |
+| 프레임                         | status-bar | home-indicator |
+| ------------------------------ | ---------- | -------------- |
+| `meeting-create` `42:603`      | `50:1599`  | `50:1615`      |
+| `--empty` `43:991`             | `50:1616`  | `50:1632`      |
+| `--separate-warning` `49:1164` | `50:1635`  | `50:1651`      |
+| `--both` `49:1280`             | `50:1652`  | `50:1668`      |
+| `--error` `49:1396`            | `50:1681`  | `50:1697`      |
+| `--search-empty` `49:1512`     | `50:1698`  | `50:1714`      |
 
 자체 검증 재실행(6프레임): 자동 이름 0 / 미바인딩 fill·stroke 0 / 스타일 미적용 텍스트 0 / Inter 외 0. 스크린샷 6장 재갱신(`work/screenshots/meeting-create*.png`). 상태바 아이콘은 단색 플레이스홀더 — SF Symbols 교체 필요. 렌더 메모: 익스포트에서 "새 모임" 제목 등 한글이 간헐적으로 비어 보임(characters 정상, 폴백 렌더 레이스) — 리뷰 시 재스크린샷.
+
+### FIX-LOCAL #1 적용 (2026-09-05, `work/reviews/meeting-dates.md`)
+
+| 항목                 | 조치                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 노드                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| C3                   | `content` gap 17 → `spacing/xl`(32) 바인딩, `deadline` paddingTop 32 → 0. 6개 프레임 전부 섹션 간격 32/32/32 측정 확인                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `45:687` `45:749` / `45:1201` `45:1225` / 상태 프레임 복제본 |
+| C6                   | `--empty` 마감 기본값: chip-3일 `State=selected`, chip-직접 `State=default`, custom-input `45:1232` 삭제. sticky "후보 0개" 유지                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `45:1229` `45:1231`                                          |
+| A8                   | `text-link` "삭제" 탭 타깃 44: 인스턴스 래핑 없이 새 변형 `Trailing=text-link` 안의 text-link 인스턴스 `minHeight` 44 + 행 counterAxis CENTER (raw 인스턴스 `45:700` `45:705` `45:711`은 행 교체로 삭제)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `50:1725`                                                    |
+| A5                   | Foundations `list-row-selectable`에 `Trailing=text-link` 변형 추가(변경 이력 참조) → 6개 프레임 후보 행을 인스턴스로 교체. 행 풀블리드(390, 컴포넌트 pl/pr 24)를 위해 `content` pl/pr 24 → 0 + counterAxis CENTER, 자식(title-block·head·deadline·add-form) pl/pr `spacing/lg`, pill·share-hint·empty-caption 폭 342 FIXED — 새 컨테이너 0. 재사용률(인스턴스 ÷ 인스턴스+프레임, 인스턴스 내부 제외): default **0.55** (11/20) · empty 0.47 · urgent 0.47 · adding 0.58 · error 0.47 · resend 0.55 — **0.7 미달**. 남은 프레임 9개는 content·title-block·candidates·head·rows·deadline·presets·status-bar·icons(순수 레이아웃 컨테이너, fill/stroke 없음). `rows` 제거를 시도했으나 candidates gap 12가 행 사이에 들어가 되돌림. 순수 컨테이너 제외 시 11/11 = 1.0 | default rows `51:1287` `51:1295` `51:1302`                   |
+| A7                   | 상태 프레임 4개 추가(아래 표)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | —                                                            |
+| 상태바·홈 인디케이터 | A-1 신규 스펙: `{screen-id} / status-bar` 절대 위치 390×47 (pl/pr `spacing/lg`, pt 14, SPACE_BETWEEN) — `time` "9:41" `caption-strong` `colors/ink` + `icons`(gap `spacing/xs`) signal·wifi·battery SVG → flatten 단색 VECTOR fill `colors/ink`. `{screen-id} / home-indicator` 134×5 rect `rounded/pill` `colors/ink`, 절대 위치 하단 8px 중앙(constraints CENTER/MAX). 헤더·스티키 컴포넌트 인스턴스 미수정. **아이콘 교체 필요**(플레이스홀더)                                                                                                                                                                                                                                                                                                                  | default `51:1309` / `51:1325` · empty `51:1607` / `51:1623`  |
+
+#### 프레임 (FIX-LOCAL #1 후, 6개)
+
+| 프레임                  | 노드 ID   | 크기             | x     | 차이 (와이어 `## 상태`)                                                                                                                                                               |
+| ----------------------- | --------- | ---------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `meeting-dates`         | `45:678`  | 390 × 934 (HUG)  | 61935 | default                                                                                                                                                                               |
+| `meeting-dates--empty`  | `45:1199` | 390 × 844        | 62405 | 후보 0 caption muted, "3일" selected, custom-input 없음, sticky "후보 0개"                                                                                                            |
+| `meeting-dates--urgent` | `51:1624` | 390 × 844        | 65741 | m12 "입사 동기 · 3명", 행 1개 "11월 21일 (토) 저녁" + "이 날 저녁에 '대학 동기(신부)' 후보 있음", "1/5", "24시간" selected, custom-input 없음, sticky "후보 1개 · 마감 24시간"        |
+| `meeting-dates--adding` | `51:1705` | 390 × 1024 (HUG) | 66211 | 블록 4 → 4a `add-form` `51:1784`: input State=empty "날짜 선택" + chip "점심"(selected) "저녁" "직접 입력" + button-primary compact "추가" (gap `spacing/sm`, chips gap `spacing/xs`) |
+| `meeting-dates--error`  | `51:1796` | 390 × 844        | 66681 | `--empty` 복제, error-caption `51:1806` `colors/ink` "후보를 1개 이상 넣어 주세요"                                                                                                    |
+| `meeting-dates--resend` | `51:1852` | 390 × 914 (HUG)  | 67151 | caption "대학 동기 · 7명 · 다시 조율", cta "링크 다시 보내기", share-hint "다시 보내면 지난 회신은 지워져요."                                                                         |
+
+링크: `https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id={id를 -로}`.
+
+#### 자체 검증 (6개 프레임 전부, 인스턴스 내부 제외)
+
+자동 이름 0 · 솔리드 fill 변수 미바인딩 0 · stroke 미바인딩 0 · 텍스트 스타일 미적용 0 · Inter 외 폰트 0 · content 자식 간격 32/32/32 · home-indicator y = 높이-13.
+
+#### 스크린샷 (갱신)
+
+`work/screenshots/meeting-dates.png` (390×934) · `meeting-dates--empty.png` (844) · `meeting-dates--urgent.png` (844) · `meeting-dates--adding.png` (1024) · `meeting-dates--error.png` (844) · `meeting-dates--resend.png` (914). 렌더 메모: `deadline / hint`·`share-hint` caption이 default 계열 4개 프레임에서 반복 렌더 공백(characters 정상) → 같은 속성으로 재생성(`52:1556`~`52:1563`) 후 재스크린샷. default의 c3 행·add pill·custom-input 인스턴스도 라벨 공백이 지속되어 같은 프로퍼티로 재생성(`52:2312` `52:2319` `52:2321`, 구 `51:1302` `45:713` `45:760` 삭제).
+
+- **FIX-LOCAL #2 적용 (2026-09-05)**: A4 `status-bar` `50:1599` `50:1616` `50:1635` `50:1652` `50:1681` `50:1698` paddingTop 14 → pt/pb 0 + 높이 47 FIXED + counterAxis CENTER. 그 외 변경 없음. 자체 검증 6프레임: 자동 이름 0 / 미바인딩 fill·stroke 0 / 스타일 미적용 0 / Inter 외 0 / 화면 레벨 비토큰 padding·gap 0.
+
+### FIX-LOCAL #1 적용 (2026-09-05, `work/reviews/meeting-detail.md`)
+
+| # | 항목 | 처리 | 결과 |
+| - | ---- | ---- | ---- |
+| 1 | A4 `status-bar` `50:1303` paddingTop 14 | pt/pb 0, 390×47 FIXED, counterAxis CENTER | h 47, 토큰 외 패딩 0 |
+| 2 | A8 `edit-link` `50:1253` h 28 | 인스턴스 세로 FIXED 44 + counterAxis CENTER (Foundations 미수정) | 68×44 |
+| 3 | 권장: 범례 `50:1633` "불/가" 줄 갈라짐 | 문구 정리 "순서: 11/21 저녁 · 11/28 점심 · 11/29 저녁 / ○ 가능 · ✕ 불가 · · 미회신" (줄바꿈 명시) | 2줄 40px, 단어 중간 wrap 없음 |
+
+프레임 높이 1450 → 1466 (edit-link +16). 자체 검증: 자동 이름 0 / 미바인딩 fill 0 · stroke 0 / 스타일 미적용 0 / Inter 외 0. 스크린샷 `work/screenshots/meeting-detail.fix-1.png` (390×1466, `meeting-detail.png`도 갱신).
+
+## guest-response
+
+실행일 2026-09-05. 모드 B 첫 생성 (기존 동명 노드 없음). `📱 Screens`(`18:103`), 생성 직전·각 상태 프레임 직전 페이지 재스캔 후 최우측 +80 (다른 세션 노드가 사이에 추가되어 x가 불연속 — 겹침 없음). 와이어 `## 상태` submitted · confirmed · urgent · closed 4개 + default = **5프레임**. `--empty`는 와이어에 없어 만들지 않음.
+
+### 프레임
+
+| 프레임                      | 노드 ID   | 크기       | 위치 (x, y)   | 링크                                                                       |
+| --------------------------- | --------- | ---------- | ------------- | -------------------------------------------------------------------------- |
+| `guest-response`            | `51:1931` | 390 × 1015 | 67621, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=51-1931 |
+| `guest-response--submitted` | `52:1463` | 390 × 844  | 68091, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=52-1463 |
+| `guest-response--confirmed` | `52:1577` | 390 × 844  | 69501, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=52-1577 |
+| `guest-response--urgent`    | `52:2000` | 390 × 844  | 69971, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=52-2000 |
+| `guest-response--closed`    | `52:2104` | 390 × 1015 | 70441, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=52-2104 |
+
+default·closed는 콘텐츠(후보 3행 + 메모 + 안내)가 844를 넘어 세로 HUG(1015). submitted·confirmed·urgent는 844 고정 + content FILL. 배경 `colors/canvas` 바인딩. 프레임·content `counterAxisAlignItems` CENTER, content pl/pr 0(풀블리드) + gap `spacing/xl`(32), 각 블록 자체 pl/pr `spacing/lg`. 헤더→hero 간격 0(색 전환이 구분자), 이후 섹션 간격 32 균등(hero 0→213, name-select 213→354, dates 354→666, memo 666→770, notice). 스크롤 화면이라 sticky는 플로우 마지막(meeting-detail과 동일 구조).
+
+### 블록 → 노드 (default `51:1931`)
+
+| 블록   | 노드                                                                    | ID                                                                    | 내용                                                                                                                                                                                                                           |
+| ------ | ----------------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 상태바 | `guest-response / status-bar` (절대 위치 390×47)                        | `51:1942`                                                             | meeting-detail `50:1303` clone — "9:41" caption-strong `colors/ink` + signal·wifi·battery SVG `colors/ink` (헤더 parchment → ink)                                                                                               |
+| 헤더   | `guest-response / header` (mobile-header Left=title,Right=none)         | `51:1932`                                                             | title "지수·도현 청첩장모임", 우 없음                                                                                                                                                                                          |
+| 1      | `guest-response / hero` (section-dark)                                  | `51:1938`                                                             | headline "직장 팀" / body "한지수·김도현 결혼식 12월 12일 (토)" / caption "11월 21일 (토) 23:59까지 답해 주세요". 390 풀블리드                                                                                                 |
+| 2      | `guest-response / name-select`                                          | `51:1959` (title `51:1960`, chips `51:1961`)                          | tagline "내 이름" + `status-chip` ×5 WRAP(gap `spacing/xs` 양축): p03 `51:1962` p08 `51:1964` **p09 임지호 selected `51:1966`** p10 `51:1968` p12 `51:1970`. 5개가 342폭에서 2줄로 wrap(4+1)                                   |
+| 3      | `guest-response / dates`                                                | `51:2008` (head `51:2009`, title `51:2010`, rows `51:2011`)           | tagline "가능한 날짜" + `list-row-selectable` ×3: c1 `51:2012`(가능 selected) · c2 `51:2023`(불가 selected) · c3 `51:2034`(가능 selected). 행 390 풀블리드, hairline 풀블리드, 높이 81                                            |
+| 4      | `guest-response / memo`                                                 | `51:2052` (label `51:2053`, input `51:2054`)                          | caption `ink-muted-48` "한 줄 메모 (선택)" + `input` State=empty "예: 7시 이후면 가능해요" (342×44)                                                                                                                             |
+| 5      | `guest-response / notice`                                               | `51:2056` (text `51:2057`)                                            | fine-print `colors/ink-muted-48` "답변은 지수·도현에게만 보여요. 확정되면 이 링크에서 시간과 장소를 볼 수 있어요." (2줄 wrap), paddingBottom `spacing/lg`                                                                       |
+| 스티키 | `guest-response / sticky-cta` (mobile-sticky-cta Left=summary)          | `51:2058` (cta `I51:2058;25:490`)                                     | summary "3/3 답함" / button-primary "제출"                                                                                                                                                                                     |
+| 홈     | `guest-response / home-indicator` (절대 위치, y = 높이-13)              | `51:1958`                                                             | meeting-detail `50:1319` clone — 134×5 `rounded/pill` `colors/ink`                                                                                                                                                             |
+
+### 상태 프레임 (default clone 후 차이만 수정)
+
+| 상태        | 차이                                                                                                                                                                                                                                                                                                                                           | 주요 노드                                                                                                                                       |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `submitted` | 블록 2~5·스티키 삭제 → `empty-state` "답변 완료" / "확정되면 이 링크에서 시간과 장소를 볼 수 있어요." / cta "답변 수정". content gap 0                                                                                                                                                                                                        | content `52:1465` · empty-state `52:1550` · cta `I52:1550;28:477`                                                                                |
+| `confirmed` | m04: hero "동네 친구" / "11월 28일 (토) 19:00 · 연남동 소이연남" / "확정됐어요". 블록 2~5·스티키 삭제 → `members`(tagline "함께 가는 사람" + `list-row Trailing=none` ×5, meta visible=false, 높이 45): p15 김나래 · p16 이도윤 · p17 박하늘 · p18 장서윤 · p19 문가영                                                                             | content `52:1579` · hero `52:1580` · members `52:1664` · rows `52:1666` · row `52:1667` `52:1671` `52:1675` `52:1679` `52:1683`                 |
+| `urgent`    | m12: hero "입사 동기" / 결혼식 줄 동일 / "11월 20일 (금) 12:00까지 답해 주세요". 이름 칩 3(p42 조성훈 · p43 양하율 · **p44 백지안 selected**, 1줄), 후보 행 1(c1 "11월 21일 (토) 저녁" 가능 selected), 스티키 "1/1 답함". 844 고정                                                                                                            | content `52:2002` · hero `52:2003` · chips `52:2087` `52:2089` `52:2091` · row `52:2093` · sticky `52:2024`                                       |
+| `closed`    | m01: hero "대학 동기" / 결혼식 줄 동일 / "마감이 지났어요. 답하면 바로 전달돼요". 이름 칩 7(p01 김서연 · p02 이하은 · p04 최유진 · p05 정수빈 · p06 강지원 · p07 윤채원 · **p11 오준호 selected**, 2줄 wrap 4+3), 후보 행 3(c1 "11월 21일 (토) 저녁" 불가 · c2 "11월 28일 (토) 점심" 가능 · c3 "11월 29일 (일) 저녁" 가능), 스티키 "3/3 답함" 제출 허용 | content `52:2106` · hero `52:2107` · chips `52:2191`~`52:2203` · rows `52:2205` `52:2216` `52:2227` · sticky `52:2128`                            |
+
+### 사용 컴포넌트 (Foundations 인스턴스)
+
+mobile-header `22:475` · section-dark `25:503` · status-chip `20:430`/`20:432` · **list-row-selectable `49:1628`** (Selected=false, Trailing=icon; Foundations 변경 이력 신설분) · list-row Trailing=none `22:87` (confirmed) · input State=empty `22:94` · empty-state `28:473` (submitted, 중첩 button-primary) · mobile-sticky-cta Left=summary `25:487` (중첩 button-primary `20:111`). 인스턴스 수: default 12 / submitted 3 / confirmed 7 / urgent 8 / closed 14. raw 프레임은 전부 fill·stroke 없는 레이아웃 컨테이너(content·블록·chips·rows·head·status-bar 래퍼) — 자체 그린 fill/stroke 보유 프레임 **0**.
+
+### 조합 방식 메모 (리뷰어용)
+
+- **후보 행 chip 위치**: 와이어는 "우: status-chip ×2". `list-row`에는 우측 chip 슬롯이 없고, raw 조립은 재사용률 규칙(≥0.7)에 걸려 `list-row-selectable`의 meta WRAP chip-1/chip-2 슬롯을 사용 — chip이 제목 **아래 줄**에 놓임(가능/불가 2개, 선택 = 2px primary-focus 테두리). 우측 `icon-circle`은 인스턴스 오버라이드 `visible=false`(컴포넌트 수정 없음). 행 높이 81 ≥ 44, 풀블리드 390 + 내용 24 인셋, 하단 hairline 풀블리드. 와이어와 위치가 다르므로 리뷰 판단 요망 — 우측 배치가 필요하면 Foundations 모드에서 `list-row` Trailing=chips 변형 신설이 선행돼야 함.
+- 이름 chip은 raw WRAP 컨테이너(gap `spacing/xs`) 안 `status-chip` 인스턴스 — 단일 선택 그룹.
+- status-bar / home-indicator는 meeting-detail의 A-1 블록을 clone(원본 수정 없음). clone 직후 내부 5개 레이어(`time`·`icons`·`signal`·`wifi`·`battery`)가 `meeting-detail /` 접두사를 유지하고 있어 5프레임 전부 각 프레임 접두사로 일괄 개명(잔여 0).
+
+### 자체 검증 (2026-09-05, 5프레임)
+
+| 항목                                                | default | submitted | confirmed | urgent | closed |
+| --------------------------------------------------- | ------- | --------- | --------- | ------ | ------ |
+| 자동 이름(`Frame N`/`Rectangle N`/`Vector N`…) 노드 | 0       | 0         | 0         | 0      | 0      |
+| 솔리드 fill 중 변수 미바인딩 (visible 기준)         | 0       | 0         | 0         | 0      | 0      |
+| 솔리드 stroke 중 변수 미바인딩                      | 0       | 0         | 0         | 0      | 0      |
+| 텍스트 노드 중 텍스트 스타일 미적용                 | 0       | 0         | 0         | 0      | 0      |
+| Inter 외 폰트                                       | 0       | 0         | 0         | 0      | 0      |
+| 자체 fill/stroke 보유 raw 프레임                    | 0       | 0         | 0         | 0      | 0      |
+| 탭 타깃                                             | chip 63×32(minHeight 32 규칙) · 후보 행 390×81 · input 342×44 · 스티키 cta 46 | — | list-row 45 | 동일 | 동일 |
+| 섹션 간격                                           | 32 균등 | —         | 32        | 32     | 32     |
+| 높이                                                | 1015 HUG | 844      | 844       | 844    | 1015 HUG |
+
+### 스크린샷
+
+`work/screenshots/guest-response.png` (390×1015) · `guest-response--submitted.png` · `guest-response--confirmed.png` · `guest-response--urgent.png` (각 390×844) · `guest-response--closed.png` (390×1015). submitted는 2회 연속 헤더·hero 한글이 비어 렌더됨(`characters` 정상) → 같은 값으로 `setProperties` 재적용 후 정상 렌더 확인, 재촬영 저장.
+
+### 아이콘 교체 필요
+
+`status-bar / icons / signal·wifi·battery` SVG 플레이스홀더 — 아이콘 교체 필요. 헤더는 title 변형이라 아이콘 없음. 후보 행의 `icon-circle`은 숨김 처리(교체 대상 아님).
+
+## home-meetings
+
+실행일 2026-09-05. 모드 B 첫 생성 (기존 동명 노드 없음). `📱 Screens`(`18:103`), 생성 직전 페이지 재스캔 후 최우측 노드(`guest-response` 우측 끝 x 68011) 오른쪽 +80. 다른 세션 노드·Foundations 미수정 (상태바는 `calendar-overview / status-bar` `45:715`를 clone — 원본 수정 없음).
+
+### 프레임
+
+| 프레임                       | 노드 ID   | 크기       | 위치 (x, y)   | 링크                                                                       |
+| ---------------------------- | --------- | ---------- | ------------- | -------------------------------------------------------------------------- |
+| `home-meetings`              | `52:1966` | 390 × 2061 | 68091, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=52-1966 |
+| `home-meetings--empty`       | `52:2498` | 390 × 844  | 68561, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=52-2498 |
+| `home-meetings / _components` (홀더) | `52:1564` | 390 × 173  | 69031, -27302 | https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id=52-1564 |
+
+default는 세로 HUG(18행 × 81 + 섹션 헤드 5개). 첫 844 안에 블록 1~4(필터 y99~155 · 확정 대기 ~305 · 회신 대기 3행 ~617) 포함. 배경 `colors/canvas` 바인딩. 주요 컨테이너: status-bar `52:1984`(첫 자식, 절대 0,0) · header `52:1967` · body `52:1974`(pl/pr `spacing/lg`, pt `spacing/sm`, pb `spacing/xl`) · filters `52:1975` · tab-bar `52:2476` · home-indicator `52:2497`.
+
+### 블록 → 노드 (default)
+
+| 블록 | 노드                                        | ID                                                                                  | 내용                                                                                                                              |
+| ---- | ------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| 헤더 | `home-meetings / header` (mobile-header Left=title,Right=cta) | `52:1967` (cta `I52:1967;22:473`)                                                   | 제목 "모임" / cta "새 모임"                                                                                                       |
+| 1    | `home-meetings / filters`                   | `52:1975` — chip 전체(selected) `52:1976` · 신부 `52:1978` · 신랑 `52:1980` · 공동 `52:1982` | status-chip ×4, gap `spacing/xs`                                                                                                  |
+| 2·3  | `home-meetings / section-ready`             | `52:2242` (head `52:2243`, rows `52:2246`) — m01 `52:2247`                          | "확정 대기" "1" → 대학 동기 / [신부] 7명 / 마감 지남 · 6/7                                                                         |
+| 4    | `home-meetings / section-awaiting`          | `52:2258` (head `52:2259`, rows `52:2262`) — m12 `52:2263` · m07 `52:2274` · m02 `52:2285` | "회신 대기" "3" → 입사 동기 / 팀장님(1명 · 강민석) / 직장 팀. deadline 오름차순                                                    |
+| 5    | `home-meetings / section-preparing`         | `52:2296` (head `52:2297`, rows `52:2300`) — m10 `52:2301`                          | "준비 중" "1" → 옆 팀 동료 / [신부] 2명 / 후보 없음                                                                                |
+| 6    | `home-meetings / section-confirmed`         | `52:2323` (head `52:2324`, rows `52:2327`) — m18 `52:2328` · m09 `52:2339` · m04 `52:2350` · m05 `52:2361` · m17 `52:2372` | "확정" "5". m04·m05 caption "…명 · 같은 저녁 1건", m09 [공동]. confirmedDate 오름차순                                             |
+| 7    | `home-meetings / section-done`              | `52:2383` (head `52:2384`, rows `52:2387`) — m08 `52:2388` · m13 `52:2399` · m03 `52:2410` · m11 `52:2421` · m06 `52:2432` · m15 `52:2443` · m14 `52:2454` · m16 `52:2465` | "완료" "8". 행 title fill을 인스턴스 오버라이드로 `colors/ink-muted-48`(우측 텍스트는 컴포넌트 기본이 이미 muted-48). confirmedDate 내림차순 |
+| 탭바 | `home-meetings / tab-bar` (mobile-tab-bar Active=meetings) | `52:2476`                                                                           | 모임 활성                                                                                                                         |
+| 상태바 | `home-meetings / status-bar`             | `52:1984`                                                                           | `45:715` clone → 이름 치환. 390×47 FIXED, pt/pb 0, pl/pr `spacing/lg`, SPACE_BETWEEN/CENTER, "9:41" caption-strong `colors/ink` + signal·wifi·battery 벡터 `colors/ink` |
+| 홈 인디케이터 | `home-meetings / home-indicator`   | `52:2497`                                                                           | 134×5 RECT, `rounded/pill`, `colors/on-dark`(탭바 위), x 128 / y 높이-13, constraints CENTER/MAX                                     |
+
+섹션 리듬: 섹션 paddingTop `spacing/xl`(32) → 헤드 → gap `spacing/sm`(12) → 행. 헤드 = HORIZONTAL SPACE_BETWEEN, tagline `colors/ink` + 카운트 caption `colors/ink-muted-48`. 순수 레이아웃 래퍼(body·filters·section·head·rows·lead·meta·trailing)는 fill/stroke 없음.
+
+### `--empty` (`52:2498`)
+
+status-bar `52:2543`(첫 자식) · header `52:2499` · body `52:2506`(FILL, gap `spacing/xl`) · filters `52:2507`(chip `52:2508`/`2510`/`2512`/`2514`) · empty-state `52:2516`("아직 모임이 없어요" / "지인을 골라 첫 모임을 만들고 날짜 후보를 보내 보세요." / cta `I52:2516;28:477` "새 모임 만들기") · tab-bar `52:2522` · home-indicator `52:2559`. filtered-empty·from-summary는 데이터/스크롤 변형이라 프레임 미생성.
+
+### 사용 컴포넌트 (Foundations 인스턴스)
+
+mobile-header `22:468` ×2 · status-chip `20:432`/`20:430` (필터 8 + 행 내부 18) · mobile-tab-bar Active=meetings `25:194` ×2 · empty-state `28:473` ×1. `list-row`는 meta가 단일 TEXT prop이라 chip+caption 불가 → 아래 로컬 컴포넌트. `list-row-selectable`(선택 아이콘 행)은 이 화면에 해당 없음.
+
+### 조합 컴포넌트 — `home-meetings / meeting-row` (부록 C 권한 내, 토큰만 사용)
+
+홀더 `home-meetings / _components` `52:1564`(라벨 `52:1565`) > COMPONENT `52:1566`, key `96dfe8f0ecba841f125fb7bd86c7aa44b0f1d6a7`. 스펙: 342 폭 FIXED / 세로 HUG(81), HORIZONTAL, gap `spacing/md`, pt/pb `spacing/sm`, minHeight 44, bg `colors/canvas`, 하단 1px `colors/hairline`(INSIDE); lead(FILL, gap `spacing/xxs`) = `title` body-strong `colors/ink` + `meta`(gap `spacing/xs`) = `chip`(status-chip default 인스턴스, label 중첩 오버라이드) + `caption` caption `colors/ink-muted-48`; trailing(gap `spacing/xxs`) = `right` caption `colors/ink-muted-48` + `icon / chevron.right`(16px SVG, stroke `colors/ink-muted-48` 1.5). 프로퍼티 `title#52:0` · `caption#52:1` · `right#52:2` TEXT. 인스턴스 18개 전부 마스터 연결 확인. 재사용률(인스턴스 ÷ 인스턴스+직접 그린 프레임): default 인스턴스 24(헤더1·칩4·행18·탭바1) / 직접 그린 프레임 = 상태바 벡터 래퍼 3 → 24/27 = 0.89.
+
+### 참조 반영 (`15:2020`)
+
+calendar-overview 카드 문법(제목 body-strong → 소유자 chip + 메타 caption → 우측 caption + chevron)을 평면 행으로 재사용. 색·폰트·컬러 점·컬러 바·FAB 불채택(design.md 충돌).
+
+### 자체 검증 (2026-09-05, 3 노드)
+
+| 항목                                                   | home-meetings | --empty | _components |
+| ------------------------------------------------------ | ------------- | ------- | ----------- |
+| 자동 이름(`Frame N`/`Rectangle N`/…) 노드              | 0             | 0       | 0           |
+| 솔리드 fill 중 변수 미바인딩 (인스턴스 내부 제외)      | 0 (래퍼 기본 흰 fill 22개 제거 후) | 0 | 0     |
+| 솔리드 stroke 중 변수 미바인딩                         | 0             | 0       | 0           |
+| 텍스트 노드 중 텍스트 스타일 미적용                    | 0             | 0       | 0           |
+| Inter 외 폰트 / Medium                                 | 0             | 0       | 0           |
+| 비토큰·미바인딩 padding/gap (자체 프레임)              | 0             | 0       | 0           |
+| 행 높이 / 제목 2줄                                     | 18행 모두 81 / 0 | —    | —           |
+| 상태바 첫 자식 (A-1-1)                                 | ✅            | ✅      | —           |
+
+### 스크린샷
+
+`work/screenshots/home-meetings.png` (390×2061) · `work/screenshots/home-meetings--empty.png` (390×844). 촬영본에서 한글 전부 렌더됨.
+
+### 충돌 보고 — 상태바 (오케스트레이터·사람 결정 요망)
+
+실행 중 `design.md` A-1/A-1-1/A-4가 갱신됨: `{component.status-bar}`는 **Foundations 컴포넌트 인스턴스**(`theme=light/dark`, "9:41" `body-strong`)여야 하고 자체 드로잉 금지. 그러나 실행 시점에 `🎨 Foundations`에 `status-bar` 컴포넌트/세트가 **존재하지 않음**(COMPONENT/COMPONENT_SET 검색 0). 모드 B는 Foundations 컴포넌트 생성 권한이 없으므로, 지시받은 방식(calendar-overview PASS 구조 clone, caption-strong)으로 두고 첫 자식 위치만 A-1-1에 맞춤. Foundations 모드에서 `status-bar` 컴포넌트가 생성되면 `52:1984`·`52:2543`를 `theme=light` 인스턴스로 교체 필요 (2노드, 국소 수정).
+
+### 아이콘 교체 필요
+
+`status-bar / icons / signal·wifi·battery` SVG 플레이스홀더, `meeting-row / icon / chevron.right` SVG 플레이스홀더(SF Symbols `chevron.right`), 탭바 아이콘은 Foundations 플레이스홀더 그대로.
+
+### FIX-LOCAL #2 적용 (2026-09-05, `work/reviews/meeting-dates.md` #2회차)
+
+| 항목 | 조치 | 노드 |
+| --- | --- | --- |
+| A4 | status-bar 6개: paddingTop 14 → pt/pb 0, 높이 47 FIXED(390×47), counterAxis CENTER, y 0 확인 (meeting-create FIX #2와 동일) | `51:1309` `51:1607` `51:1650` `51:1731` `51:1818` `51:1878` |
+| A8 | `--adding` `add-form / submit` button-primary compact: **인스턴스 레벨** `minHeight` 44 + counterAxis CENTER (h 36 → 44). Foundations `button-primary` 미수정. `--adding` 높이 1024 → 1032 | `51:1794` |
+
+자체 검증(6개 프레임, 인스턴스 내부 제외): 자동 이름 0 · fill/stroke 변수 미바인딩 0 · 텍스트 스타일 미적용 0 · Inter 외 폰트 0 · home-indicator y=높이-13. 그 외 변경 없음. 스크린샷 `meeting-dates--adding.png` 갱신(390×1032).

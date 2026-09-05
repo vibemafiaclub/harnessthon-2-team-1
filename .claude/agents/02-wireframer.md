@@ -51,6 +51,7 @@ model: inherit
 ## 프레임
 
 - 390 × {844 또는 콘텐츠 높이}. 스크롤 여부.
+- 상태바: {component.status-bar} theme={light|dark} — 전 화면 필수(design.md A-1-1). 헤더 배경이 어두우면 dark. 적지 않아도 03이 넣는다.
 - 헤더: {component.mobile-header} — 좌: "...", 우: "..."
 - 하단: {component.mobile-tab-bar | mobile-sticky-cta | 없음}
 
@@ -77,6 +78,7 @@ model: inherit
 ```
 
 ┌──────────────────────┐
+│ 9:41 ▂▄▆ ◠ ▮ │ ← status-bar (전 화면 필수)
 │ ‹ 청첩장 모임 + │ ← mobile-header
 │ │
 │ 회신 대기 3 · 확정 5 │ ← section-dark

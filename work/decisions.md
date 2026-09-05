@@ -164,4 +164,5 @@
 - 참조 디자인 `15:2020`(다른 세션 제안): **이 세션은 미적용** — 사람 선택 "스펙 그대로 진행". 4개 화면은 와이어프레임 + design.md만 기준.
 - 세션 main 사용자 결정: core 4개 화면은 `15:2020` 참조를 적용하지 않고 와이어프레임 스펙 + design.md 그대로 생성. 참조 반영은 `calendar-overview`(세션 89)에만 적용됨 — 화면 간 레이아웃 문법 차이 가능. core 완료 후 일관성 점검 필요.
 - 상태바·홈 인디케이터(다른 세션 제안): **적용** — 사람 결정 (2026-09-05, "meeting-create--separate-warning / header에도 status bar 적용 필요"). design.md 부록 A-1에 `{component.status-bar}`, `{component.home-indicator}` 추가. 이 세션 4개 화면의 모든 프레임(상태 프레임 포함)에 적용.
+- 2026-09-05 사람 결정(재발 방지): 상태바를 **Foundations 컴포넌트 `status-bar`(variant theme=light/dark, Apple iOS 표준 390×47)로 승격**하고 **모든 화면 프레임(상태 프레임 포함)에 필수**로 한다. 이전 "화면별 블록, Foundations 컴포넌트 수정 없음" 결정을 대체. 근거: 화면마다 상태바를 직접 그려 누락·`paddingTop 14` 결함이 3개 화면에서 반복됨. 반영: design.md 부록 A-1-1 · A-4, 03-builder(Foundations 목록·화면 절차·자체 검증), 04-reviewer/SKILL A11 신설, 02 프레임 템플릿. 기존 화면의 자체 드로잉 상태바는 다음 `{screen-id} 다시` 실행 시 인스턴스로 교체.
 - 2026-09-05 세션 89 사용자 결정: `calendar-overview` PASS 후 later 4개(`home-meetings` → `contacts-list` → `contact-edit` → `meeting-confirm`)를 세션 89가 순차 생성·리뷰. `15:2020` 참조 반영은 calendar-overview와 동일하게 적용. 충돌 방지 규칙 동일.
