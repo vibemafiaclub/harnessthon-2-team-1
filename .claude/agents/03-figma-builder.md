@@ -48,12 +48,12 @@ model: inherit
 
 1. **기존 노드 확인**: `📱 Screens` 페이지에 이름 `{screen-id}`인 프레임이 있고 리뷰 판정이 `FIX-LOCAL`이면 그 노드를 **국소 수정**만 한다(리뷰 파일의 수정 목록 항목만). 그 외(첫 생성 / REDIRECT-B / 실패 잔해)는 같은 이름 노드를 삭제하고 새로 만든다.
 2. **프레임 생성**: 이름 `{screen-id}`, 390×844(스크롤 화면은 세로 HUG), auto-layout 세로, 배경 `colors/canvas` 또는 와이어 지정값 바인딩. 페이지에서 기존 프레임 오른쪽에 `x = 최우측 + 80`으로 배치.
-2-1. **상태바 (필수, 생략 불가 — design.md A-1-1)**: 프레임을 만든 직후, 다른 블록보다 먼저 Foundations `status-bar` 인스턴스를 첫 자식으로 놓는다. `layoutPositioning: ABSOLUTE`, `x 0 / y 0`, 390×47, 헤더 배경이 밝으면 `theme=light`, 어두우면 `theme=dark`. 레이어명 `{screen-id} / status-bar`. 와이어프레임에 상태바가 적혀 있지 않아도 넣는다. 텍스트·벡터로 직접 그리지 않는다.
+   2-1. **상태바 (필수, 생략 불가 — design.md A-1-1)**: 프레임당 상태바는 정확히 1개. (a) `mobile-header` 인스턴스를 쓰는 화면은 헤더 safe-top에 `status-bar`가 **이미 내장**돼 있으므로 별도로 놓지 않는다. (b) `mobile-header`가 없는 프레임(모달·바텀시트·링크 응답 등)만 Foundations `status-bar` 인스턴스를 직접 놓는다: `layoutPositioning: ABSOLUTE`, `x 0 / y 0`, 390×47, `appendChild`로 **레이어 최상단**(`children[0]`에 두면 배경에 가려짐 — 금지), 배경이 밝으면 `theme=light`, 어두우면 `theme=dark`, 레이어명 `{screen-id} / status-bar`. 와이어프레임에 상태바가 적혀 있지 않아도 (a)/(b) 중 하나로 반드시 존재하게 한다. 텍스트·벡터로 직접 그리지 않는다.
 3. **레이아웃 스택 조립**: 와이어프레임 표 행 순서대로. 각 행 = 컴포넌트 인스턴스(`importComponentByKeyAsync` 또는 로컬 컴포넌트 `createInstance`) + 텍스트 오버라이드(목데이터 값). **한 `use_figma` 호출에 블록 1~3개.** 호출마다 생성 노드 ID를 return.
 4. **텍스트**: 폰트 로드 → 문자 설정. 목데이터 값 그대로(이름·날짜·상태 라벨). 날짜 표기 `10월 17일 (토)`.
 5. **상태 프레임**: 와이어에 `empty` 상태가 있으면 `{screen-id}--empty` 프레임을 오른쪽에 하나 더 만든다(default와 동일 **상태바**·헤더, 본문만 `empty-state`). 모든 상태 프레임에 2-1의 상태바 인스턴스를 반복한다. `selected`/`error`는 와이어에 있을 때만.
 6. **레이어 네이밍**: `{screen-id} / {블록명} / {요소}` 규칙. 자동 이름(`Frame 12`, `Rectangle 3`) 남기지 않는다.
-7. **자체 검증** (리뷰어 가기 전 1회): `use_figma` 읽기 스크립트로 (a) 이름이 `Frame `/`Rectangle `로 시작하는 노드 0개, (b) 솔리드 fill 중 변수 미바인딩 0개(이미지 제외), (c) 텍스트 노드 중 텍스트 스타일 미적용 0개, **(d) 이번에 만든 모든 프레임(상태 프레임 포함)마다 Foundations `status-bar` 컴포넌트의 인스턴스가 정확히 1개 존재하고 `y 0`, 높이 47인지** 확인. 위반이 있으면 스스로 고친다. (d)가 0개면 화면을 보고하지 말고 먼저 넣는다.
+7. **자체 검증** (리뷰어 가기 전 1회): `use_figma` 읽기 스크립트로 (a) 이름이 `Frame `/`Rectangle `로 시작하는 노드 0개, (b) 솔리드 fill 중 변수 미바인딩 0개(이미지 제외), (c) 텍스트 노드 중 텍스트 스타일 미적용 0개, **(d) 이번에 만든 모든 프레임(상태 프레임 포함)마다 Foundations `status-bar` 인스턴스가 (헤더 내장 + standalone 합산) 정확히 1개이고, `y 0`·높이 47이며, 스크린샷에서 "9:41"이 실제로 보이는지** 확인. 위반이 있으면 스스로 고친다. (d)가 0개면 화면을 보고하지 말고 먼저 넣는다.
 8. **스크린샷** 1장 (`get_screenshot`) → 경로를 로그에.
 9. **로그**: `work/figma-log.md`에 `## {screen-id}` 섹션 append — 프레임 노드 ID, 상태 프레임 ID, 사용 컴포넌트, 자체 검증 결과, 스크린샷. `work/wireframes/_index.md`의 상태를 `built`로.
 10. 보고: 프레임 노드 ID + Figma 링크(`https://www.figma.com/design/dyqBJHi5EN92veBmDgLjx8/design?node-id={id를 -로}`) + 5줄 요약.
@@ -70,5 +70,5 @@ model: inherit
 - `design.md` 본문에 없는 색·폰트·radius·그림자.
 - 이번 실행에서 만들지 않은 노드 수정·삭제 (Foundations 컴포넌트 포함 — 컴포넌트 수정은 Foundations 모드 재실행으로).
 - 화면 2개 이상을 한 실행에서.
-- 상태바 없는 화면 프레임. 상태바를 인스턴스가 아닌 자체 프레임·텍스트·벡터로 그리기.
+- 상태바 없는 화면 프레임. 상태바 2개(헤더 내장 + standalone 중복). 상태바를 인스턴스가 아닌 자체 프레임·텍스트·벡터로 그리기. standalone 상태바를 `children[0]`(레이어 최하단)에 두기.
 - 외부 이미지 URL 로드 시도 (`use_figma`는 불가). 이미지 자리는 `colors/canvas-parchment` 사각형 + 아이콘 텍스트로 플레이스홀더. 아이콘은 단색 벡터 또는 SF Symbols 이름 텍스트(`{icon: calendar}`)로 표기하고 로그에 "아이콘 교체 필요" 기록.
