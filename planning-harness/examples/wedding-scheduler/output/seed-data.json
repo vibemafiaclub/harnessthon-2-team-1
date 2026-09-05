@@ -1,0 +1,4323 @@
+{
+  "_meta": {
+    "generated_by": "STEP 6 — 하네스가 채움 (도메인 분포는 examples/wedding-scheduler 시나리오 기준, 스크립트로 대량 생성 후 5대 필수 케이스를 수동 배치)",
+    "note": "기준 시점(오늘)은 2026-09-05, 결혼식 예정일은 couple_01.wedding_date(2026-12-05) 기준. 이 시드는 한 커플(이서연·박준호)의 시점만 담는다 — ROLE-03(초대받은 지인)이 여러 커플의 요청을 한 곳에서 보는 시나리오(REQ-15)를 100% 재현하려면 다른 커플의 시드가 최소 1세트 더 필요하다 (TBD, _handoff.md 참고).",
+    "required_cases": [
+      {
+        "key": "empty_group",
+        "risk": "RISK-07",
+        "description": "빈 상태를 보여줄 수 있는 항목 하나",
+        "included": true,
+        "example_ids": [
+          "group_08 (러닝크루, 신부측)",
+          "group_15 (축구 동호회, 신랑측)"
+        ]
+      },
+      {
+        "key": "partial_completion",
+        "risk": "RISK-08",
+        "description": "부분 완료 건 (예: 6명 중 4명 회신)",
+        "included": true,
+        "example_ids": [
+          "meeting_27 (6명 중 4명만 회신 — 대학 동기 모임)"
+        ]
+      },
+      {
+        "key": "resource_conflict",
+        "risk": "RISK-03",
+        "description": "같은 시점에 겹치는 건 2개",
+        "included": true,
+        "example_ids": [
+          "meeting_16",
+          "meeting_17 (2026-10-04 19:00 동시 확정)"
+        ]
+      },
+      {
+        "key": "multi_membership",
+        "risk": "RISK-01",
+        "description": "한 대상이 두 분류에 동시 소속",
+        "included": true,
+        "example_ids": [
+          "person_001 (김서연)"
+        ]
+      },
+      {
+        "key": "deadline_edge",
+        "risk": "RISK-02",
+        "description": "마감 임박 1건 + 마감 초과 1건",
+        "included": true,
+        "example_ids": [
+          "meeting_28 (오늘 밤 마감 임박)",
+          "meeting_26 (마감 지났지만 확정 미처리)"
+        ]
+      }
+    ]
+  },
+  "ent_07": {
+    "_entity": "ENT-07",
+    "_name": "커플",
+    "_target_count": 1,
+    "records": [
+      {
+        "id": "couple_01",
+        "wedding_date": "2026-12-05",
+        "created_at": "2026-07-01T09:00:00"
+      }
+    ]
+  },
+  "ent_06": {
+    "_entity": "ENT-06",
+    "_name": "계정",
+    "_target_count": 2,
+    "records": [
+      {
+        "id": "account_bride",
+        "name": "이서연",
+        "side": "신부",
+        "phone": "010-2222-1000",
+        "couple": "couple_01",
+        "created_at": "2026-07-01T09:05:00"
+      },
+      {
+        "id": "account_groom",
+        "name": "박준호",
+        "side": "신랑",
+        "phone": "010-3333-2000",
+        "couple": "couple_01",
+        "created_at": "2026-07-01T09:06:00"
+      }
+    ]
+  },
+  "ent_02": {
+    "_entity": "ENT-02",
+    "_name": "그룹",
+    "_target_count": 15,
+    "records": [
+      {
+        "id": "group_01",
+        "name": "대학 동기",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_02",
+        "name": "대학원 동기",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_03",
+        "name": "직장 동료 (현 회사)",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_04",
+        "name": "전 직장 동료",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_05",
+        "name": "동네 친구",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_06",
+        "name": "고등학교 동창",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_07",
+        "name": "사촌",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_08",
+        "name": "러닝크루",
+        "owner_account": "account_bride",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_09",
+        "name": "대학 동기",
+        "owner_account": "account_groom",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_10",
+        "name": "군대 동기",
+        "owner_account": "account_groom",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_11",
+        "name": "직장 동료 (현 회사)",
+        "owner_account": "account_groom",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_12",
+        "name": "전 직장 동료",
+        "owner_account": "account_groom",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_13",
+        "name": "동네 친구",
+        "owner_account": "account_groom",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_14",
+        "name": "가족·친척",
+        "owner_account": "account_groom",
+        "created_at": "2026-07-01T10:00:00"
+      },
+      {
+        "id": "group_15",
+        "name": "축구 동호회",
+        "owner_account": "account_groom",
+        "created_at": "2026-07-01T10:00:00"
+      }
+    ]
+  },
+  "ent_01": {
+    "_entity": "ENT-01",
+    "_name": "지인",
+    "_target_count": 100,
+    "records": [
+      {
+        "id": "person_001",
+        "name": "김서연",
+        "phone": "010-1000-2000",
+        "memo": "대학 동기이자 지금 같은 회사 동료이기도 함 — 어느 모임에 넣을지 고민된 케이스",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_06",
+          "group_02",
+          "group_07"
+        ]
+      },
+      {
+        "id": "person_002",
+        "name": "이민준",
+        "phone": "010-1037-2091",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_03",
+          "group_07",
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_003",
+        "name": "박지훈",
+        "phone": "010-1074-2182",
+        "memo": "대학 동기",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_02",
+          "group_03",
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_004",
+        "name": "최수빈",
+        "phone": "010-1111-2273",
+        "memo": "직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_02",
+          "group_05",
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_005",
+        "name": "정예은",
+        "phone": "010-1148-2364",
+        "memo": "동네에서 알고 지낸 지 10년 된 친구",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_02",
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_006",
+        "name": "강도윤",
+        "phone": "010-1185-2455",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_01",
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_007",
+        "name": "조하은",
+        "phone": "010-1222-2546",
+        "memo": "고등학교 3년 내내 같은 반이었던 친구, 지금도 매달 만남",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_04",
+          "group_02"
+        ]
+      },
+      {
+        "id": "person_008",
+        "name": "윤시우",
+        "phone": "010-1259-2637",
+        "memo": "전 직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_04",
+          "group_02"
+        ]
+      },
+      {
+        "id": "person_009",
+        "name": "장지민",
+        "phone": "010-1296-2728",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_07",
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_010",
+        "name": "임서준",
+        "phone": "010-1333-2819",
+        "memo": "사촌",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_07",
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_011",
+        "name": "한유진",
+        "phone": "010-1370-2910",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_03",
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_012",
+        "name": "오현우",
+        "phone": "010-1407-3001",
+        "memo": "동아리 선배",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_01",
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_013",
+        "name": "서다은",
+        "phone": "010-1444-3092",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_014",
+        "name": "신승민",
+        "phone": "010-1481-3183",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_015",
+        "name": "권지우",
+        "phone": "010-1518-3274",
+        "memo": "결혼식 사회를 부탁한 친구",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_016",
+        "name": "황수현",
+        "phone": "010-1555-3365",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_017",
+        "name": "안은서",
+        "phone": "010-1592-3456",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_018",
+        "name": "송준영",
+        "phone": "010-1629-3547",
+        "memo": "대학 동기",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_019",
+        "name": "전태윤",
+        "phone": "010-1666-3638",
+        "memo": "직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_020",
+        "name": "홍소율",
+        "phone": "010-1703-3729",
+        "memo": "동네에서 알고 지낸 지 10년 된 친구",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_021",
+        "name": "유현서",
+        "phone": "010-1740-3820",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_022",
+        "name": "고동현",
+        "phone": "010-1777-3911",
+        "memo": "고등학교 3년 내내 같은 반이었던 친구, 지금도 매달 만남",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_023",
+        "name": "문가은",
+        "phone": "010-1814-4002",
+        "memo": "전 직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_024",
+        "name": "양민서",
+        "phone": "010-1851-4093",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_025",
+        "name": "손재현",
+        "phone": "010-1888-4184",
+        "memo": "사촌",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_026",
+        "name": "배수아",
+        "phone": "010-1925-4275",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_027",
+        "name": "백윤서",
+        "phone": "010-1962-4366",
+        "memo": "동아리 선배",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_028",
+        "name": "허건우",
+        "phone": "010-1999-4457",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_029",
+        "name": "남나연",
+        "phone": "010-2036-4548",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_030",
+        "name": "심성민",
+        "phone": "010-2073-4639",
+        "memo": "결혼식 사회를 부탁한 친구",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_031",
+        "name": "김혜진",
+        "phone": "010-2110-4730",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_032",
+        "name": "이동욱",
+        "phone": "010-2147-4821",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_07"
+        ]
+      },
+      {
+        "id": "person_033",
+        "name": "박지원",
+        "phone": "010-2184-4912",
+        "memo": "대학 동기",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_034",
+        "name": "최은비",
+        "phone": "010-2221-5003",
+        "memo": "직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_035",
+        "name": "정형준",
+        "phone": "010-2258-5094",
+        "memo": "동네에서 알고 지낸 지 10년 된 친구",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_036",
+        "name": "강보람",
+        "phone": "010-2295-5185",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_037",
+        "name": "조채원",
+        "phone": "010-2332-5276",
+        "memo": "고등학교 3년 내내 같은 반이었던 친구, 지금도 매달 만남",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_038",
+        "name": "윤우진",
+        "phone": "010-2369-5367",
+        "memo": "전 직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_039",
+        "name": "장다현",
+        "phone": "010-2406-5458",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_040",
+        "name": "임석호",
+        "phone": "010-2443-5549",
+        "memo": "사촌",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_041",
+        "name": "한연우",
+        "phone": "010-2480-5640",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_042",
+        "name": "오시현",
+        "phone": "010-2517-5731",
+        "memo": "동아리 선배",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_043",
+        "name": "서경민",
+        "phone": "010-2554-5822",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_044",
+        "name": "신혜원",
+        "phone": "010-2591-5913",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_045",
+        "name": "권준서",
+        "phone": "010-2628-6004",
+        "memo": "결혼식 사회를 부탁한 친구",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_07"
+        ]
+      },
+      {
+        "id": "person_046",
+        "name": "황아름",
+        "phone": "010-2665-6095",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_047",
+        "name": "안성현",
+        "phone": "010-2702-6186",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_03"
+        ]
+      },
+      {
+        "id": "person_048",
+        "name": "송은지",
+        "phone": "010-2739-6277",
+        "memo": "대학 동기",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_049",
+        "name": "전태호",
+        "phone": "010-2776-6368",
+        "memo": "직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_050",
+        "name": "홍미소",
+        "phone": "010-2813-6459",
+        "memo": "동네에서 알고 지낸 지 10년 된 친구",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_04"
+        ]
+      },
+      {
+        "id": "person_051",
+        "name": "유현진",
+        "phone": "010-2850-6550",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_06"
+        ]
+      },
+      {
+        "id": "person_052",
+        "name": "고규리",
+        "phone": "010-2887-6641",
+        "memo": "고등학교 3년 내내 같은 반이었던 친구, 지금도 매달 만남",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_05"
+        ]
+      },
+      {
+        "id": "person_053",
+        "name": "문동건",
+        "phone": "010-2924-6732",
+        "memo": "전 직장 동료",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_054",
+        "name": "양서희",
+        "phone": "010-2961-6823",
+        "memo": "",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_07"
+        ]
+      },
+      {
+        "id": "person_055",
+        "name": "손진우",
+        "phone": "010-2998-6914",
+        "memo": "사촌",
+        "registered_by": "account_bride",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_01"
+        ]
+      },
+      {
+        "id": "person_056",
+        "name": "배하람",
+        "phone": "010-3035-7005",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_11",
+          "group_14",
+          "group_13"
+        ]
+      },
+      {
+        "id": "person_057",
+        "name": "백소민",
+        "phone": "010-3072-7096",
+        "memo": "동아리 선배",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_09",
+          "group_14",
+          "group_13"
+        ]
+      },
+      {
+        "id": "person_058",
+        "name": "허기범",
+        "phone": "010-3109-7187",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_11",
+          "group_12",
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_059",
+        "name": "남유나",
+        "phone": "010-3146-7278",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_12",
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_060",
+        "name": "심재우",
+        "phone": "010-3183-7369",
+        "memo": "결혼식 사회를 부탁한 친구",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_12",
+          "group_14"
+        ]
+      },
+      {
+        "id": "person_061",
+        "name": "김별하",
+        "phone": "010-3220-7460",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_14",
+          "group_12"
+        ]
+      },
+      {
+        "id": "person_062",
+        "name": "이도현",
+        "phone": "010-3257-7551",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_14",
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_063",
+        "name": "박은재",
+        "phone": "010-3294-7642",
+        "memo": "대학 동기",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_13",
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_064",
+        "name": "최현아",
+        "phone": "010-3331-7733",
+        "memo": "직장 동료",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_11",
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_065",
+        "name": "정민재",
+        "phone": "010-3368-7824",
+        "memo": "동네에서 알고 지낸 지 10년 된 친구",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_09",
+          "group_11"
+        ]
+      },
+      {
+        "id": "person_066",
+        "name": "강소연",
+        "phone": "010-3405-7915",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_13"
+        ]
+      },
+      {
+        "id": "person_067",
+        "name": "조태경",
+        "phone": "010-3442-8006",
+        "memo": "고등학교 3년 내내 같은 반이었던 친구, 지금도 매달 만남",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_13"
+        ]
+      },
+      {
+        "id": "person_068",
+        "name": "윤가영",
+        "phone": "010-3479-8097",
+        "memo": "전 직장 동료",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_14"
+        ]
+      },
+      {
+        "id": "person_069",
+        "name": "장승원",
+        "phone": "010-3516-8188",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_070",
+        "name": "임보윤",
+        "phone": "010-3553-8279",
+        "memo": "사촌",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_14"
+        ]
+      },
+      {
+        "id": "person_071",
+        "name": "한은호",
+        "phone": "010-3590-8370",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_11"
+        ]
+      },
+      {
+        "id": "person_072",
+        "name": "오다인",
+        "phone": "010-3627-8461",
+        "memo": "동아리 선배",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_11"
+        ]
+      },
+      {
+        "id": "person_073",
+        "name": "서현빈",
+        "phone": "010-3664-8552",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_11"
+        ]
+      },
+      {
+        "id": "person_074",
+        "name": "신수정",
+        "phone": "010-3701-8643",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_075",
+        "name": "권경환",
+        "phone": "010-3738-8734",
+        "memo": "결혼식 사회를 부탁한 친구",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_11"
+        ]
+      },
+      {
+        "id": "person_076",
+        "name": "황윤아",
+        "phone": "010-3775-8825",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_13"
+        ]
+      },
+      {
+        "id": "person_077",
+        "name": "안재원",
+        "phone": "010-3812-8916",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_078",
+        "name": "송소현",
+        "phone": "010-3849-9007",
+        "memo": "대학 동기",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_12"
+        ]
+      },
+      {
+        "id": "person_079",
+        "name": "전민혁",
+        "phone": "010-3886-9098",
+        "memo": "직장 동료",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_080",
+        "name": "홍하윤",
+        "phone": "010-3923-9189",
+        "memo": "동네에서 알고 지낸 지 10년 된 친구",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_11"
+        ]
+      },
+      {
+        "id": "person_081",
+        "name": "유진서",
+        "phone": "010-3960-9280",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_12"
+        ]
+      },
+      {
+        "id": "person_082",
+        "name": "고우빈",
+        "phone": "010-3997-9371",
+        "memo": "고등학교 3년 내내 같은 반이었던 친구, 지금도 매달 만남",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_083",
+        "name": "문채은",
+        "phone": "010-4034-9462",
+        "memo": "전 직장 동료",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_11"
+        ]
+      },
+      {
+        "id": "person_084",
+        "name": "양동민",
+        "phone": "010-4071-9553",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_085",
+        "name": "손서율",
+        "phone": "010-4108-9644",
+        "memo": "사촌",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_14"
+        ]
+      },
+      {
+        "id": "person_086",
+        "name": "배현수",
+        "phone": "010-4145-9735",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_087",
+        "name": "백보미",
+        "phone": "010-4182-9826",
+        "memo": "동아리 선배",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_088",
+        "name": "허정민",
+        "phone": "010-4219-9917",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_089",
+        "name": "남아영",
+        "phone": "010-4256-2008",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_090",
+        "name": "심시윤",
+        "phone": "010-4293-2099",
+        "memo": "결혼식 사회를 부탁한 친구",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_091",
+        "name": "김한결",
+        "phone": "010-4330-2190",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_092",
+        "name": "이유빈",
+        "phone": "010-4367-2281",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-12T20:00:00",
+        "group_ids": [
+          "group_13"
+        ]
+      },
+      {
+        "id": "person_093",
+        "name": "박경수",
+        "phone": "010-4404-2372",
+        "memo": "대학 동기",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-13T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_094",
+        "name": "최혜수",
+        "phone": "010-4441-2463",
+        "memo": "직장 동료",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-14T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_095",
+        "name": "정준혁",
+        "phone": "010-4478-2554",
+        "memo": "동네에서 알고 지낸 지 10년 된 친구",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-15T20:00:00",
+        "group_ids": [
+          "group_09"
+        ]
+      },
+      {
+        "id": "person_096",
+        "name": "강나윤",
+        "phone": "010-4515-2645",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-16T20:00:00",
+        "group_ids": [
+          "group_13"
+        ]
+      },
+      {
+        "id": "person_097",
+        "name": "조성진",
+        "phone": "010-4552-2736",
+        "memo": "고등학교 3년 내내 같은 반이었던 친구, 지금도 매달 만남",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-17T20:00:00",
+        "group_ids": [
+          "group_12"
+        ]
+      },
+      {
+        "id": "person_098",
+        "name": "윤은우",
+        "phone": "010-4589-2827",
+        "memo": "전 직장 동료",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-18T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      },
+      {
+        "id": "person_099",
+        "name": "장다솔",
+        "phone": "010-4626-2918",
+        "memo": "",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-19T20:00:00",
+        "group_ids": [
+          "group_12"
+        ]
+      },
+      {
+        "id": "person_100",
+        "name": "임지안",
+        "phone": "010-4663-3009",
+        "memo": "사촌",
+        "registered_by": "account_groom",
+        "created_at": "2026-07-11T20:00:00",
+        "group_ids": [
+          "group_10"
+        ]
+      }
+    ]
+  },
+  "ent_03": {
+    "_entity": "ENT-03",
+    "_name": "모임",
+    "_target_count": 42,
+    "records": [
+      {
+        "id": "meeting_01",
+        "couple": "couple_01",
+        "title": "김서연 등 대학 지인 모임",
+        "status": "완료",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-11T18:30:00",
+        "confirmed_candidate": "cand_001",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_02",
+        "couple": "couple_01",
+        "title": "이민준 등 직장 지인 모임",
+        "status": "완료",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-08-12T18:30:00",
+        "confirmed_candidate": "cand_003",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_03",
+        "couple": "couple_01",
+        "title": "박지훈 등 동네 지인 모임",
+        "status": "완료",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-15T18:30:00",
+        "confirmed_candidate": "cand_005",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_04",
+        "couple": "couple_01",
+        "title": "최수빈 등 고교 지인 모임",
+        "status": "완료",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-08-16T18:30:00",
+        "confirmed_candidate": "cand_007",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_05",
+        "couple": "couple_01",
+        "title": "정예은 등 대학 지인 모임",
+        "status": "완료",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-18T18:30:00",
+        "confirmed_candidate": "cand_009",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_06",
+        "couple": "couple_01",
+        "title": "강도윤 등 직장 지인 모임",
+        "status": "완료",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-08-19T18:30:00",
+        "confirmed_candidate": "cand_011",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_07",
+        "couple": "couple_01",
+        "title": "조하은 등 동네 지인 모임",
+        "status": "완료",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-22T18:30:00",
+        "confirmed_candidate": "cand_013",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_08",
+        "couple": "couple_01",
+        "title": "윤시우 등 고교 지인 모임",
+        "status": "완료",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-08-23T18:30:00",
+        "confirmed_candidate": "cand_015",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_09",
+        "couple": "couple_01",
+        "title": "장지민 등 대학 지인 모임",
+        "status": "완료",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-25T18:30:00",
+        "confirmed_candidate": "cand_017",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_10",
+        "couple": "couple_01",
+        "title": "임서준 등 직장 지인 모임",
+        "status": "완료",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-08-29T18:30:00",
+        "confirmed_candidate": "cand_019",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_11",
+        "couple": "couple_01",
+        "title": "한유진 등 동네 지인 모임",
+        "status": "완료",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-30T18:30:00",
+        "confirmed_candidate": "cand_021",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_12",
+        "couple": "couple_01",
+        "title": "오현우 등 고교 지인 모임",
+        "status": "완료",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-02T18:30:00",
+        "confirmed_candidate": "cand_023",
+        "is_urgent_bypass": false,
+        "created_at": "2026-07-25T09:00:00"
+      },
+      {
+        "id": "meeting_13",
+        "couple": "couple_01",
+        "title": "유현진 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-13T18:30:00",
+        "confirmed_candidate": "cand_025",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_14",
+        "couple": "couple_01",
+        "title": "고규리 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-20T18:30:00",
+        "confirmed_candidate": "cand_027",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_15",
+        "couple": "couple_01",
+        "title": "문동건 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-27T18:30:00",
+        "confirmed_candidate": "cand_029",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_16",
+        "couple": "couple_01",
+        "title": "겹침 예시 — 양서희 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-10-04T19:00:00",
+        "confirmed_candidate": "cand_031",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_17",
+        "couple": "couple_01",
+        "title": "겹침 예시 — 손진우 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-10-04T19:00:00",
+        "confirmed_candidate": "cand_033",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_18",
+        "couple": "couple_01",
+        "title": "배하람 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-10-11T18:30:00",
+        "confirmed_candidate": "cand_035",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_19",
+        "couple": "couple_01",
+        "title": "백소민 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-10-18T18:30:00",
+        "confirmed_candidate": "cand_037",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_20",
+        "couple": "couple_01",
+        "title": "허기범 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-11-01T18:30:00",
+        "confirmed_candidate": "cand_039",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_21",
+        "couple": "couple_01",
+        "title": "남유나 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-11-08T18:30:00",
+        "confirmed_candidate": "cand_041",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_22",
+        "couple": "couple_01",
+        "title": "심재우 쪽 모임",
+        "status": "확정됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-11-15T18:30:00",
+        "confirmed_candidate": "cand_043",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-20T09:00:00"
+      },
+      {
+        "id": "meeting_23",
+        "couple": "couple_01",
+        "title": "한은호 쪽 모임 (확정 대기)",
+        "status": "확정대기",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-04T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-22T09:00:00"
+      },
+      {
+        "id": "meeting_24",
+        "couple": "couple_01",
+        "title": "오다인 쪽 모임 (확정 대기)",
+        "status": "확정대기",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-04T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-22T09:00:00"
+      },
+      {
+        "id": "meeting_25",
+        "couple": "couple_01",
+        "title": "서현빈 쪽 모임 (확정 대기)",
+        "status": "확정대기",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-04T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-22T09:00:00"
+      },
+      {
+        "id": "meeting_26",
+        "couple": "couple_01",
+        "title": "마감 지났지만 확정 미처리 — 신수정",
+        "status": "확정대기",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-01T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-22T09:00:00"
+      },
+      {
+        "id": "meeting_27",
+        "couple": "couple_01",
+        "title": "6명 중 4명만 회신 — 대학 동기 모임",
+        "status": "회신중",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-10T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-01T09:00:00"
+      },
+      {
+        "id": "meeting_28",
+        "couple": "couple_01",
+        "title": "오늘 밤 마감 임박 — 동네 친구 모임",
+        "status": "회신중",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-05T22:00:00",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-02T09:00:00"
+      },
+      {
+        "id": "meeting_29",
+        "couple": "couple_01",
+        "title": "문채은 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-12T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_30",
+        "couple": "couple_01",
+        "title": "양동민 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-13T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_31",
+        "couple": "couple_01",
+        "title": "손서율 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-14T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_32",
+        "couple": "couple_01",
+        "title": "배현수 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-15T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_33",
+        "couple": "couple_01",
+        "title": "백보미 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-16T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_34",
+        "couple": "couple_01",
+        "title": "허정민 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-17T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_35",
+        "couple": "couple_01",
+        "title": "남아영 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-18T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_36",
+        "couple": "couple_01",
+        "title": "심시윤 쪽 모임 (회신중)",
+        "status": "회신중",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-19T23:59:59",
+        "confirmed_candidate": "",
+        "is_urgent_bypass": false,
+        "created_at": "2026-09-03T09:00:00"
+      },
+      {
+        "id": "meeting_37",
+        "couple": "couple_01",
+        "title": "김한결 쪽 모임 (사정으로 취소)",
+        "status": "취소됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-20T18:00:00",
+        "confirmed_candidate": "cand_069",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-05T09:00:00"
+      },
+      {
+        "id": "meeting_38",
+        "couple": "couple_01",
+        "title": "이유빈 쪽 모임 (사정으로 취소)",
+        "status": "취소됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-08-21T18:00:00",
+        "confirmed_candidate": "cand_070",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-05T09:00:00"
+      },
+      {
+        "id": "meeting_39",
+        "couple": "couple_01",
+        "title": "박경수 쪽 모임 (사정으로 취소)",
+        "status": "취소됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-08-22T18:00:00",
+        "confirmed_candidate": "cand_071",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-05T09:00:00"
+      },
+      {
+        "id": "meeting_40",
+        "couple": "couple_01",
+        "title": "최혜수 쪽 모임 (사정으로 취소)",
+        "status": "취소됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-08-23T18:00:00",
+        "confirmed_candidate": "cand_072",
+        "is_urgent_bypass": false,
+        "created_at": "2026-08-05T09:00:00"
+      },
+      {
+        "id": "meeting_41",
+        "couple": "couple_01",
+        "title": "강나윤 상견례 전 긴급 모임",
+        "status": "확정됨",
+        "created_by": "account_bride",
+        "rsvp_deadline": "2026-09-7T19:00:00",
+        "confirmed_candidate": "cand_073",
+        "is_urgent_bypass": true,
+        "created_at": "2026-09-04T21:00:00"
+      },
+      {
+        "id": "meeting_42",
+        "couple": "couple_01",
+        "title": "조성진 상견례 전 긴급 모임",
+        "status": "확정됨",
+        "created_by": "account_groom",
+        "rsvp_deadline": "2026-09-8T19:00:00",
+        "confirmed_candidate": "cand_074",
+        "is_urgent_bypass": true,
+        "created_at": "2026-09-04T21:00:00"
+      }
+    ]
+  },
+  "ent_04": {
+    "_entity": "ENT-04",
+    "_name": "날짜후보",
+    "_target_count": 74,
+    "records": [
+      {
+        "id": "cand_001",
+        "meeting": "meeting_01",
+        "datetime": "2026-08-11T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_002",
+        "meeting": "meeting_01",
+        "datetime": "2026-08-12T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_003",
+        "meeting": "meeting_02",
+        "datetime": "2026-08-12T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_004",
+        "meeting": "meeting_02",
+        "datetime": "2026-08-13T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_005",
+        "meeting": "meeting_03",
+        "datetime": "2026-08-15T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_006",
+        "meeting": "meeting_03",
+        "datetime": "2026-08-16T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_007",
+        "meeting": "meeting_04",
+        "datetime": "2026-08-16T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_008",
+        "meeting": "meeting_04",
+        "datetime": "2026-08-17T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_009",
+        "meeting": "meeting_05",
+        "datetime": "2026-08-18T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_010",
+        "meeting": "meeting_05",
+        "datetime": "2026-08-19T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_011",
+        "meeting": "meeting_06",
+        "datetime": "2026-08-19T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_012",
+        "meeting": "meeting_06",
+        "datetime": "2026-08-20T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_013",
+        "meeting": "meeting_07",
+        "datetime": "2026-08-22T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_014",
+        "meeting": "meeting_07",
+        "datetime": "2026-08-23T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_015",
+        "meeting": "meeting_08",
+        "datetime": "2026-08-23T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_016",
+        "meeting": "meeting_08",
+        "datetime": "2026-08-24T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_017",
+        "meeting": "meeting_09",
+        "datetime": "2026-08-25T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_018",
+        "meeting": "meeting_09",
+        "datetime": "2026-08-26T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_019",
+        "meeting": "meeting_10",
+        "datetime": "2026-08-29T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_020",
+        "meeting": "meeting_10",
+        "datetime": "2026-08-03T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_021",
+        "meeting": "meeting_11",
+        "datetime": "2026-08-30T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_022",
+        "meeting": "meeting_11",
+        "datetime": "2026-08-04T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_023",
+        "meeting": "meeting_12",
+        "datetime": "2026-09-02T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_024",
+        "meeting": "meeting_12",
+        "datetime": "2026-09-03T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_025",
+        "meeting": "meeting_13",
+        "datetime": "2026-09-13T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_026",
+        "meeting": "meeting_13",
+        "datetime": "2026-09-16T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_027",
+        "meeting": "meeting_14",
+        "datetime": "2026-09-20T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_028",
+        "meeting": "meeting_14",
+        "datetime": "2026-09-23T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_029",
+        "meeting": "meeting_15",
+        "datetime": "2026-09-27T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_030",
+        "meeting": "meeting_15",
+        "datetime": "2026-09-03T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_031",
+        "meeting": "meeting_16",
+        "datetime": "2026-10-04T19:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_032",
+        "meeting": "meeting_16",
+        "datetime": "2026-10-07T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_033",
+        "meeting": "meeting_17",
+        "datetime": "2026-10-04T19:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_034",
+        "meeting": "meeting_17",
+        "datetime": "2026-10-07T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_035",
+        "meeting": "meeting_18",
+        "datetime": "2026-10-11T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_036",
+        "meeting": "meeting_18",
+        "datetime": "2026-10-14T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_037",
+        "meeting": "meeting_19",
+        "datetime": "2026-10-18T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_038",
+        "meeting": "meeting_19",
+        "datetime": "2026-10-21T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_039",
+        "meeting": "meeting_20",
+        "datetime": "2026-11-01T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_040",
+        "meeting": "meeting_20",
+        "datetime": "2026-11-04T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_041",
+        "meeting": "meeting_21",
+        "datetime": "2026-11-08T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_042",
+        "meeting": "meeting_21",
+        "datetime": "2026-11-11T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_043",
+        "meeting": "meeting_22",
+        "datetime": "2026-11-15T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_044",
+        "meeting": "meeting_22",
+        "datetime": "2026-11-18T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_045",
+        "meeting": "meeting_23",
+        "datetime": "2026-09-25T18:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_046",
+        "meeting": "meeting_24",
+        "datetime": "2026-09-26T19:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_047",
+        "meeting": "meeting_25",
+        "datetime": "2026-10-02T18:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_048",
+        "meeting": "meeting_26",
+        "datetime": "2026-09-06T19:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_049",
+        "meeting": "meeting_27",
+        "datetime": "2026-09-19T18:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_050",
+        "meeting": "meeting_27",
+        "datetime": "2026-09-20T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_051",
+        "meeting": "meeting_28",
+        "datetime": "2026-09-12T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_052",
+        "meeting": "meeting_28",
+        "datetime": "2026-09-13T12:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_053",
+        "meeting": "meeting_29",
+        "datetime": "2026-09-22T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_054",
+        "meeting": "meeting_29",
+        "datetime": "2026-09-23T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_055",
+        "meeting": "meeting_30",
+        "datetime": "2026-09-23T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_056",
+        "meeting": "meeting_30",
+        "datetime": "2026-09-24T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_057",
+        "meeting": "meeting_31",
+        "datetime": "2026-09-24T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_058",
+        "meeting": "meeting_31",
+        "datetime": "2026-09-25T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_059",
+        "meeting": "meeting_32",
+        "datetime": "2026-09-25T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_060",
+        "meeting": "meeting_32",
+        "datetime": "2026-09-26T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_061",
+        "meeting": "meeting_33",
+        "datetime": "2026-09-26T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_062",
+        "meeting": "meeting_33",
+        "datetime": "2026-09-27T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_063",
+        "meeting": "meeting_34",
+        "datetime": "2026-09-27T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_064",
+        "meeting": "meeting_34",
+        "datetime": "2026-09-28T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_065",
+        "meeting": "meeting_35",
+        "datetime": "2026-09-28T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_066",
+        "meeting": "meeting_35",
+        "datetime": "2026-09-29T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_067",
+        "meeting": "meeting_36",
+        "datetime": "2026-09-29T18:30:00",
+        "note": ""
+      },
+      {
+        "id": "cand_068",
+        "meeting": "meeting_36",
+        "datetime": "2026-09-30T13:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_069",
+        "meeting": "meeting_37",
+        "datetime": "2026-08-20T18:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_070",
+        "meeting": "meeting_38",
+        "datetime": "2026-08-21T18:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_071",
+        "meeting": "meeting_39",
+        "datetime": "2026-08-22T18:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_072",
+        "meeting": "meeting_40",
+        "datetime": "2026-08-23T18:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_073",
+        "meeting": "meeting_41",
+        "datetime": "2026-09-7T19:00:00",
+        "note": ""
+      },
+      {
+        "id": "cand_074",
+        "meeting": "meeting_42",
+        "datetime": "2026-09-8T19:00:00",
+        "note": ""
+      }
+    ]
+  },
+  "ent_05": {
+    "_entity": "ENT-05",
+    "_name": "회신",
+    "_target_count": 296,
+    "records": [
+      {
+        "id": "resp_0001",
+        "candidate": "cand_001",
+        "person": "person_011",
+        "availability": "가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0002",
+        "candidate": "cand_002",
+        "person": "person_011",
+        "availability": "가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0003",
+        "candidate": "cand_001",
+        "person": "person_051",
+        "availability": "가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0004",
+        "candidate": "cand_002",
+        "person": "person_051",
+        "availability": "불가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0005",
+        "candidate": "cand_001",
+        "person": "person_044",
+        "availability": "가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0006",
+        "candidate": "cand_002",
+        "person": "person_044",
+        "availability": "불가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0007",
+        "candidate": "cand_001",
+        "person": "person_028",
+        "availability": "가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0008",
+        "candidate": "cand_002",
+        "person": "person_028",
+        "availability": "불가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0009",
+        "candidate": "cand_001",
+        "person": "person_039",
+        "availability": "가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0010",
+        "candidate": "cand_002",
+        "person": "person_039",
+        "availability": "불가능",
+        "responded_at": "2026-08-11T18:30:00"
+      },
+      {
+        "id": "resp_0011",
+        "candidate": "cand_003",
+        "person": "person_056",
+        "availability": "가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0012",
+        "candidate": "cand_004",
+        "person": "person_056",
+        "availability": "불가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0013",
+        "candidate": "cand_003",
+        "person": "person_099",
+        "availability": "가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0014",
+        "candidate": "cand_004",
+        "person": "person_099",
+        "availability": "가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0015",
+        "candidate": "cand_003",
+        "person": "person_063",
+        "availability": "가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0016",
+        "candidate": "cand_004",
+        "person": "person_063",
+        "availability": "불가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0017",
+        "candidate": "cand_003",
+        "person": "person_090",
+        "availability": "가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0018",
+        "candidate": "cand_004",
+        "person": "person_090",
+        "availability": "불가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0019",
+        "candidate": "cand_003",
+        "person": "person_073",
+        "availability": "가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0020",
+        "candidate": "cand_004",
+        "person": "person_073",
+        "availability": "가능",
+        "responded_at": "2026-08-12T18:30:00"
+      },
+      {
+        "id": "resp_0021",
+        "candidate": "cand_005",
+        "person": "person_001",
+        "availability": "가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0022",
+        "candidate": "cand_006",
+        "person": "person_001",
+        "availability": "가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0023",
+        "candidate": "cand_005",
+        "person": "person_047",
+        "availability": "가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0024",
+        "candidate": "cand_006",
+        "person": "person_047",
+        "availability": "가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0025",
+        "candidate": "cand_005",
+        "person": "person_017",
+        "availability": "가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0026",
+        "candidate": "cand_006",
+        "person": "person_017",
+        "availability": "불가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0027",
+        "candidate": "cand_005",
+        "person": "person_033",
+        "availability": "가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0028",
+        "candidate": "cand_006",
+        "person": "person_033",
+        "availability": "가능",
+        "responded_at": "2026-08-15T18:30:00"
+      },
+      {
+        "id": "resp_0029",
+        "candidate": "cand_007",
+        "person": "person_079",
+        "availability": "가능",
+        "responded_at": "2026-08-16T18:30:00"
+      },
+      {
+        "id": "resp_0030",
+        "candidate": "cand_008",
+        "person": "person_079",
+        "availability": "가능",
+        "responded_at": "2026-08-16T18:30:00"
+      },
+      {
+        "id": "resp_0031",
+        "candidate": "cand_007",
+        "person": "person_066",
+        "availability": "가능",
+        "responded_at": "2026-08-16T18:30:00"
+      },
+      {
+        "id": "resp_0032",
+        "candidate": "cand_008",
+        "person": "person_066",
+        "availability": "불가능",
+        "responded_at": "2026-08-16T18:30:00"
+      },
+      {
+        "id": "resp_0033",
+        "candidate": "cand_007",
+        "person": "person_090",
+        "availability": "가능",
+        "responded_at": "2026-08-16T18:30:00"
+      },
+      {
+        "id": "resp_0034",
+        "candidate": "cand_008",
+        "person": "person_090",
+        "availability": "불가능",
+        "responded_at": "2026-08-16T18:30:00"
+      },
+      {
+        "id": "resp_0035",
+        "candidate": "cand_009",
+        "person": "person_008",
+        "availability": "가능",
+        "responded_at": "2026-08-18T18:30:00"
+      },
+      {
+        "id": "resp_0036",
+        "candidate": "cand_010",
+        "person": "person_008",
+        "availability": "불가능",
+        "responded_at": "2026-08-18T18:30:00"
+      },
+      {
+        "id": "resp_0037",
+        "candidate": "cand_009",
+        "person": "person_024",
+        "availability": "가능",
+        "responded_at": "2026-08-18T18:30:00"
+      },
+      {
+        "id": "resp_0038",
+        "candidate": "cand_010",
+        "person": "person_024",
+        "availability": "가능",
+        "responded_at": "2026-08-18T18:30:00"
+      },
+      {
+        "id": "resp_0039",
+        "candidate": "cand_009",
+        "person": "person_054",
+        "availability": "가능",
+        "responded_at": "2026-08-18T18:30:00"
+      },
+      {
+        "id": "resp_0040",
+        "candidate": "cand_010",
+        "person": "person_054",
+        "availability": "가능",
+        "responded_at": "2026-08-18T18:30:00"
+      },
+      {
+        "id": "resp_0041",
+        "candidate": "cand_011",
+        "person": "person_092",
+        "availability": "가능",
+        "responded_at": "2026-08-19T18:30:00"
+      },
+      {
+        "id": "resp_0042",
+        "candidate": "cand_012",
+        "person": "person_092",
+        "availability": "가능",
+        "responded_at": "2026-08-19T18:30:00"
+      },
+      {
+        "id": "resp_0043",
+        "candidate": "cand_011",
+        "person": "person_061",
+        "availability": "가능",
+        "responded_at": "2026-08-19T18:30:00"
+      },
+      {
+        "id": "resp_0044",
+        "candidate": "cand_012",
+        "person": "person_061",
+        "availability": "가능",
+        "responded_at": "2026-08-19T18:30:00"
+      },
+      {
+        "id": "resp_0045",
+        "candidate": "cand_011",
+        "person": "person_087",
+        "availability": "가능",
+        "responded_at": "2026-08-19T18:30:00"
+      },
+      {
+        "id": "resp_0046",
+        "candidate": "cand_012",
+        "person": "person_087",
+        "availability": "가능",
+        "responded_at": "2026-08-19T18:30:00"
+      },
+      {
+        "id": "resp_0047",
+        "candidate": "cand_013",
+        "person": "person_031",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0048",
+        "candidate": "cand_014",
+        "person": "person_031",
+        "availability": "불가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0049",
+        "candidate": "cand_013",
+        "person": "person_036",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0050",
+        "candidate": "cand_014",
+        "person": "person_036",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0051",
+        "candidate": "cand_013",
+        "person": "person_011",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0052",
+        "candidate": "cand_014",
+        "person": "person_011",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0053",
+        "candidate": "cand_013",
+        "person": "person_017",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0054",
+        "candidate": "cand_014",
+        "person": "person_017",
+        "availability": "불가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0055",
+        "candidate": "cand_013",
+        "person": "person_034",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0056",
+        "candidate": "cand_014",
+        "person": "person_034",
+        "availability": "불가능",
+        "responded_at": "2026-08-22T18:30:00"
+      },
+      {
+        "id": "resp_0057",
+        "candidate": "cand_015",
+        "person": "person_097",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0058",
+        "candidate": "cand_016",
+        "person": "person_097",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0059",
+        "candidate": "cand_015",
+        "person": "person_079",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0060",
+        "candidate": "cand_016",
+        "person": "person_079",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0061",
+        "candidate": "cand_015",
+        "person": "person_084",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0062",
+        "candidate": "cand_016",
+        "person": "person_084",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0063",
+        "candidate": "cand_015",
+        "person": "person_089",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0064",
+        "candidate": "cand_016",
+        "person": "person_089",
+        "availability": "불가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0065",
+        "candidate": "cand_015",
+        "person": "person_063",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0066",
+        "candidate": "cand_016",
+        "person": "person_063",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:30:00"
+      },
+      {
+        "id": "resp_0067",
+        "candidate": "cand_017",
+        "person": "person_036",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0068",
+        "candidate": "cand_018",
+        "person": "person_036",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0069",
+        "candidate": "cand_017",
+        "person": "person_015",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0070",
+        "candidate": "cand_018",
+        "person": "person_015",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0071",
+        "candidate": "cand_017",
+        "person": "person_038",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0072",
+        "candidate": "cand_018",
+        "person": "person_038",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0073",
+        "candidate": "cand_017",
+        "person": "person_001",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0074",
+        "candidate": "cand_018",
+        "person": "person_001",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0075",
+        "candidate": "cand_017",
+        "person": "person_005",
+        "availability": "가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0076",
+        "candidate": "cand_018",
+        "person": "person_005",
+        "availability": "불가능",
+        "responded_at": "2026-08-25T18:30:00"
+      },
+      {
+        "id": "resp_0077",
+        "candidate": "cand_019",
+        "person": "person_088",
+        "availability": "가능",
+        "responded_at": "2026-08-29T18:30:00"
+      },
+      {
+        "id": "resp_0078",
+        "candidate": "cand_020",
+        "person": "person_088",
+        "availability": "불가능",
+        "responded_at": "2026-08-29T18:30:00"
+      },
+      {
+        "id": "resp_0079",
+        "candidate": "cand_019",
+        "person": "person_071",
+        "availability": "가능",
+        "responded_at": "2026-08-29T18:30:00"
+      },
+      {
+        "id": "resp_0080",
+        "candidate": "cand_020",
+        "person": "person_071",
+        "availability": "가능",
+        "responded_at": "2026-08-29T18:30:00"
+      },
+      {
+        "id": "resp_0081",
+        "candidate": "cand_019",
+        "person": "person_073",
+        "availability": "가능",
+        "responded_at": "2026-08-29T18:30:00"
+      },
+      {
+        "id": "resp_0082",
+        "candidate": "cand_020",
+        "person": "person_073",
+        "availability": "가능",
+        "responded_at": "2026-08-29T18:30:00"
+      },
+      {
+        "id": "resp_0083",
+        "candidate": "cand_021",
+        "person": "person_037",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0084",
+        "candidate": "cand_022",
+        "person": "person_037",
+        "availability": "불가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0085",
+        "candidate": "cand_021",
+        "person": "person_031",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0086",
+        "candidate": "cand_022",
+        "person": "person_031",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0087",
+        "candidate": "cand_021",
+        "person": "person_016",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0088",
+        "candidate": "cand_022",
+        "person": "person_016",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0089",
+        "candidate": "cand_021",
+        "person": "person_051",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0090",
+        "candidate": "cand_022",
+        "person": "person_051",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0091",
+        "candidate": "cand_021",
+        "person": "person_052",
+        "availability": "가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0092",
+        "candidate": "cand_022",
+        "person": "person_052",
+        "availability": "불가능",
+        "responded_at": "2026-08-30T18:30:00"
+      },
+      {
+        "id": "resp_0093",
+        "candidate": "cand_023",
+        "person": "person_083",
+        "availability": "가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0094",
+        "candidate": "cand_024",
+        "person": "person_083",
+        "availability": "가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0095",
+        "candidate": "cand_023",
+        "person": "person_082",
+        "availability": "가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0096",
+        "candidate": "cand_024",
+        "person": "person_082",
+        "availability": "가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0097",
+        "candidate": "cand_023",
+        "person": "person_085",
+        "availability": "가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0098",
+        "candidate": "cand_024",
+        "person": "person_085",
+        "availability": "불가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0099",
+        "candidate": "cand_023",
+        "person": "person_059",
+        "availability": "가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0100",
+        "candidate": "cand_024",
+        "person": "person_059",
+        "availability": "불가능",
+        "responded_at": "2026-09-02T18:30:00"
+      },
+      {
+        "id": "resp_0101",
+        "candidate": "cand_025",
+        "person": "person_016",
+        "availability": "가능",
+        "responded_at": "2026-09-13T18:30:00"
+      },
+      {
+        "id": "resp_0102",
+        "candidate": "cand_026",
+        "person": "person_016",
+        "availability": "불가능",
+        "responded_at": "2026-09-13T18:30:00"
+      },
+      {
+        "id": "resp_0103",
+        "candidate": "cand_025",
+        "person": "person_013",
+        "availability": "가능",
+        "responded_at": "2026-09-13T18:30:00"
+      },
+      {
+        "id": "resp_0104",
+        "candidate": "cand_026",
+        "person": "person_013",
+        "availability": "가능",
+        "responded_at": "2026-09-13T18:30:00"
+      },
+      {
+        "id": "resp_0105",
+        "candidate": "cand_025",
+        "person": "person_035",
+        "availability": "가능",
+        "responded_at": "2026-09-13T18:30:00"
+      },
+      {
+        "id": "resp_0106",
+        "candidate": "cand_026",
+        "person": "person_035",
+        "availability": "불가능",
+        "responded_at": "2026-09-13T18:30:00"
+      },
+      {
+        "id": "resp_0107",
+        "candidate": "cand_027",
+        "person": "person_073",
+        "availability": "가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0108",
+        "candidate": "cand_028",
+        "person": "person_073",
+        "availability": "불가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0109",
+        "candidate": "cand_027",
+        "person": "person_085",
+        "availability": "가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0110",
+        "candidate": "cand_028",
+        "person": "person_085",
+        "availability": "가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0111",
+        "candidate": "cand_027",
+        "person": "person_071",
+        "availability": "가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0112",
+        "candidate": "cand_028",
+        "person": "person_071",
+        "availability": "가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0113",
+        "candidate": "cand_027",
+        "person": "person_060",
+        "availability": "가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0114",
+        "candidate": "cand_028",
+        "person": "person_060",
+        "availability": "가능",
+        "responded_at": "2026-09-20T18:30:00"
+      },
+      {
+        "id": "resp_0115",
+        "candidate": "cand_029",
+        "person": "person_049",
+        "availability": "가능",
+        "responded_at": "2026-09-27T18:30:00"
+      },
+      {
+        "id": "resp_0116",
+        "candidate": "cand_030",
+        "person": "person_049",
+        "availability": "가능",
+        "responded_at": "2026-09-27T18:30:00"
+      },
+      {
+        "id": "resp_0117",
+        "candidate": "cand_029",
+        "person": "person_055",
+        "availability": "가능",
+        "responded_at": "2026-09-27T18:30:00"
+      },
+      {
+        "id": "resp_0118",
+        "candidate": "cand_030",
+        "person": "person_055",
+        "availability": "불가능",
+        "responded_at": "2026-09-27T18:30:00"
+      },
+      {
+        "id": "resp_0119",
+        "candidate": "cand_029",
+        "person": "person_016",
+        "availability": "가능",
+        "responded_at": "2026-09-27T18:30:00"
+      },
+      {
+        "id": "resp_0120",
+        "candidate": "cand_030",
+        "person": "person_016",
+        "availability": "불가능",
+        "responded_at": "2026-09-27T18:30:00"
+      },
+      {
+        "id": "resp_0121",
+        "candidate": "cand_031",
+        "person": "person_069",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0122",
+        "candidate": "cand_032",
+        "person": "person_069",
+        "availability": "불가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0123",
+        "candidate": "cand_031",
+        "person": "person_081",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0124",
+        "candidate": "cand_032",
+        "person": "person_081",
+        "availability": "불가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0125",
+        "candidate": "cand_031",
+        "person": "person_059",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0126",
+        "candidate": "cand_032",
+        "person": "person_059",
+        "availability": "불가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0127",
+        "candidate": "cand_031",
+        "person": "person_066",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0128",
+        "candidate": "cand_032",
+        "person": "person_066",
+        "availability": "불가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0129",
+        "candidate": "cand_031",
+        "person": "person_080",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0130",
+        "candidate": "cand_032",
+        "person": "person_080",
+        "availability": "불가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0131",
+        "candidate": "cand_031",
+        "person": "person_056",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0132",
+        "candidate": "cand_032",
+        "person": "person_056",
+        "availability": "불가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0133",
+        "candidate": "cand_033",
+        "person": "person_013",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0134",
+        "candidate": "cand_034",
+        "person": "person_013",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0135",
+        "candidate": "cand_033",
+        "person": "person_019",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0136",
+        "candidate": "cand_034",
+        "person": "person_019",
+        "availability": "불가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0137",
+        "candidate": "cand_033",
+        "person": "person_014",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0138",
+        "candidate": "cand_034",
+        "person": "person_014",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0139",
+        "candidate": "cand_033",
+        "person": "person_004",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0140",
+        "candidate": "cand_034",
+        "person": "person_004",
+        "availability": "가능",
+        "responded_at": "2026-10-04T19:00:00"
+      },
+      {
+        "id": "resp_0141",
+        "candidate": "cand_035",
+        "person": "person_088",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0142",
+        "candidate": "cand_036",
+        "person": "person_088",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0143",
+        "candidate": "cand_035",
+        "person": "person_089",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0144",
+        "candidate": "cand_036",
+        "person": "person_089",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0145",
+        "candidate": "cand_035",
+        "person": "person_066",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0146",
+        "candidate": "cand_036",
+        "person": "person_066",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0147",
+        "candidate": "cand_035",
+        "person": "person_059",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0148",
+        "candidate": "cand_036",
+        "person": "person_059",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0149",
+        "candidate": "cand_035",
+        "person": "person_100",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0150",
+        "candidate": "cand_036",
+        "person": "person_100",
+        "availability": "불가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0151",
+        "candidate": "cand_035",
+        "person": "person_061",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0152",
+        "candidate": "cand_036",
+        "person": "person_061",
+        "availability": "가능",
+        "responded_at": "2026-10-11T18:30:00"
+      },
+      {
+        "id": "resp_0153",
+        "candidate": "cand_037",
+        "person": "person_038",
+        "availability": "가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0154",
+        "candidate": "cand_038",
+        "person": "person_038",
+        "availability": "가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0155",
+        "candidate": "cand_037",
+        "person": "person_039",
+        "availability": "가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0156",
+        "candidate": "cand_038",
+        "person": "person_039",
+        "availability": "불가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0157",
+        "candidate": "cand_037",
+        "person": "person_003",
+        "availability": "가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0158",
+        "candidate": "cand_038",
+        "person": "person_003",
+        "availability": "불가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0159",
+        "candidate": "cand_037",
+        "person": "person_040",
+        "availability": "가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0160",
+        "candidate": "cand_038",
+        "person": "person_040",
+        "availability": "불가능",
+        "responded_at": "2026-10-18T18:30:00"
+      },
+      {
+        "id": "resp_0161",
+        "candidate": "cand_039",
+        "person": "person_098",
+        "availability": "가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0162",
+        "candidate": "cand_040",
+        "person": "person_098",
+        "availability": "불가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0163",
+        "candidate": "cand_039",
+        "person": "person_076",
+        "availability": "가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0164",
+        "candidate": "cand_040",
+        "person": "person_076",
+        "availability": "가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0165",
+        "candidate": "cand_039",
+        "person": "person_071",
+        "availability": "가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0166",
+        "candidate": "cand_040",
+        "person": "person_071",
+        "availability": "불가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0167",
+        "candidate": "cand_039",
+        "person": "person_072",
+        "availability": "가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0168",
+        "candidate": "cand_040",
+        "person": "person_072",
+        "availability": "불가능",
+        "responded_at": "2026-11-01T18:30:00"
+      },
+      {
+        "id": "resp_0169",
+        "candidate": "cand_041",
+        "person": "person_049",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0170",
+        "candidate": "cand_042",
+        "person": "person_049",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0171",
+        "candidate": "cand_041",
+        "person": "person_005",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0172",
+        "candidate": "cand_042",
+        "person": "person_005",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0173",
+        "candidate": "cand_041",
+        "person": "person_001",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0174",
+        "candidate": "cand_042",
+        "person": "person_001",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0175",
+        "candidate": "cand_041",
+        "person": "person_030",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0176",
+        "candidate": "cand_042",
+        "person": "person_030",
+        "availability": "불가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0177",
+        "candidate": "cand_041",
+        "person": "person_040",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0178",
+        "candidate": "cand_042",
+        "person": "person_040",
+        "availability": "가능",
+        "responded_at": "2026-11-08T18:30:00"
+      },
+      {
+        "id": "resp_0179",
+        "candidate": "cand_043",
+        "person": "person_060",
+        "availability": "가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0180",
+        "candidate": "cand_044",
+        "person": "person_060",
+        "availability": "불가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0181",
+        "candidate": "cand_043",
+        "person": "person_071",
+        "availability": "가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0182",
+        "candidate": "cand_044",
+        "person": "person_071",
+        "availability": "불가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0183",
+        "candidate": "cand_043",
+        "person": "person_079",
+        "availability": "가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0184",
+        "candidate": "cand_044",
+        "person": "person_079",
+        "availability": "가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0185",
+        "candidate": "cand_043",
+        "person": "person_074",
+        "availability": "가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0186",
+        "candidate": "cand_044",
+        "person": "person_074",
+        "availability": "불가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0187",
+        "candidate": "cand_043",
+        "person": "person_066",
+        "availability": "가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0188",
+        "candidate": "cand_044",
+        "person": "person_066",
+        "availability": "가능",
+        "responded_at": "2026-11-15T18:30:00"
+      },
+      {
+        "id": "resp_0189",
+        "candidate": "cand_045",
+        "person": "person_009",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0190",
+        "candidate": "cand_045",
+        "person": "person_017",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0191",
+        "candidate": "cand_045",
+        "person": "person_008",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0192",
+        "candidate": "cand_045",
+        "person": "person_007",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0193",
+        "candidate": "cand_046",
+        "person": "person_091",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0194",
+        "candidate": "cand_046",
+        "person": "person_065",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0195",
+        "candidate": "cand_046",
+        "person": "person_073",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0196",
+        "candidate": "cand_046",
+        "person": "person_074",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0197",
+        "candidate": "cand_047",
+        "person": "person_039",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0198",
+        "candidate": "cand_047",
+        "person": "person_014",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0199",
+        "candidate": "cand_047",
+        "person": "person_046",
+        "availability": "가능",
+        "responded_at": "2026-09-04T23:59:59"
+      },
+      {
+        "id": "resp_0200",
+        "candidate": "cand_047",
+        "person": "person_022",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0201",
+        "candidate": "cand_048",
+        "person": "person_069",
+        "availability": "가능",
+        "responded_at": "2026-09-01T23:59:59"
+      },
+      {
+        "id": "resp_0202",
+        "candidate": "cand_048",
+        "person": "person_099",
+        "availability": "가능",
+        "responded_at": "2026-09-01T23:59:59"
+      },
+      {
+        "id": "resp_0203",
+        "candidate": "cand_048",
+        "person": "person_096",
+        "availability": "가능",
+        "responded_at": "2026-09-01T23:59:59"
+      },
+      {
+        "id": "resp_0204",
+        "candidate": "cand_048",
+        "person": "person_072",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0205",
+        "candidate": "cand_049",
+        "person": "person_033",
+        "availability": "가능",
+        "responded_at": "2026-09-10T23:59:59"
+      },
+      {
+        "id": "resp_0206",
+        "candidate": "cand_050",
+        "person": "person_033",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0207",
+        "candidate": "cand_049",
+        "person": "person_032",
+        "availability": "가능",
+        "responded_at": "2026-09-10T23:59:59"
+      },
+      {
+        "id": "resp_0208",
+        "candidate": "cand_050",
+        "person": "person_032",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0209",
+        "candidate": "cand_049",
+        "person": "person_017",
+        "availability": "불가능",
+        "responded_at": "2026-09-10T23:59:59"
+      },
+      {
+        "id": "resp_0210",
+        "candidate": "cand_050",
+        "person": "person_017",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0211",
+        "candidate": "cand_049",
+        "person": "person_004",
+        "availability": "불가능",
+        "responded_at": "2026-09-10T23:59:59"
+      },
+      {
+        "id": "resp_0212",
+        "candidate": "cand_050",
+        "person": "person_004",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0213",
+        "candidate": "cand_049",
+        "person": "person_006",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0214",
+        "candidate": "cand_050",
+        "person": "person_006",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0215",
+        "candidate": "cand_049",
+        "person": "person_041",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0216",
+        "candidate": "cand_050",
+        "person": "person_041",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0217",
+        "candidate": "cand_051",
+        "person": "person_083",
+        "availability": "가능",
+        "responded_at": "2026-09-05T22:00:00"
+      },
+      {
+        "id": "resp_0218",
+        "candidate": "cand_052",
+        "person": "person_083",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0219",
+        "candidate": "cand_051",
+        "person": "person_073",
+        "availability": "가능",
+        "responded_at": "2026-09-05T22:00:00"
+      },
+      {
+        "id": "resp_0220",
+        "candidate": "cand_052",
+        "person": "person_073",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0221",
+        "candidate": "cand_051",
+        "person": "person_058",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0222",
+        "candidate": "cand_052",
+        "person": "person_058",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0223",
+        "candidate": "cand_051",
+        "person": "person_056",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0224",
+        "candidate": "cand_052",
+        "person": "person_056",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0225",
+        "candidate": "cand_053",
+        "person": "person_050",
+        "availability": "가능",
+        "responded_at": "2026-09-12T23:59:59"
+      },
+      {
+        "id": "resp_0226",
+        "candidate": "cand_054",
+        "person": "person_050",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0227",
+        "candidate": "cand_053",
+        "person": "person_009",
+        "availability": "불가능",
+        "responded_at": "2026-09-12T23:59:59"
+      },
+      {
+        "id": "resp_0228",
+        "candidate": "cand_054",
+        "person": "person_009",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0229",
+        "candidate": "cand_053",
+        "person": "person_041",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0230",
+        "candidate": "cand_054",
+        "person": "person_041",
+        "availability": "불가능",
+        "responded_at": "2026-09-12T23:59:59"
+      },
+      {
+        "id": "resp_0231",
+        "candidate": "cand_053",
+        "person": "person_017",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0232",
+        "candidate": "cand_054",
+        "person": "person_017",
+        "availability": "가능",
+        "responded_at": "2026-09-12T23:59:59"
+      },
+      {
+        "id": "resp_0233",
+        "candidate": "cand_055",
+        "person": "person_060",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0234",
+        "candidate": "cand_056",
+        "person": "person_060",
+        "availability": "가능",
+        "responded_at": "2026-09-13T23:59:59"
+      },
+      {
+        "id": "resp_0235",
+        "candidate": "cand_055",
+        "person": "person_100",
+        "availability": "불가능",
+        "responded_at": "2026-09-13T23:59:59"
+      },
+      {
+        "id": "resp_0236",
+        "candidate": "cand_056",
+        "person": "person_100",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0237",
+        "candidate": "cand_055",
+        "person": "person_065",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0238",
+        "candidate": "cand_056",
+        "person": "person_065",
+        "availability": "가능",
+        "responded_at": "2026-09-13T23:59:59"
+      },
+      {
+        "id": "resp_0239",
+        "candidate": "cand_057",
+        "person": "person_009",
+        "availability": "가능",
+        "responded_at": "2026-09-14T23:59:59"
+      },
+      {
+        "id": "resp_0240",
+        "candidate": "cand_058",
+        "person": "person_009",
+        "availability": "불가능",
+        "responded_at": "2026-09-14T23:59:59"
+      },
+      {
+        "id": "resp_0241",
+        "candidate": "cand_057",
+        "person": "person_003",
+        "availability": "가능",
+        "responded_at": "2026-09-14T23:59:59"
+      },
+      {
+        "id": "resp_0242",
+        "candidate": "cand_058",
+        "person": "person_003",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0243",
+        "candidate": "cand_057",
+        "person": "person_020",
+        "availability": "가능",
+        "responded_at": "2026-09-14T23:59:59"
+      },
+      {
+        "id": "resp_0244",
+        "candidate": "cand_058",
+        "person": "person_020",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0245",
+        "candidate": "cand_057",
+        "person": "person_024",
+        "availability": "가능",
+        "responded_at": "2026-09-14T23:59:59"
+      },
+      {
+        "id": "resp_0246",
+        "candidate": "cand_058",
+        "person": "person_024",
+        "availability": "불가능",
+        "responded_at": "2026-09-14T23:59:59"
+      },
+      {
+        "id": "resp_0247",
+        "candidate": "cand_059",
+        "person": "person_082",
+        "availability": "가능",
+        "responded_at": "2026-09-15T23:59:59"
+      },
+      {
+        "id": "resp_0248",
+        "candidate": "cand_060",
+        "person": "person_082",
+        "availability": "불가능",
+        "responded_at": "2026-09-15T23:59:59"
+      },
+      {
+        "id": "resp_0249",
+        "candidate": "cand_059",
+        "person": "person_095",
+        "availability": "가능",
+        "responded_at": "2026-09-15T23:59:59"
+      },
+      {
+        "id": "resp_0250",
+        "candidate": "cand_060",
+        "person": "person_095",
+        "availability": "가능",
+        "responded_at": "2026-09-15T23:59:59"
+      },
+      {
+        "id": "resp_0251",
+        "candidate": "cand_059",
+        "person": "person_065",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0252",
+        "candidate": "cand_060",
+        "person": "person_065",
+        "availability": "불가능",
+        "responded_at": "2026-09-15T23:59:59"
+      },
+      {
+        "id": "resp_0253",
+        "candidate": "cand_059",
+        "person": "person_071",
+        "availability": "불가능",
+        "responded_at": "2026-09-15T23:59:59"
+      },
+      {
+        "id": "resp_0254",
+        "candidate": "cand_060",
+        "person": "person_071",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0255",
+        "candidate": "cand_059",
+        "person": "person_066",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0256",
+        "candidate": "cand_060",
+        "person": "person_066",
+        "availability": "가능",
+        "responded_at": "2026-09-15T23:59:59"
+      },
+      {
+        "id": "resp_0257",
+        "candidate": "cand_061",
+        "person": "person_011",
+        "availability": "불가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0258",
+        "candidate": "cand_062",
+        "person": "person_011",
+        "availability": "가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0259",
+        "candidate": "cand_061",
+        "person": "person_051",
+        "availability": "불가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0260",
+        "candidate": "cand_062",
+        "person": "person_051",
+        "availability": "가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0261",
+        "candidate": "cand_061",
+        "person": "person_045",
+        "availability": "가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0262",
+        "candidate": "cand_062",
+        "person": "person_045",
+        "availability": "불가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0263",
+        "candidate": "cand_061",
+        "person": "person_007",
+        "availability": "불가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0264",
+        "candidate": "cand_062",
+        "person": "person_007",
+        "availability": "불가능",
+        "responded_at": "2026-09-16T23:59:59"
+      },
+      {
+        "id": "resp_0265",
+        "candidate": "cand_063",
+        "person": "person_070",
+        "availability": "가능",
+        "responded_at": "2026-09-17T23:59:59"
+      },
+      {
+        "id": "resp_0266",
+        "candidate": "cand_064",
+        "person": "person_070",
+        "availability": "불가능",
+        "responded_at": "2026-09-17T23:59:59"
+      },
+      {
+        "id": "resp_0267",
+        "candidate": "cand_063",
+        "person": "person_057",
+        "availability": "불가능",
+        "responded_at": "2026-09-17T23:59:59"
+      },
+      {
+        "id": "resp_0268",
+        "candidate": "cand_064",
+        "person": "person_057",
+        "availability": "불가능",
+        "responded_at": "2026-09-17T23:59:59"
+      },
+      {
+        "id": "resp_0269",
+        "candidate": "cand_063",
+        "person": "person_098",
+        "availability": "가능",
+        "responded_at": "2026-09-17T23:59:59"
+      },
+      {
+        "id": "resp_0270",
+        "candidate": "cand_064",
+        "person": "person_098",
+        "availability": "불가능",
+        "responded_at": "2026-09-17T23:59:59"
+      },
+      {
+        "id": "resp_0271",
+        "candidate": "cand_065",
+        "person": "person_042",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0272",
+        "candidate": "cand_066",
+        "person": "person_042",
+        "availability": "불가능",
+        "responded_at": "2026-09-18T23:59:59"
+      },
+      {
+        "id": "resp_0273",
+        "candidate": "cand_065",
+        "person": "person_033",
+        "availability": "가능",
+        "responded_at": "2026-09-18T23:59:59"
+      },
+      {
+        "id": "resp_0274",
+        "candidate": "cand_066",
+        "person": "person_033",
+        "availability": "가능",
+        "responded_at": "2026-09-18T23:59:59"
+      },
+      {
+        "id": "resp_0275",
+        "candidate": "cand_065",
+        "person": "person_026",
+        "availability": "불가능",
+        "responded_at": "2026-09-18T23:59:59"
+      },
+      {
+        "id": "resp_0276",
+        "candidate": "cand_066",
+        "person": "person_026",
+        "availability": "가능",
+        "responded_at": "2026-09-18T23:59:59"
+      },
+      {
+        "id": "resp_0277",
+        "candidate": "cand_065",
+        "person": "person_044",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0278",
+        "candidate": "cand_066",
+        "person": "person_044",
+        "availability": "불가능",
+        "responded_at": "2026-09-18T23:59:59"
+      },
+      {
+        "id": "resp_0279",
+        "candidate": "cand_067",
+        "person": "person_062",
+        "availability": "불가능",
+        "responded_at": "2026-09-19T23:59:59"
+      },
+      {
+        "id": "resp_0280",
+        "candidate": "cand_068",
+        "person": "person_062",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0281",
+        "candidate": "cand_067",
+        "person": "person_094",
+        "availability": "불가능",
+        "responded_at": "2026-09-19T23:59:59"
+      },
+      {
+        "id": "resp_0282",
+        "candidate": "cand_068",
+        "person": "person_094",
+        "availability": "불가능",
+        "responded_at": "2026-09-19T23:59:59"
+      },
+      {
+        "id": "resp_0283",
+        "candidate": "cand_067",
+        "person": "person_083",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0284",
+        "candidate": "cand_068",
+        "person": "person_083",
+        "availability": "미응답",
+        "responded_at": ""
+      },
+      {
+        "id": "resp_0285",
+        "candidate": "cand_069",
+        "person": "person_008",
+        "availability": "가능",
+        "responded_at": "2026-08-20T18:00:00"
+      },
+      {
+        "id": "resp_0286",
+        "candidate": "cand_069",
+        "person": "person_025",
+        "availability": "가능",
+        "responded_at": "2026-08-20T18:00:00"
+      },
+      {
+        "id": "resp_0287",
+        "candidate": "cand_069",
+        "person": "person_037",
+        "availability": "가능",
+        "responded_at": "2026-08-20T18:00:00"
+      },
+      {
+        "id": "resp_0288",
+        "candidate": "cand_070",
+        "person": "person_068",
+        "availability": "가능",
+        "responded_at": "2026-08-21T18:00:00"
+      },
+      {
+        "id": "resp_0289",
+        "candidate": "cand_070",
+        "person": "person_072",
+        "availability": "가능",
+        "responded_at": "2026-08-21T18:00:00"
+      },
+      {
+        "id": "resp_0290",
+        "candidate": "cand_070",
+        "person": "person_058",
+        "availability": "가능",
+        "responded_at": "2026-08-21T18:00:00"
+      },
+      {
+        "id": "resp_0291",
+        "candidate": "cand_071",
+        "person": "person_046",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:00:00"
+      },
+      {
+        "id": "resp_0292",
+        "candidate": "cand_071",
+        "person": "person_028",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:00:00"
+      },
+      {
+        "id": "resp_0293",
+        "candidate": "cand_071",
+        "person": "person_001",
+        "availability": "가능",
+        "responded_at": "2026-08-22T18:00:00"
+      },
+      {
+        "id": "resp_0294",
+        "candidate": "cand_072",
+        "person": "person_089",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:00:00"
+      },
+      {
+        "id": "resp_0295",
+        "candidate": "cand_072",
+        "person": "person_090",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:00:00"
+      },
+      {
+        "id": "resp_0296",
+        "candidate": "cand_072",
+        "person": "person_099",
+        "availability": "가능",
+        "responded_at": "2026-08-23T18:00:00"
+      }
+    ]
+  }
+}

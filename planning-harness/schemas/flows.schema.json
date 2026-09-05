@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "flows.yaml",
+  "type": "object",
+  "required": ["states", "flows"],
+  "properties": {
+    "meta": { "type": "object" },
+    "states": {
+      "type": "object",
+      "required": ["nodes", "transitions"],
+      "properties": {
+        "entity": { "type": "string", "pattern": "^ENT-\\d{2,3}$" },
+        "nodes": {
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["id", "name"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^ST-\\d{2,3}$" },
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "is_terminal": { "type": "boolean" }
+            }
+          }
+        },
+        "transitions": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "trigger", "trigger_type", "actor"],
+            "properties": {
+              "from": { "type": "string", "pattern": "^ST-\\d{2,3}$" },
+              "to": { "type": "string", "pattern": "^ST-\\d{2,3}$" },
+              "trigger": { "type": "string", "minLength": 1 },
+              "trigger_type": { "enum": ["user", "time", "system"] },
+              "actor": { "type": "string", "pattern": "^ROLE-\\d{2,3}$" },
+              "screen": { "type": "string", "pattern": "^SCR-\\d{2,3}(\\.\\d+)?$" },
+              "notify": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "flows": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "role", "trigger", "steps", "outcome", "exceptions"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^FLW-\\d{2,3}$" },
+          "name": { "type": "string" },
+          "role": { "type": "string", "pattern": "^ROLE-\\d{2,3}$" },
+          "trigger": { "type": "string" },
+          "steps": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["screen", "action"],
+              "properties": {
+                "screen": { "type": "string", "pattern": "^SCR-\\d{2,3}(\\.\\d+)?$" },
+                "action": { "type": "string" },
+                "result": { "type": "string" }
+              }
+            }
+          },
+          "outcome": { "type": "string" },
+          "exceptions": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["condition", "handling"],
+              "properties": {
+                "condition": { "type": "string" },
+                "handling": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
