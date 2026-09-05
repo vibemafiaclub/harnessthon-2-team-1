@@ -1,0 +1,40 @@
+# 프로젝트 프로필 — 하네스 실행 전 사람이 채우는 유일한 파일
+# 복사해서 {프로젝트명}/01-planning/project-profile.yaml 로 저장한 뒤 채운다.
+# 모르는 값은 지우지 말고 TBD 로 둔다. 하네스가 인터뷰로 되묻는다.
+
+project:
+  name: ""                    # 프로젝트명 (폴더명으로도 사용)
+  client: ""                  # 클라이언트명
+  domain: ""                  # 예: 일정조율 / 커머스 / 예약 / 교육 / 의료
+  one_liner: ""               # 이 서비스를 한 문장으로
+
+scope:
+  platform: []                # web / mobile-web / ios / android / responsive
+  primary_device: ""          # mobile / desktop / both
+  greenfield: true            # true=신규, false=기존 자산 있음
+  deliverable_end: "화면설계 직전"   # 이 하네스가 어디까지 책임지는지
+
+roles_expected: []            # 예상 역할. 확정 아님, 하네스가 STEP 1에서 확정
+  # - name: ""
+  #   authenticated: true     # 로그인 여부. false면 RISK-10 해당
+
+data_scale:                   # RISK-06 판정과 seed-data 생성에 사용
+  # 주요 목록의 예상 최대 건수. 모르면 TBD
+  # 예: persons: 100
+  #     meetings: 40
+
+constraints:
+  deadline: ""                # 납품 기한
+  next_phase: ""              # 이후 단계 (디자인 / 개발 / 없음)
+  budget_notes: ""
+  existing_system: ""         # 연동해야 하는 기존 시스템
+  legal: ""                   # 개인정보·의료·금융 등 규제 사항
+
+inputs:
+  source_files: []            # 원본 자료 경로
+    # - examples/wedding-scheduler/input/prd.md
+  source_quality: ""          # detailed / rough / verbal — rough·verbal이면 인터뷰 필수
+
+output:
+  dir: ""                     # 예: wedding-scheduler/01-planning
+  language: "ko"
